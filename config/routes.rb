@@ -11,4 +11,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :social_ecological_characterizations do
+      collection do
+        post "import_csv"
+      end
+  end
 end
