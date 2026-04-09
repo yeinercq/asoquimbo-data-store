@@ -18,8 +18,13 @@
       </div>
 
       <div class="col-12 col-md-2 justify-content-end d-flex gap-2">
-        <%= link_to edit_social_ecological_characterization_path(social_ecological_characterization) do %>
+        <%= link_to social_ecological_characterization_path(social_ecological_characterization) do %>
           <div class="btn btn-info">
+            <i class="bi bi-eye"></i>
+          </div>
+        <% end %>
+        <%= link_to edit_social_ecological_characterization_path(social_ecological_characterization) do %>
+          <div class="btn btn-secondary">
             <i class="bi bi-pencil-square"></i>
           </div>
         <% end %>
