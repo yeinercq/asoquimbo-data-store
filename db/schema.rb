@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_08_045341) do
     t.integer "year", default: 1900, null: false
     t.string "title", null: false
     t.integer "resource_type", null: false
-    t.string "intitution", null: false
+    t.string "institution", null: false
     t.string "url", null: false
     t.integer "access_level", null: false
     t.integer "geographic_area", null: false

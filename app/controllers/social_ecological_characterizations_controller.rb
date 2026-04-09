@@ -1,5 +1,6 @@
 class SocialEcologicalCharacterizationsController < ApplicationController
   def index
+    @social_ecological_characterizations = SocialEcologicalCharacterization.all
   end
 
   def show

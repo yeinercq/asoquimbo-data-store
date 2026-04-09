@@ -7,3 +7,61 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+social_ecological_characterizations_params = [
+  {
+    authors: "#{Faker::Book.author}, #{Faker::Book.author}",
+    year: Faker::Number.between(from: 1900, to: Time.now.year),
+    title: Faker::Book.title,
+    resource_type: rand(1..5),
+    institution: Faker::Company.name,
+    url: Faker::Internet.url,
+    access_level: rand(1..3),
+    geographic_area: rand(1..4),
+    spatial_coverage: rand(1..3),
+    analysis_scale: rand(1..3),
+    study_period: Faker::Lorem.sentence,
+    study_objective: Faker::Lorem.sentence,
+    approach: rand(1..3),
+    general_methodology_used: Faker::Lorem.sentence
+  },
+  {
+    authors: "#{Faker::Book.author}, #{Faker::Book.author}",
+    year: Faker::Number.between(from: 1900, to: Time.now.year),
+    title: Faker::Book.title,
+    resource_type: rand(1..5),
+    institution: Faker::Company.name,
+    url: Faker::Internet.url,
+    access_level: rand(1..3),
+    geographic_area: rand(1..4),
+    spatial_coverage: rand(1..3),
+    analysis_scale: rand(1..3),
+    study_period: Faker::Lorem.sentence,
+    study_objective: Faker::Lorem.sentence,
+    approach: rand(1..3),
+    general_methodology_used: Faker::Lorem.sentence
+  },
+  {
+    authors: "#{Faker::Book.author}, #{Faker::Book.author}",
+    year: Faker::Number.between(from: 1900, to: Time.now.year),
+    title: Faker::Book.title,
+    resource_type: rand(1..5),
+    institution: Faker::Company.name,
+    url: Faker::Internet.url,
+    access_level: rand(1..3),
+    geographic_area: rand(1..4),
+    spatial_coverage: rand(1..3),
+    analysis_scale: rand(1..3),
+    study_period: Faker::Lorem.sentence,
+    study_objective: Faker::Lorem.sentence,
+    approach: rand(1..3),
+    general_methodology_used: Faker::Lorem.sentence
+  }
+]
+
+puts "Creando registros..."
+social_ecological_characterizations_params.each do |params|
+  SocialEcologicalCharacterization.create!(params)
+end
+
+puts "Registros creados exitosamente."

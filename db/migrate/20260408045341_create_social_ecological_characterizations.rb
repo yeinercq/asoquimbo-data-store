@@ -5,7 +5,7 @@ class CreateSocialEcologicalCharacterizations < ActiveRecord::Migration[7.2]
       t.integer :year, null: false, default: 1900
       t.string :title, null: false
       t.integer :resource_type, null: false
-      t.string :intitution, null: false
+      t.string :institution, null: false
       t.string :url, null: false
       t.integer :access_level, null: false
       t.integer :geographic_area, null: false

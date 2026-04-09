@@ -1,3 +1,9 @@
 <h1>CARACTERIZACIONES SOCIALES Y ECOLÓGICAS</h1>
 
-<p>Este es un text de prueba</p>
+<div class="header">
+  <%= link_to import_csv_social_ecological_characterizations_path, class: "btn btn-primary" do %>
+    <i class="bi bi-file-earmark-excel"></i> Importar caracterizaciones
+  <% end %>
+</div>
+
+<%= render @social_ecological_characterizations %>
