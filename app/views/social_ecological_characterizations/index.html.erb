@@ -1,7 +1,10 @@
 <h1>CARACTERIZACIONES SOCIALES Y ECOLÓGICAS</h1>
 
 <div class="header">
-  <%= link_to import_csv_social_ecological_characterizations_path, class: "btn btn-primary" do %>
+  <%= link_to new_social_ecological_characterization_path, class: "btn btn-primary" do %>
+    <i class="bi bi-plus"></i> Nueva caracterización
+  <% end %>
+  <%= link_to import_csv_social_ecological_characterizations_path, class: "btn btn-secondary" do %>
     <i class="bi bi-file-earmark-excel"></i> Importar caracterizaciones
   <% end %>
 </div>
