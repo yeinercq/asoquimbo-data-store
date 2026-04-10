@@ -1,0 +1,31 @@
+es:
+  hello: "Hola mundo"
+  activerecord:
+    models:
+      social_ecological_characterization:
+        one: "Caracterización socioecológica"
+        other: "Caracterizaciones socioecológicas"
+    attributes:
+      social_ecological_characterization:
+        authors: "Autores"
+        year: "Año"
+        title: "Título"
+        resource_type: "Tipo de recurso"
+        institution: "Institución/Entidad"
+        url: "Enlace o Ubicación"
+        access_level: "Nivel de acceso"
+        geographic_area: "Área geográfica"
+        spatial_coverage: "Cobertura espacial"
+        analysis_scale: "Escala de análisis"
+        study_period: "Período de estudio"
+        study_objective: "Objetivo del estudio"
+        approach: "Enfoque"
+        general_methodology_used: "Metodología general utilizada"
+    errors:
+      messages:
+        blank: "no puede estar en blanco"
+  common:
+    cancel: "Cancelar"
+    accept: "Aceptar"
+    form:
+      select_an_option: "Seleccione una opción"
