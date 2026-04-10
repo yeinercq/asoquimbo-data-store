@@ -35,3 +35,4 @@ en:
     form:    
       select_an_option: "Select an option"
       error_message: "Please correct the following errors: "
+      confirm_delete: "Are you sure you want to delete this record?"

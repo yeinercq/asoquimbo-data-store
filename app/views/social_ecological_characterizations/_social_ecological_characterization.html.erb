@@ -28,7 +28,7 @@
             <i class="bi bi-pencil-square"></i>
           </div>
         <% end %>
-        <%= link_to social_ecological_characterizations_path(social_ecological_characterization), data: { turbo_method: :delete , turbo_confirm: 'Está seguro?'} do %>
+        <%= link_to social_ecological_characterization_path(social_ecological_characterization), data: { turbo_method: :delete , turbo_confirm: t("common.form.confirm_delete")} do %>
           <div class="btn btn-danger">
             <i class="bi bi-trash"></i>
           </div>

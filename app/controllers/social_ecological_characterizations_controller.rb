@@ -1,6 +1,7 @@
 class SocialEcologicalCharacterizationsController < ApplicationController
+  before_action :set_social_ecological_characterization, only: %i[show edit update destroy]
   def index
-    @social_ecological_characterizations = SocialEcologicalCharacterization.all
+    @social_ecological_characterizations = SocialEcologicalCharacterization.all.ordered
   end
 
   def show
@@ -23,9 +24,16 @@ class SocialEcologicalCharacterizationsController < ApplicationController
   end
 
   def update
+    if @social_ecological_characterization.update(social_ecological_characterization_params)
+      redirect_to social_ecological_characterizations_path, notice: "Caracterización social y ecológica actualizada exitosamente."
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    @social_ecological_characterization.destroy
+    redirect_to social_ecological_characterizations_path, notice: "Caracterización social y ecológica eliminada exitosamente."
   end
 
   def import_csv
@@ -35,5 +43,9 @@ class SocialEcologicalCharacterizationsController < ApplicationController
 
   def social_ecological_characterization_params
     params.require(:social_ecological_characterization).permit(:authors, :year, :title, :resource_type, :institution, :url, :access_level, :geographic_area, :spatial_coverage, :analysis_scale, :study_period, :study_objective, :approach, :general_methodology_used)
+  end
+
+  def set_social_ecological_characterization
+    @social_ecological_characterization = SocialEcologicalCharacterization.find(params[:id])
   end
 end

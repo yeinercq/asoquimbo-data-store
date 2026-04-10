@@ -37,6 +37,8 @@ class SocialEcologicalCharacterization < ApplicationRecord
             presence: true
   validates :year, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1900 }
 
+  scope :ordered, -> { order(id: :desc) }
+
   enum :resource_type, { articulo: 1, informe: 2, tesis: 3, documento_institucional: 4, otro: 5 }
   enum :access_level, { publico: 1, parcial: 2, restringido: 3 }
   enum :geographic_area, { vereda: 1, municipio: 2, zona: 3, departamento: 4 }

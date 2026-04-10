@@ -30,3 +30,4 @@ es:
     form:
       select_an_option: "Seleccione una opción"
       error_message: "Por favor, corrija los siguientes errores: "
+      confirm_delete: "¿Está seguro que desea eliminar este registro?"
