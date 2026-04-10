@@ -39,7 +39,7 @@ social_ecological_characterizations_params = [
     study_period: Faker::Lorem.sentence,
     study_objective: Faker::Lorem.sentence,
     approach: rand(1..3),
-    general_methodology_used: Faker::Lorem.sentence
+    general_methodology_used: Faker::Lorem.paragraph
   },
   {
     authors: "#{Faker::Book.author}, #{Faker::Book.author}",
@@ -55,7 +55,7 @@ social_ecological_characterizations_params = [
     study_period: Faker::Lorem.sentence,
     study_objective: Faker::Lorem.sentence,
     approach: rand(1..3),
-    general_methodology_used: Faker::Lorem.sentence
+    general_methodology_used: Faker::Lorem.paragraph
   }
 ]
 
