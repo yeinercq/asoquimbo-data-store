@@ -10,28 +10,28 @@
     </div>
     <div class="row">
       <%= f.input :year, wrapper_html: { class: 'col-12 col-md-4' } %>
-      <%= f.input :resource_type, collection: SocialEcologicalCharacterization.resource_types.map {| k,v | [v, k] }, label_method: :second, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-4' } %>
+      <%= f.input :resource_type, collection: enum_options_for_select(SocialEcologicalCharacterization, :resource_types), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-4' } %>
       <%= f.input :institution, wrapper_html: { class: 'col-12 col-md-4' } %>
     </div>
     <div class="row mb-4">
       <%= f.input :url, label: "Enlace o Ubicación" %>
-      <%= f.input :access_level, collection: SocialEcologicalCharacterization.access_levels.map {| k,v | [v, k] }, label_method: :second, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-6' } %>
+      <%= f.input :access_level, collection: enum_options_for_select(SocialEcologicalCharacterization, :access_levels), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-6' } %>
     </div>
     
     <h4>CARACTERIZACIÓN GENERAL</h4>
     <hr>
 
     <div class="row">
-      <%= f.input :geographic_area, collection: SocialEcologicalCharacterization.geographic_areas.map {| k,v | [v, k] }, label_method: :second, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select"}, wrapper_html: { class: 'col-12 col-md-6' } %>
-      <%= f.input :spatial_coverage, collection: SocialEcologicalCharacterization.spatial_coverages.map {| k,v | [v, k] }, label_method: :second, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-6' } %>
+      <%= f.input :geographic_area, collection: enum_options_for_select(SocialEcologicalCharacterization, :geographic_areas), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select"}, wrapper_html: { class: 'col-12 col-md-6' } %>
+      <%= f.input :spatial_coverage, collection: enum_options_for_select(SocialEcologicalCharacterization, :spatial_coverages), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-6' } %>
     </div>
     <div class="row">
-      <%= f.input :analysis_scale, collection: SocialEcologicalCharacterization.analysis_scales.map {| k,v | [v, k] }, label_method: :second, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-6' } %>
+      <%= f.input :analysis_scale, collection: enum_options_for_select(SocialEcologicalCharacterization, :analysis_scales), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-6' } %>
       <%= f.input :study_period, input_html: { class: "form-control" }, wrapper_html: { class: 'col-12 col-md-6' } %>
     </div>
     <div class="row">
       <%= f.input :study_objective, input_html: { class: "form-control" }, wrapper_html: { class: 'col-12 col-md-6' } %>
-      <%= f.input :approach, collection: SocialEcologicalCharacterization.approaches.map {| k,v | [v, k] }, label_method: :second, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-6' } %>
+      <%= f.input :approach, collection: enum_options_for_select(SocialEcologicalCharacterization, :approaches), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-6' } %>
     </div>
     <div class="row">
       <%= f.input :general_methodology_used, as: :text, input_html: { class: "form-control" }, wrapper_html: { class: 'col-12' } %>
