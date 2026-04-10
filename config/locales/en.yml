@@ -32,4 +32,6 @@ en:
   common:
     cancel: "Cancel"
     accept: "Accept"
-    select_an_option: "Selecct an option"
+    form:    
+      select_an_option: "Select an option"
+      error_message: "Please correct the following errors: "
