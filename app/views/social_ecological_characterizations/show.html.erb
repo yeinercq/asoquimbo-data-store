@@ -1,70 +1,66 @@
-<div class="card shadow mt-2">
-  <div class="card-body">
+<%= render 'layouts/remote_modal', title: "" do %>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <h4>IDENTIFICACIÓN DE LA FUENTE</h4>
+      <hr>
 
-    <div class="row">
-      <div class="col-12 col-md-6">
-        <h4>IDENTIFICACIÓN DE LA FUENTE</h4>
-        <hr>
+      <dl class="row">
+        <dt class="col-12 col-lg-4">Autores</dt>
+        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.authors %></dd>
 
-        <dl class="row">
-          <dt class="col-sm-3">Autores</dt>
-          <dd class="col-sm-9"><%= @social_ecological_characterization.authors %></dd>
+        <dt class="col-12 col-lg-4">Año</dt>
+        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.year %></dd>
 
-          <dt class="col-sm-3">Año</dt>
-          <dd class="col-sm-9"><%= @social_ecological_characterization.year %></dd>
+        <dt class="col-12 col-lg-4">Título del documento</dt>
+        <dd class="col-12 col-lg-8">
+          <p><%= @social_ecological_characterization.title %></p>
+        </dd>
 
-          <dt class="col-sm-3">Título del documento</dt>
-          <dd class="col-sm-9">
-            <p><%= @social_ecological_characterization.title %></p>
-          </dd>
+        <dt class="col-12 col-lg-4">Tipo de documento</dt>
+        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.resource_type.humanize %></dd>
 
-          <dt class="col-sm-3">Tipo de documento</dt>
-          <dd class="col-sm-9"><%= @social_ecological_characterization.resource_type.humanize %></dd>
+        <dt class="col-12 col-lg-4">Institución/Entidad</dt>
+        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.institution %></dd>
 
-          <dt class="col-sm-3">Institución/Entidad</dt>
-          <dd class="col-sm-9"><%= @social_ecological_characterization.institution %></dd>
+        <dt class="col-12 col-lg-4">Enlace o ubicación</dt>
+        <dd class="col-12 col-lg-8"><%= link_to "Ir al documento", @social_ecological_characterization.url %></dd>
 
-          <dt class="col-sm-3">Enlace o ubicación</dt>
-          <dd class="col-sm-9"><%= link_to "Ir al documento", @social_ecological_characterization.url %></dd>
-
-          <dt class="col-sm-3">Nivel de acceso</dt>
-          <dd class="col-sm-9"><%= @social_ecological_characterization.access_level.humanize %></dd>
-        </dl>
-      </div>
-      <div class="col-12 col-md-6">
-        <h4>CARACTERIZACIÓN GENERAL</h4>
-        <hr>
-
-        <dl class="row">
-          <dt class="col-sm-3">Área geográfica</dt>
-          <dd class="col-sm-9"><%= @social_ecological_characterization.geographic_area.humanize %></dd>
-
-          <dt class="col-sm-3">Cobertura espacial</dt>
-          <dd class="col-sm-9"><%= @social_ecological_characterization.spatial_coverage.humanize %></dd>
-
-          <dt class="col-sm-3">Escala de análisis</dt>
-          <dd class="col-sm-9">
-            <p><%= @social_ecological_characterization.analysis_scale.humanize %></p>
-          </dd>
-
-          <dt class="col-sm-3">Periodo de estudio</dt>
-          <dd class="col-sm-9"><%= @social_ecological_characterization.study_period %></dd>
-
-          <dt class="col-sm-3">Objetivo de estudio</dt>
-          <dd class="col-sm-9"><%= @social_ecological_characterization.study_objective %></dd>
-
-          <dt class="col-sm-3">Enfoque</dt>
-          <dd class="col-sm-9"><%= @social_ecological_characterization.approach.humanize %></dd>
-
-          <dt class="col-sm-3">Metodología general empleada</dt>
-          <dd class="col-sm-9"><%= @social_ecological_characterization.general_methodology_used %></dd>
-        </dl>
-      </div>
+        <dt class="col-12 col-lg-4">Nivel de acceso</dt>
+        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.access_level.humanize %></dd>
+      </dl>
     </div>
+    <div class="col-12 col-md-6">
+      <h4>CARACTERIZACIÓN GENERAL</h4>
+      <hr>
 
-  </div>
+      <dl class="row">
+        <dt class="col-12 col-lg-4">Área geográfica</dt>
+        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.geographic_area.humanize %></dd>
 
-  <div class="card-footer">
-    <h4>ADJUNTOS</h4>
+        <dt class="col-12 col-lg-4">Cobertura espacial</dt>
+        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.spatial_coverage.humanize %></dd>
+
+        <dt class="col-12 col-lg-4">Escala de análisis</dt>
+        <dd class="col-12 col-lg-8">
+          <p><%= @social_ecological_characterization.analysis_scale.humanize %></p>
+        </dd>
+
+        <dt class="col-12 col-lg-4">Periodo de estudio</dt>
+        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.study_period %></dd>
+
+        <dt class="col-12 col-lg-4">Objetivo de estudio</dt>
+        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.study_objective %></dd>
+
+        <dt class="col-12 col-lg-4">Enfoque</dt>
+        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.approach.humanize %></dd>
+
+        <dt class="col-12 col-lg-4">Metodología general empleada</dt>
+        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.general_methodology_used %></dd>
+      </dl>
+    </div>
   </div>
-</div>
+  <hr>
+  <h4>DOCUMENTOS</h4>
+  <div class="card shadow mt-2">
+  </div>
+<% end %>
