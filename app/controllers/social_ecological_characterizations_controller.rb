@@ -48,7 +48,7 @@ class SocialEcologicalCharacterizationsController < ApplicationController
   private
 
   def social_ecological_characterization_params
-    params.require(:social_ecological_characterization).permit(:authors, :year, :title, :resource_type, :institution, :url, :access_level, :geographic_area, :spatial_coverage, :analysis_scale, :study_period, :study_objective, :approach, :general_methodology_used)
+    params.require(:social_ecological_characterization).permit(:authors, :year, :title, :resource_type, :institution, :url, :access_level, :geographic_area, :spatial_coverage, :analysis_scale, :study_period, :study_objective, :approach, :general_methodology_used, :source_file)
   end
 
   def set_social_ecological_characterization

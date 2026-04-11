@@ -36,8 +36,11 @@ class SocialEcologicalCharacterization < ApplicationRecord
             :general_methodology_used,
             presence: true
   validates :year, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1900 }
+  validate :source_file_size_validation
 
   scope :ordered, -> { order(id: :desc) }
+
+  mount_uploader :source_file, SourceFileUploader
 
   enum :resource_type, { articulo: 1, informe: 2, tesis: 3, documento_institucional: 4, otro: 5 }
   enum :access_level, { publico: 1, parcial: 2, restringido: 3 }
@@ -45,4 +48,10 @@ class SocialEcologicalCharacterization < ApplicationRecord
   enum :spatial_coverage, { local: 1, regional: 2, nacional: 3, cuenca: 4 }
   enum :analysis_scale, { individual: 1, comunidad: 2, region: 3 }
   enum :approach, { ecologico: 1, social: 2, socioecologico: 3 }
+
+  def source_file_size_validation
+    if source_file.size > 10.megabytes
+      errors.add(:source_file, I18n.t("activerecord.errors.messages.file_size_exceeded"))
+    end
+  end
 end

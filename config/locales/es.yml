@@ -21,12 +21,15 @@ es:
         study_objective: "Objetivo del estudio"
         approach: "Enfoque"
         general_methodology_used: "Metodología general utilizada"
+        source_file: "Archivo"
     errors:
       messages:
         blank: "no puede estar en blanco"
+        file_size_exceeded: "el tamaño del archivo no puede exceder los 10 MB"
   common:
     cancel: "Cancelar"
     accept: "Aceptar"
+    download_file: "Descargar archivo"
     form:
       select_an_option: "Seleccione una opción"
       error_message: "Por favor, corrija los siguientes errores: "

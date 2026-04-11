@@ -32,6 +32,7 @@ en:
   common:
     cancel: "Cancel"
     accept: "Accept"
+    download_file: "Download File"
     form:    
       select_an_option: "Select an option"
       error_message: "Please correct the following errors: "

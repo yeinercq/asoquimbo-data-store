@@ -36,6 +36,16 @@
     <div class="row">
       <%= f.input :general_methodology_used, as: :text, input_html: { class: "form-control" }, wrapper_html: { class: 'col-12' } %>
     </div>
+
+    <% if social_ecological_characterization.source_file? %>
+      <div class="col-12 mt-2">
+        <%= link_to t("common.download_file") + " (" + social_ecological_characterization.source_file.file.filename + ")", social_ecological_characterization.source_file_url, target: "_blank" %>
+      </div>
+    <% end %>
+    <div class="col-12 mt-2">
+      Archivo adjunto (pdf, doc, docx, xls, xlsx, csv; máximo 10 MB):
+      <%= f.file_field :source_file, accept: 'pdf/doc/docx/xls/xlsx/csv', class: 'form-control' %>
+    </div>
   </div>
 
   <div class="col-12 d-flex justify-content-end gap-2">
