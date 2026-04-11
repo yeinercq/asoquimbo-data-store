@@ -60,7 +60,13 @@
     </div>
   </div>
   <hr>
-  <h4>DOCUMENTOS</h4>
-  <div class="card shadow mt-2">
-  </div>
+  <h4>ARCHIVO ADJUNTO</h4>
+  
+  <% if @social_ecological_characterization.source_file? %>
+    <div class="col-12 mt-2">
+      <%= link_to t("common.download_file") + " (" + @social_ecological_characterization.source_file.file.filename + ")", @social_ecological_characterization.source_file_url, target: "_blank" %>
+    </div>
+  <% else %>
+    <p>No hay archivo adjunto disponible.</p>
+  <% end %>
 <% end %>
