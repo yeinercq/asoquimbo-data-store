@@ -1,3 +1,5 @@
 <h1>Nueva Caracterización Social y Ecológica</h1>
 
-<%= render "form", social_ecological_characterization: @social_ecological_characterization %>
+<%= render 'layouts/remote_modal', title: "NUEVA CARACTERIZACIÓN SOCIAL Y ECOLÓGICA" do %>
+  <%= render "form", social_ecological_characterization: @social_ecological_characterization %>
+<% end %>

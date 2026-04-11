@@ -2,7 +2,7 @@
   <%= form_error_notification(social_ecological_characterization) %>
 
   <div class="mb-3">
-    <h4>IDENTIFICACIÓN DE LA FUENTE</h4>
+    <h5>IDENTIFICACIÓN DE LA FUENTE</h5>
     <hr>
     <div class="row">
       <%= f.input :authors %>
@@ -18,7 +18,7 @@
       <%= f.input :access_level, collection: enum_options_for_select(SocialEcologicalCharacterization, :access_levels), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-6' } %>
     </div>
     
-    <h4>CARACTERIZACIÓN GENERAL</h4>
+    <h5>CARACTERIZACIÓN GENERAL</h5>
     <hr>
 
     <div class="row">
