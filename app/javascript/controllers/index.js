@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import RemoteModalController from "./remote_modal_controller"
 application.register("remote-modal", RemoteModalController)
+
+import Notification from '@stimulus-components/notification'
+application.register('notification', Notification)
