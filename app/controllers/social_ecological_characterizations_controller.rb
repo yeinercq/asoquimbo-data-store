@@ -31,6 +31,7 @@ class SocialEcologicalCharacterizationsController < ApplicationController
     respond_to do |format|
       if @social_ecological_characterization.update(social_ecological_characterization_params)
         format.html { redirect_to social_ecological_characterizations_path, notice: "Caracterización social y ecológica actualizada exitosamente." }
+        format.turbo_stream
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.turbo_stream { render :form_update, status: :unprocessable_entity }
@@ -40,7 +41,10 @@ class SocialEcologicalCharacterizationsController < ApplicationController
 
   def destroy
     @social_ecological_characterization.destroy
-    redirect_to social_ecological_characterizations_path, notice: "Caracterización social y ecológica eliminada exitosamente."
+    respond_to do |format|
+      format.html { redirect_to social_ecological_characterizations_path, notice: "Caracterización social y ecológica eliminada exitosamente." }
+      format.turbo_stream
+    end
   end
 
   def import_form
