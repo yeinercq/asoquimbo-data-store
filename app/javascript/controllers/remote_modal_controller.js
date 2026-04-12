@@ -18,4 +18,10 @@ export default class extends Controller {
   isOpen() {
     return this.element.classList.contains("show")
   }
+
+  close(event) {
+    if (event.detail.success) {
+      this.modal.hide()
+    }
+  }
 }
