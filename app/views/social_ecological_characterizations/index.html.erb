@@ -4,12 +4,12 @@
   <%= link_to new_social_ecological_characterization_path, class: "btn btn-primary", data: { turbo_frame: "remote_modal" } do %>
     <i class="bi bi-plus-circle-fill"></i> Nueva caracterización
   <% end %>
-  <%= link_to import_csv_social_ecological_characterizations_path, class: "btn btn-secondary" do %>
+  <%= link_to import_form_social_ecological_characterizations_path, class: "btn btn-secondary", data: { turbo_frame: "import_form" } do %>
     <i class="bi bi-database-fill-up"></i> Importar caracterizaciones
   <% end %>
   <%= link_to "#", class: "btn btn-secondary" do %>
     <i class="bi bi-database-fill-down"></i> Exportar caracterizaciones
   <% end %>
 </div>
-
+<%= turbo_frame_tag "import_form" %>
 <%= render @social_ecological_characterizations %>

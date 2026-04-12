@@ -42,7 +42,21 @@ class SocialEcologicalCharacterizationsController < ApplicationController
     redirect_to social_ecological_characterizations_path, notice: "Caracterización social y ecológica eliminada exitosamente."
   end
 
-  def import_csv
+  def import_form
+  end
+
+  def import_file
+    file = params[:file]
+    if file.present?
+      # result = SocialEcologicalCharacterizationImportService.new(file).call
+      # if result[:success]
+      #   redirect_to social_ecological_characterizations_path, notice: "Archivo importado exitosamente. #{result[:imported_count]} registros importados."
+      # else
+      #   redirect_to social_ecological_characterizations_path, alert: "Error al importar el archivo: #{result[:error]}"
+      # end
+    else
+      redirect_to social_ecological_characterizations_path, alert: "Por favor, seleccione un archivo para importar."
+    end
   end
 
   private

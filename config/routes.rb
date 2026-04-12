@@ -10,11 +10,12 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "social_ecological_characterizations#index"
 
   resources :social_ecological_characterizations do
       collection do
-        post "import_csv"
+        get "import_form"
+        post "import_file"
       end
   end
 end

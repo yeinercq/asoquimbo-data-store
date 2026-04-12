@@ -1,0 +1,17 @@
+<%= turbo_frame_tag "import_form" do %>
+  <div class="card mt-2">
+    <div class="card-header">
+      <h5>Importar caracterizaciones sociales y ecológicas</h5>
+    </div>
+    <div class="card-body">
+      <%= form_with url: import_file_social_ecological_characterizations_path, method: :post, html: { multipart: true } do |form| %>
+        <div class="mb-3">
+          <%= form.label :file, t("common.file.import"), class: "form-label" %>
+          <%= form.file_field :file, accept: ".csv", class: "form-control" %>
+        </div>
+        <%= link_to t("common.cancel"), social_ecological_characterizations_path, class: "btn btn-secondary" %>
+        <%= form.submit "Importar", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
