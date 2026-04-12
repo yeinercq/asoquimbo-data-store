@@ -16,6 +16,7 @@ class SocialEcologicalCharacterizationsController < ApplicationController
     respond_to do |format|
       if @social_ecological_characterization.save
         format.html { redirect_to social_ecological_characterizations_path, notice: "Caracterización social y ecológica creada exitosamente." }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
         format.turbo_stream { render :form_update, status: :unprocessable_entity }

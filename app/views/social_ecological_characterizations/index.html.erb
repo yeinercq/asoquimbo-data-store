@@ -12,4 +12,6 @@
   <% end %>
 </div>
 <%= turbo_frame_tag "import_form" %>
-<%= render @social_ecological_characterizations %>
+<%= turbo_frame_tag "social_ecological_characterizations" do %>
+  <%= render @social_ecological_characterizations %>
+<% end %>
