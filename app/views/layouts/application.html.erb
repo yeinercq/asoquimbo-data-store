@@ -16,8 +16,8 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
-
   <body class="container-fluid min-vh-100">
+    <%= render "layouts/flash_notifications" %>
     <%= yield %>
     <%= turbo_frame_tag "remote_modal", target: "_top" %>
   </body>
