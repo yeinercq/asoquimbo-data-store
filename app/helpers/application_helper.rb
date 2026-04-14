@@ -10,4 +10,8 @@ module ApplicationHelper
   def enum_options_for_select(model, enum, selected = nil)
     model.send(enum.to_s).map { |key, _| [ key.to_s.humanize, key ] }
   end
+
+  def render_turbo_stream_flash_messages
+    turbo_stream.prepend "flash_notifications", partial: "layouts/flash_notifications"
+  end
 end
