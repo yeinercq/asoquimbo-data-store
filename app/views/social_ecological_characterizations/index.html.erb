@@ -1,15 +1,17 @@
-<h1>CARACTERIZACIONES SOCIALES Y ECOLÓGICAS</h1>
 
-<div class="header d-flex justify-content-start gap-2">
-  <%= link_to new_social_ecological_characterization_path, class: "btn btn-primary", data: { turbo_frame: "remote_modal" } do %>
-    <i class="bi bi-plus-circle-fill"></i> Nueva caracterización
-  <% end %>
-  <%= link_to import_form_social_ecological_characterizations_path, class: "btn btn-secondary", data: { turbo_frame: "import_form" } do %>
-    <i class="bi bi-database-fill-up"></i> Importar caracterizaciones
-  <% end %>
-  <%= link_to "#", class: "btn btn-secondary", data: { turbo: false } do %>
-    <i class="bi bi-database-fill-down"></i> Exportar caracterizaciones
-  <% end %>
+<div class="header mt-3">
+  <h1>CARACTERIZACIONES SOCIALES Y ECOLÓGICAS</h1>
+  <div class="d-flex justify-content-start gap-2">
+    <%= link_to new_social_ecological_characterization_path, class: "btn btn-primary", data: { turbo_frame: "remote_modal" } do %>
+      <i class="bi bi-plus-circle-fill"></i> Nueva caracterización
+    <% end %>
+    <%= link_to import_form_social_ecological_characterizations_path, class: "btn btn-secondary", data: { turbo_frame: "import_form" } do %>
+      <i class="bi bi-database-fill-up"></i> Importar caracterizaciones
+    <% end %>
+    <%= link_to "#", class: "btn btn-secondary", data: { turbo: false } do %>
+      <i class="bi bi-database-fill-down"></i> Exportar caracterizaciones
+    <% end %>
+  </div>
 </div>
 <%= turbo_frame_tag "import_form" %>
 <%= turbo_frame_tag "social_ecological_characterizations" do %>

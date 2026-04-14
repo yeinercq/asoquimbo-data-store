@@ -4,7 +4,7 @@ es:
     models:
       social_ecological_characterization:
         one: "Caracterización socioecológica"
-        other: "Caracterizaciones socioecológicas"
+        others: "Caracterizaciones socioecológicas"
     attributes:
       social_ecological_characterization:
         authors: "Autores"
