@@ -7,7 +7,7 @@
 #  year                     :integer          default(1900), not null
 #  title                    :string           not null
 #  resource_type            :integer          not null
-#  intitution               :string           not null
+#  institution              :string           not null
 #  url                      :string           not null
 #  access_level             :integer          not null
 #  geographic_area          :integer          not null
@@ -19,6 +19,7 @@
 #  general_methodology_used :string           not null
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
+#  source_file              :string
 #
 class SocialEcologicalCharacterization < ApplicationRecord
   validates :authors,

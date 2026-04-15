@@ -17,7 +17,9 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
   <body>
-    <%= render "layouts/navbar" %>
+    <% if user_signed_in? %>
+      <%= render "layouts/navbar" %>
+    <% end %>
     <div id="flash_notifications">
       <%= render "layouts/flash_notifications" %>
     </div>

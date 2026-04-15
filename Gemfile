@@ -38,6 +38,8 @@ gem "bootsnap", require: false
 
 gem "simple_form"
 gem "carrierwave", "~> 3.0"
+gem "devise"
+gem "letter_opener"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -55,4 +57,6 @@ group :development do
   gem "web-console"
   gem "annotate"
   gem "faker"
+  gem "i18n-tasks"
+  gem "rails-i18n"
 end

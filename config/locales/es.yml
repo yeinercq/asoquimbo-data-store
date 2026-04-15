@@ -30,6 +30,7 @@ es:
     cancel: "Cancelar"
     accept: "Aceptar"
     download_file: "Descargar archivo"
+    are_you_sure: "¿Estás seguro?"
     form:
       select_an_option: "Seleccione una opción"
       error_message: "Por favor, corrija los siguientes errores: "

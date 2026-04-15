@@ -12,3 +12,6 @@ document.addEventListener("turbo:load", () => {
   }))
   toastList.forEach(toast => toast.show())
 });
+
+const dropdownElementList = document.querySelectorAll('.dropdown-toggle')
+const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl))
