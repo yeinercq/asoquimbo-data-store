@@ -16,12 +16,12 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
-  <body class="">
+  <body>
     <%= render "layouts/navbar" %>
     <div id="flash_notifications">
       <%= render "layouts/flash_notifications" %>
     </div>
-    <div class="container-fluid min-vh-100">
+    <div class="container-fluid min-vh-100 mb-2">
       <%= yield %>
     </div>
     <%= turbo_frame_tag "remote_modal", target: "_top" %>
