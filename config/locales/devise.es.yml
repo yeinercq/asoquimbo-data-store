@@ -74,8 +74,8 @@ es:
       sign_up_with: "Registrarse con %{provider}"
       or: "o"
       click_here_to: "Haz clic aquí"
-      send_password_reset_instructions: "Enviar instrucciones para restablecer la contraseña"
-      resend_confirmation_instructions: "Reenviar instrucciones de confirmación"
+      send_password_reset_instructions: "Enviar instrucciones"
+      resend_confirmation_instructions: "Reenviar instrucciones"
       unlock_account: "Desbloquear mi cuenta"
       change_my_password: "Cambiar mi contraseña"
   errors:
