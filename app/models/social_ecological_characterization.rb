@@ -43,12 +43,39 @@ class SocialEcologicalCharacterization < ApplicationRecord
 
   mount_uploader :source_file, SourceFileUploader
 
-  enum :resource_type, { articulo: 1, informe: 2, tesis: 3, documento_institucional: 4, otro: 5 }
-  enum :access_level, { publico: 1, parcial: 2, restringido: 3 }
-  enum :geographic_area, { vereda: 1, municipio: 2, zona: 3, departamento: 4 }
-  enum :spatial_coverage, { local: 1, regional: 2, nacional: 3, cuenca: 4 }
-  enum :analysis_scale, { individual: 1, comunidad: 2, region: 3 }
-  enum :approach, { ecologico: 1, social: 2, socioecologico: 3 }
+  enum :resource_type, {
+    "artículo": 1,
+    "informe": 2,
+    "tesis": 3,
+    "documento institucional": 4
+  }
+  enum :access_level, {
+    "público": 1,
+    "parcial": 2,
+    "restringido": 3
+  }
+  enum :geographic_area, {
+    "vereda": 1,
+    "municipio": 2,
+    "zona": 3,
+    "departamento": 4
+  }
+  enum :spatial_coverage, {
+    "local": 1,
+    "regional": 2,
+    "nacional": 3,
+    "cuenca": 4
+  }
+  enum :analysis_scale, {
+    "individual": 1,
+    "comunidad": 2,
+    "región": 3
+  }
+  enum :approach, {
+    "ecológico": 1,
+    "social": 2,
+    "socioecológico": 3
+  }
 
   def source_file_size_validation
     if source_file.size > 10.megabytes
