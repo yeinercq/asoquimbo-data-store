@@ -1,7 +1,18 @@
 class SocialEcologicalCharacterizationsController < ApplicationController
   before_action :set_social_ecological_characterization, only: %i[show edit update destroy]
   def index
-    @social_ecological_characterizations = SocialEcologicalCharacterization.all.ordered
+    scope = SocialEcologicalCharacterization.includes(:user).ordered
+    # Apply filters based on query parameters
+    filtering_params(params).each do | key, value |
+      scope = scope.public_send("filter_by_#{key}", value) if value.present?
+    end
+
+    @social_ecological_characterizations = scope
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+      format.csv { send_data @social_ecological_characterizations.to_csv, filename: "caracterizaciones-sociales-y-ecologicas-#{Date.today}.csv" }
+    end
   end
 
   def show
@@ -72,5 +83,9 @@ class SocialEcologicalCharacterizationsController < ApplicationController
 
   def set_social_ecological_characterization
     @social_ecological_characterization = SocialEcologicalCharacterization.includes(:user).find(params[:id])
+  end
+
+  def filtering_params(params)
+    params.slice(:resource_type, :access_level, :geographic_area, :spatial_coverage, :analysis_scale, :approach)
   end
 end

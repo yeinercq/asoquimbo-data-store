@@ -15,16 +15,20 @@ user_params = {
   password_confirmation: "12345678"
 }
 
-user = User.create!(user_params)
-puts "Usuario creado: #{user.email}"
-
+if User.exists?(email: user_params[:email])
+  puts "El usuario con email #{user_params[:email]} ya existe. No se creará un nuevo usuario."
+  user = User.find_by(email: user_params[:email])
+else
+  user = User.create!(user_params)
+  puts "Usuario creado: #{user.email}"
+end
 
 social_ecological_characterizations_params = [
   {
     authors: "#{Faker::Book.author}, #{Faker::Book.author}",
     year: Faker::Number.between(from: 1900, to: Time.now.year),
     title: Faker::Book.title,
-    resource_type: rand(1..5),
+    resource_type: rand(1..4),
     institution: Faker::Company.name,
     url: Faker::Internet.url,
     access_level: rand(1..3),
@@ -41,7 +45,7 @@ social_ecological_characterizations_params = [
     authors: "#{Faker::Book.author}, #{Faker::Book.author}",
     year: Faker::Number.between(from: 1900, to: Time.now.year),
     title: Faker::Book.title,
-    resource_type: rand(1..5),
+    resource_type: rand(1..4),
     institution: Faker::Company.name,
     url: Faker::Internet.url,
     access_level: rand(1..3),
@@ -58,7 +62,7 @@ social_ecological_characterizations_params = [
     authors: "#{Faker::Book.author}, #{Faker::Book.author}",
     year: Faker::Number.between(from: 1900, to: Time.now.year),
     title: Faker::Book.title,
-    resource_type: rand(1..5),
+    resource_type: rand(1..4),
     institution: Faker::Company.name,
     url: Faker::Internet.url,
     access_level: rand(1..3),

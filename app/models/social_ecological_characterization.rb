@@ -42,7 +42,14 @@ class SocialEcologicalCharacterization < ApplicationRecord
 
   belongs_to :user
 
+  # Scopes to filter and order records
   scope :ordered, -> { order(id: :desc) }
+  scope :filter_by_resource_type, ->(type) { where(resource_type: type) }
+  scope :filter_by_access_level, ->(level) { where(access_level: level) }
+  scope :filter_by_geographic_area, ->(area) { where(geographic_area: area) }
+  scope :filter_by_spatial_coverage, ->(coverage) { where(spatial_coverage: coverage) }
+  scope :filter_by_analysis_scale, ->(scale) { where(analysis_scale: scale) }
+  scope :filter_by_approach, ->(approach) { where(approach: approach) }
 
   mount_uploader :source_file, SourceFileUploader
 

@@ -23,7 +23,7 @@
         <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.institution %></dd>
 
         <dt class="col-12 col-lg-4">Enlace o ubicación</dt>
-        <dd class="col-12 col-lg-8"><%= link_to "Ir al documento", @social_ecological_characterization.url %></dd>
+        <dd class="col-12 col-lg-8"><%= link_to "Ir al documento", @social_ecological_characterization.url, target: "_blank" %></dd>
 
         <dt class="col-12 col-lg-4">Nivel de acceso</dt>
         <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.access_level.humanize %></dd>

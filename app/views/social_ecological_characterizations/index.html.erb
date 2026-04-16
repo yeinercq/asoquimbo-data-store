@@ -13,6 +13,46 @@
     <% end %>
   </div>
 </div>
+<div class="filters mt-2">
+  <%# Seach form %>
+  <div class="row">
+    <%= form_with( url: social_ecological_characterizations_path, method: :get, data: { turbo_stream: true, turbo_frame: 'social_ecological_characterizations'}, class: "d-block d-md-flex flex-row flex-wrap gap-2 justify-content-end align-items-center" ) do |form| %>
+      <div class="col-auto">
+        Filtrar:
+      </div>
+
+      <div class="col-auto mb-2">
+        <%= form.select :resource_type, enum_options_for_select(SocialEcologicalCharacterization, :resource_types), { prompt: "Tipo de recurso" }, { class: 'form-select' } %>
+      </div>
+
+      <div class="col-auto mb-2">
+        <%= form.select :access_level, enum_options_for_select(SocialEcologicalCharacterization, :access_levels), { prompt: "Nivel de acceso" }, { class: 'form-select' } %>
+      </div>
+
+      <div class="col-auto mb-2">
+        <%= form.select :geographic_area, enum_options_for_select(SocialEcologicalCharacterization, :geographic_areas), { prompt: "Área geográfica" }, { class: 'form-select' } %>
+      </div>
+
+      <div class="col-auto mb-2">
+        <%= form.select :spatial_coverage, enum_options_for_select(SocialEcologicalCharacterization, :spatial_coverages), { prompt: "Cobertura espacial" }, { class: 'form-select' } %>
+      </div>
+
+      <div class="col-auto mb-2">
+        <%= form.select :analysis_scale, enum_options_for_select(SocialEcologicalCharacterization, :analysis_scales), { prompt: "Escala de análisis" }, { class: 'form-select' } %>
+      </div>
+
+      <div class="col-auto mb-2">
+        <%= form.select :approach, enum_options_for_select(SocialEcologicalCharacterization, :approaches), { prompt: "Enfoque" }, { class: 'form-select' } %>
+      </div>
+
+      <div class="col-auto mb-2">
+        <%= form.submit "Buscar", class: "btn btn-primary" %>
+        <%= button_to "Exportar", social_ecological_characterizations_path(format: :csv), class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
 <%= turbo_frame_tag "import_form" %>
 <%= turbo_frame_tag "social_ecological_characterizations" do %>
   <%= render @social_ecological_characterizations %>
