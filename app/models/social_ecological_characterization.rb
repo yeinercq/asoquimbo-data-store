@@ -20,6 +20,7 @@
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #  source_file              :string
+#  user_id                  :bigint           not null
 #
 class SocialEcologicalCharacterization < ApplicationRecord
   validates :authors,
@@ -38,6 +39,8 @@ class SocialEcologicalCharacterization < ApplicationRecord
             presence: true
   validates :year, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1900 }
   validate :source_file_size_validation
+
+  belongs_to :user
 
   scope :ordered, -> { order(id: :desc) }
 

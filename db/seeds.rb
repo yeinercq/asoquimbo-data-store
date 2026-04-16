@@ -8,6 +8,17 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+puts "Creando usuario..."
+user_params = {
+  email: "ycarvajalq@gmail.com",
+  password: "12345678",
+  password_confirmation: "12345678"
+}
+
+user = User.create!(user_params)
+puts "Usuario creado: #{user.email}"
+
+
 social_ecological_characterizations_params = [
   {
     authors: "#{Faker::Book.author}, #{Faker::Book.author}",
@@ -23,7 +34,8 @@ social_ecological_characterizations_params = [
     study_period: Faker::Lorem.sentence,
     study_objective: Faker::Lorem.sentence,
     approach: rand(1..3),
-    general_methodology_used: Faker::Lorem.sentence
+    general_methodology_used: Faker::Lorem.sentence,
+    user_id: user.id
   },
   {
     authors: "#{Faker::Book.author}, #{Faker::Book.author}",
@@ -39,7 +51,8 @@ social_ecological_characterizations_params = [
     study_period: Faker::Lorem.sentence,
     study_objective: Faker::Lorem.sentence,
     approach: rand(1..3),
-    general_methodology_used: Faker::Lorem.paragraph
+    general_methodology_used: Faker::Lorem.paragraph,
+    user_id: user.id
   },
   {
     authors: "#{Faker::Book.author}, #{Faker::Book.author}",
@@ -55,11 +68,12 @@ social_ecological_characterizations_params = [
     study_period: Faker::Lorem.sentence,
     study_objective: Faker::Lorem.sentence,
     approach: rand(1..3),
-    general_methodology_used: Faker::Lorem.paragraph
+    general_methodology_used: Faker::Lorem.paragraph,
+    user_id: user.id
   }
 ]
 
-puts "Creando registros..."
+puts "Creando registros de pruba..."
 social_ecological_characterizations_params.each do |params|
   SocialEcologicalCharacterization.create!(params)
 end

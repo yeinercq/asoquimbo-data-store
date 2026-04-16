@@ -69,4 +69,7 @@
   <% else %>
     <p>No hay archivo adjunto disponible.</p>
   <% end %>
+  <div class="col-12 mt-2 d-flex justify-content-end">
+    Creado por: <span class="badge rounded-pill text-bg-success d-flex align-items-center"><%= @social_ecological_characterization.user.email %></span>
+  </div>
 <% end %>

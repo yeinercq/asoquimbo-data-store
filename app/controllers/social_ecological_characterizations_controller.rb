@@ -8,11 +8,11 @@ class SocialEcologicalCharacterizationsController < ApplicationController
   end
 
   def new
-    @social_ecological_characterization = SocialEcologicalCharacterization.new
+    @social_ecological_characterization = current_user.social_ecological_characterizations.build
   end
 
   def create
-    @social_ecological_characterization = SocialEcologicalCharacterization.new(social_ecological_characterization_params)
+    @social_ecological_characterization = current_user.social_ecological_characterizations.build(social_ecological_characterization_params)
     respond_to do |format|
       if @social_ecological_characterization.save
         format.html { redirect_to social_ecological_characterizations_path, notice: "Caracterización social y ecológica creada exitosamente." }
@@ -71,6 +71,6 @@ class SocialEcologicalCharacterizationsController < ApplicationController
   end
 
   def set_social_ecological_characterization
-    @social_ecological_characterization = SocialEcologicalCharacterization.find(params[:id])
+    @social_ecological_characterization = SocialEcologicalCharacterization.includes(:user).find(params[:id])
   end
 end
