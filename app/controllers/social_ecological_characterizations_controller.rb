@@ -1,5 +1,6 @@
 class SocialEcologicalCharacterizationsController < ApplicationController
   before_action :set_social_ecological_characterization, only: %i[show edit update destroy]
+  require "csv"
   def index
     scope = SocialEcologicalCharacterization.includes(:user).ordered
     # Apply filters based on query parameters
@@ -11,7 +12,7 @@ class SocialEcologicalCharacterizationsController < ApplicationController
     respond_to do |format|
       format.html
       format.turbo_stream
-      format.csv { send_data @social_ecological_characterizations.to_csv, filename: "caracterizaciones-sociales-y-ecologicas-#{Date.today}.csv" }
+      format.csv { send_data generate_csv(@social_ecological_characterizations), filename: "caracterizaciones-sociales-y-ecologicas-#{Date.today}.csv" }
     end
   end
 
@@ -87,5 +88,16 @@ class SocialEcologicalCharacterizationsController < ApplicationController
 
   def filtering_params(params)
     params.slice(:resource_type, :access_level, :geographic_area, :spatial_coverage, :analysis_scale, :approach)
+  end
+
+  def generate_csv(collection)
+    attributes = %w[id authors year title resource_type institution url access_level geographic_area spatial_coverage analysis_scale study_period study_objective approach general_methodology_used]
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      collection.find_each do |characterization|
+        csv << attributes.map { |attr| characterization.send(attr) }
+      end
+    end
   end
 end

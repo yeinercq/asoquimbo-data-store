@@ -16,7 +16,7 @@
 <div class="filters mt-2">
   <%# Seach form %>
   <div class="row">
-    <%= form_with( url: social_ecological_characterizations_path, method: :get, data: { turbo_stream: true, turbo_frame: 'social_ecological_characterizations'}, class: "d-block d-md-flex flex-row flex-wrap gap-2 justify-content-end align-items-center" ) do |form| %>
+    <%= form_with( url: social_ecological_characterizations_path, method: :get, data: { turbo_frame: 'social_ecological_characterizations'}, class: "d-block d-md-flex flex-row flex-wrap gap-2 justify-content-end align-items-center" ) do |form| %>
       <div class="col-auto">
         Filtrar:
       </div>
@@ -47,7 +47,7 @@
 
       <div class="col-auto mb-2">
         <%= form.submit "Buscar", class: "btn btn-primary" %>
-        <%= button_to "Exportar", social_ecological_characterizations_path(format: :csv), class: "btn btn-secondary" %>
+        <%= form.submit "Exportar", class: "btn btn-secondary", formaction: social_ecological_characterizations_path(format: :csv) %>
       </div>
     <% end %>
   </div>
