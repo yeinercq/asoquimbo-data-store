@@ -42,6 +42,8 @@ class SocialEcologicalCharacterization < ApplicationRecord
 
   belongs_to :user
 
+  before_create :set_code
+
   # Scopes to filter and order records
   scope :ordered, -> { order(id: :desc) }
   scope :filter_by_resource_type, ->(type) { where(resource_type: type) }
@@ -91,5 +93,13 @@ class SocialEcologicalCharacterization < ApplicationRecord
     if source_file.size > 10.megabytes
       errors.add(:source_file, I18n.t("activerecord.errors.messages.file_size_exceeded"))
     end
+  end
+
+  def last_code
+    SocialEcologicalCharacterization.maximum(:code) || 0
+  end
+
+  def set_code
+    self.code = last_code + 1 if code == 0
   end
 end
