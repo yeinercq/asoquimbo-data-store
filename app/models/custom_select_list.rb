@@ -11,6 +11,8 @@
 class CustomSelectList < ApplicationRecord
   validates :model_name_association, presence: true
 
+  enum status: { "visible": 1, "no visible": 0 }
+
   before_create :set_default_status
 
   private

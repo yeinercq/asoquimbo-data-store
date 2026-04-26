@@ -1,0 +1,16 @@
+<%= simple_form_for custom_select_list, html: { class: "form container" } do |f| %>
+  <%= form_error_notification(custom_select_list) %>
+
+  <div class="mb-3">
+    <div class="row">
+      <%= f.input :model_name_association, collection: get_model_name_associations, label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-sm-6' } %>
+      <%= f.input :status, collection: CustomSelectList.statuses.map {|key, value| [key.humanize, key] }, label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-sm-6' } %>
+    </div>
+  </div>
+
+  <div class="col-12 d-flex justify-content-end gap-2">
+    <%= link_to t("common.cancel"), custom_select_lists_path, class: "btn btn-secondary", data: { turbo: false } %>
+    <%= f.submit t("common.accept"), class: "btn btn-warning"%>
+  </div>
+
+<% end %>

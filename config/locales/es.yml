@@ -5,6 +5,9 @@ es:
       social_ecological_characterization:
         one: "Caracterización socioecológica"
         others: "Caracterizaciones socioecológicas"
+      custom_select_list:
+        one: "Lista de selección personalizada"
+        others: "Listas de selección personalizadas"
     attributes:
       social_ecological_characterization:
         authors: "Autores"
@@ -22,6 +25,9 @@ es:
         approach: "Enfoque"
         general_methodology_used: "Metodología general utilizada"
         source_file: "Archivo"
+      custom_select_list:
+        model_name_association: "Nombre del modelo asociado"
+        status: "Estado"
     errors:
       messages:
         blank: "no puede estar en blanco"
