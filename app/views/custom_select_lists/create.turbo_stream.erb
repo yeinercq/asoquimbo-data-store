@@ -1,2 +1,3 @@
 <%= turbo_stream.prepend "custom_select_lists", @custom_select_list %>
+<%= render_turbo_stream_flash_messages %>
 <%= turbo_stream.update CustomSelectList.new, "" %>
