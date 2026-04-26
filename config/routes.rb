@@ -20,4 +20,6 @@ Rails.application.routes.draw do
         post "import_file"
       end
   end
+
+  resources :custom_select_lists
 end

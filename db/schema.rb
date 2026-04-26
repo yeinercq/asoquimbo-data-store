@@ -10,9 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_19_011403) do
+ActiveRecord::Schema[7.2].define(version: 2026_04_26_033317) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actors", force: :cascade do |t|
+    t.integer "actor_type"
+    t.string "name"
+    t.integer "territorial_level"
+    t.string "municipality"
+    t.integer "coverage"
+    t.integer "action_field"
+    t.integer "action_area"
+    t.string "what_are_they_doing"
+    t.boolean "monitoring_experience"
+    t.integer "experience_type"
+    t.integer "participation_level"
+    t.integer "relationship"
+    t.string "justification"
+    t.integer "interaction_type"
+    t.string "purpose"
+    t.string "topics"
+    t.integer "priority"
+    t.string "contact_name"
+    t.string "contact_position"
+    t.string "contact_phone"
+    t.string "contact_email"
+    t.string "url"
+    t.bigint "responsible_id", null: false
+    t.integer "management_status"
+    t.date "contact_date"
+    t.string "contact_source"
+    t.string "comments"
+    t.integer "code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["responsible_id"], name: "index_actors_on_responsible_id"
+  end
+
+  create_table "custom_select_lists", force: :cascade do |t|
+    t.string "model_name_association"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "social_ecological_characterizations", force: :cascade do |t|
     t.string "authors", null: false
@@ -49,5 +90,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_19_011403) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "actors", "users", column: "responsible_id"
   add_foreign_key "social_ecological_characterizations", "users"
 end
