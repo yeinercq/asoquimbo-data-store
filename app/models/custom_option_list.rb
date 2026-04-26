@@ -12,4 +12,6 @@ class CustomOptionList < ApplicationRecord
   belongs_to :custom_select_list
 
   validates :model_field, presence: true
+
+  scope :ordered, -> { order(id: :desc) }
 end

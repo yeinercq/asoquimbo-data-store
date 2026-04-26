@@ -2,7 +2,7 @@ class CustomSelectListsController < ApplicationController
   before_action :set_custom_select_list, only: %i[edit update destroy]
 
   def index
-    @custom_select_lists = CustomSelectList.ordered
+    @custom_select_lists = CustomSelectList.includes(:custom_option_lists).ordered
   end
 
   def new
