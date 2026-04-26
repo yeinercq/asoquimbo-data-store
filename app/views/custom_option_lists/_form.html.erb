@@ -1,0 +1,16 @@
+<%= simple_form_for [custom_select_list, custom_option_list], html: { class: "form card shadow mt-2" } do |f| %>
+  <div class="card-body">
+    <%= form_error_notification(custom_option_list) %>
+
+    <div class="mb-3">
+      <div class="row">
+        <%= f.input :model_field, collection: get_available_model_fields, label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col' } %>
+      </div>
+    </div>
+
+    <div class="col-12 d-flex justify-content-end gap-2">
+      <%= link_to t("common.cancel"), custom_select_lists_path, class: "btn btn-secondary" %>
+      <%= f.submit t("common.accept"), class: "btn btn-warning"%>
+    </div>
+  </div>
+<% end %>

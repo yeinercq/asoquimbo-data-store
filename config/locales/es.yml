@@ -8,6 +8,9 @@ es:
       custom_select_list:
         one: "Lista de selección personalizada"
         others: "Listas de selección personalizadas"
+      custom_option_list:
+        one: "Lista de opciones personalizada"
+        others: "Listas de opciones personalizadas"
     attributes:
       social_ecological_characterization:
         authors: "Autores"
@@ -28,6 +31,8 @@ es:
       custom_select_list:
         model_name_association: "Nombre del modelo asociado"
         status: "Estado"
+      custom_option_list:
+        model_field: "Campo del modelo"
     errors:
       messages:
         blank: "no puede estar en blanco"

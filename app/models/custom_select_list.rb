@@ -9,6 +9,8 @@
 #  updated_at             :datetime         not null
 #
 class CustomSelectList < ApplicationRecord
+  has_many :custom_option_lists, dependent: :destroy
+
   validates :model_name_association, :status, presence: true
 
   enum status: { "visible": 1, "no visible": 0 }

@@ -56,6 +56,10 @@ class SocialEcologicalCharacterization < ApplicationRecord
 
   mount_uploader :source_file, SourceFileUploader
 
+  OPTION_LISTABLE_FIELDS = [
+    :resource_type, :access_level, :geographic_area, :spatial_coverage, :analysis_scale, :approach
+  ].freeze
+
   enum :resource_type, {
     "artículo": 1,
     "informe": 2,
@@ -102,5 +106,9 @@ class SocialEcologicalCharacterization < ApplicationRecord
 
   def set_code
     self.code = last_code + 1 if code == 0
+  end
+
+  def self.option_listable_fields
+    OPTION_LISTABLE_FIELDS
   end
 end

@@ -21,5 +21,7 @@ Rails.application.routes.draw do
       end
   end
 
-  resources :custom_select_lists, except: [ :show ]
+  resources :custom_select_lists, except: [ :show ] do
+    resources :custom_option_lists, except: [ :show, :index ]
+  end
 end
