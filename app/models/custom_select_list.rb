@@ -9,11 +9,13 @@
 #  updated_at             :datetime         not null
 #
 class CustomSelectList < ApplicationRecord
-  validates :model_name_association, presence: true
+  validates :model_name_association, :status, presence: true
 
   enum status: { "visible": 1, "no visible": 0 }
 
   before_create :set_default_status
+
+  scope :ordered, -> { order(id: :desc) }
 
   private
 

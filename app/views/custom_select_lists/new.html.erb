@@ -1,3 +1,5 @@
 <h1>Nueva Caracterización Social y Ecológica</h1>
 
-<%= render "form", custom_select_list: @custom_select_list %>
+<%= turbo_frame_tag @custom_select_list do %>
+  <%= render "form", custom_select_list: @custom_select_list %>
+<% end %>

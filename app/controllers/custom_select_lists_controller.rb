@@ -1,9 +1,6 @@
 class CustomSelectListsController < ApplicationController
   def index
-    @custom_select_lists = CustomSelectList.all
-  end
-
-  def show
+    @custom_select_lists = CustomSelectList.ordered
   end
 
   def new
@@ -13,7 +10,10 @@ class CustomSelectListsController < ApplicationController
   def create
     @custom_select_list = CustomSelectList.new(custom_select_list_params)
     if @custom_select_list.save
-      redirect_to custom_select_lists_path, notice: "Lista de selección personalizada creada exitosamente."
+      respond_to do |format|
+        format.html { redirect_to custom_select_lists_path, notice: "Lista de selección personalizada creada exitosamente." }
+        format.turbo_stream { flash.now[:notice] = "Lista de selección personalizada creada exitosamente." }
+      end
     else
       render :new, status: :unprocessable_entity
     end
