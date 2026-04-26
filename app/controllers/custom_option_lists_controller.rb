@@ -8,7 +8,10 @@ class CustomOptionListsController < ApplicationController
   def create
     @custom_option_list = @custom_select_list.custom_option_lists.build(custom_option_list_params)
     if @custom_option_list.save
-      redirect_to custom_select_lists_path, notice: "Lista de opciones creada exitosamente."
+      respond_to do |format|
+        format.html { redirect_to custom_select_lists_path, notice: "Opción de lista personalizada creada exitosamente." }
+        format.turbo_stream { flash.now[:notice] = "Opción de lista personalizada creada exitosamente." }
+      end
     else
       render :new, status: :unprocessable_entity
     end
