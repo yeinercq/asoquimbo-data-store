@@ -10,8 +10,20 @@
 #
 class CustomOptionList < ApplicationRecord
   belongs_to :custom_select_list
+  has_many :custom_options, dependent: :destroy
+
+  accepts_nested_attributes_for :custom_options, reject_if: :all_blank, allow_destroy: true
 
   validates :model_field, presence: true
+  validate :ensure_at_least_one_custom_option, on: [ :create, :update ]
 
   scope :ordered, -> { order(id: :desc) }
+
+  private
+
+  def ensure_at_least_one_custom_option
+    if custom_options.empty? || custom_options.all? { |option| option.marked_for_destruction? }
+      errors.add(:base, "debe haber al menos una opción para la lista configurable.")
+    end
+  end
 end

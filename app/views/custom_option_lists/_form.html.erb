@@ -1,12 +1,30 @@
-<%= simple_form_for [custom_select_list, custom_option_list], html: { class: "form card shadow mt-2" } do |f| %>
+<%= simple_form_for [custom_select_list, custom_option_list], html: { class: "form card shadow mt-2" }, data: { controller: "nested-form", nested_form_wrapper_selector_value: ".nested-form-wrapper" } do |f| %>
   <div class="card-body">
     <%= form_error_notification(custom_option_list) %>
-
+    
+    <template data-nested-form-target="template">
+      <%= f.simple_fields_for :custom_options, CustomOption.new, child_index: 'NEW_RECORD' do |custom_option_fields| %>
+        <%= render "custom_option_form", ff: custom_option_fields %>
+      <% end %>
+    </template>
+    
+    
     <div class="mb-3">
       <div class="row">
         <%= f.input :model_field, collection: get_available_model_fields, label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col' } %>
       </div>
     </div>
+
+    <%= f.simple_fields_for :custom_options do |custom_option_fields| %>
+      <%= render "custom_option_form", ff: custom_option_fields %>
+    <% end %>
+
+    <!-- Inserted elements will be injected before that target. -->
+    <div data-nested-form-target="target"></div>
+
+    <button type="button" class="btn btn-primary" data-action="nested-form#add">
+      <i class="bi bi-plus-circle-fill"></i> Opción
+    </button>
 
     <div class="col-12 d-flex justify-content-end gap-2">
       <%= link_to t("common.cancel"), custom_select_lists_path, class: "btn btn-secondary" %>

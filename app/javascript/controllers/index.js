@@ -12,3 +12,6 @@ application.register("remote-modal", RemoteModalController)
 
 import ShowToastController from "./show_toast_controller"
 application.register("show-toast", ShowToastController)
+
+import RailsNestedForm from '@stimulus-components/rails-nested-form'
+application.register('nested-form', RailsNestedForm)

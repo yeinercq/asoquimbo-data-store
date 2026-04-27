@@ -46,7 +46,7 @@ class CustomOptionListsController < ApplicationController
   private
 
   def custom_option_list_params
-    params.require(:custom_option_list).permit(:model_field)
+    params.require(:custom_option_list).permit(:model_field, custom_options_attributes: [ :id, :name, :_destroy ])
   end
 
   def set_custom_select_list

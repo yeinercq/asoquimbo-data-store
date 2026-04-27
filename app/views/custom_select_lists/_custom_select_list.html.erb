@@ -1,7 +1,7 @@
 <%= turbo_frame_tag custom_select_list, class: "col-md-6 mt-2" do %>
   <div class="card shadow">
     <div class="card-header">
-      <%= t("activerecord.models.#{custom_select_list.model_name_association}.others") %>
+      Listas de opciones para <strong><%= t("activerecord.models.#{custom_select_list.model_name_association}.others") %></strong>
     </div>
     <div class="card-body">
       <%= turbo_frame_tag custom_select_list, dom_id(CustomOptionList.new) %>

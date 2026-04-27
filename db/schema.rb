@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_04_27_010138) do
+ActiveRecord::Schema[7.2].define(version: 2026_04_27_011736) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,6 +56,14 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_27_010138) do
     t.index ["custom_select_list_id"], name: "index_custom_option_lists_on_custom_select_list_id"
   end
 
+  create_table "custom_options", force: :cascade do |t|
+    t.bigint "custom_option_list_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["custom_option_list_id"], name: "index_custom_options_on_custom_option_list_id"
+  end
+
   create_table "custom_select_lists", force: :cascade do |t|
     t.string "model_name_association"
     t.datetime "created_at", null: false
@@ -99,5 +107,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_04_27_010138) do
 
   add_foreign_key "actors", "users", column: "responsible_id"
   add_foreign_key "custom_option_lists", "custom_select_lists"
+  add_foreign_key "custom_options", "custom_option_lists"
   add_foreign_key "social_ecological_characterizations", "users"
 end
