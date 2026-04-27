@@ -7,7 +7,7 @@ export default class extends Controller {
     this.toast = new Toast(this.element, {
       autohide: true,
       animation: true,
-      delay: 4000
+      delay: 5000
     })
     this.toast.show()
   }

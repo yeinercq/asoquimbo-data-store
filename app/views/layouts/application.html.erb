@@ -20,8 +20,12 @@
     <% if user_signed_in? %>
       <%= render "layouts/navbar" %>
     <% end %>
-    <div id="flash_notifications">
-      <%= render "layouts/flash_notifications" %>
+    <!-- Flash notifications -->
+    <div aria-live="polite" aria-atomic="true" class="position-relative">
+      <div id="flash_notifications" class="toast-container position-fixed top-0 end-0 p-3">
+        <!-- Flash notifications will be injected here -->
+        <%= render "layouts/flash_notifications" %>
+      </div>
     </div>
     <div class="container-fluid min-vh-100 mb-2">
       <%= yield %>
