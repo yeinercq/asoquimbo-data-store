@@ -2,6 +2,11 @@
   <div class="card shadow">
     <div class="card-header">
       Listas de opciones para <strong><%= t("activerecord.models.#{custom_select_list.model_name_association}.others") %></strong>
+      <%= link_to new_custom_select_list_custom_option_list_path(custom_select_list), data: { turbo_frame: dom_id(custom_select_list, dom_id(CustomOptionList.new)) } do %>
+        <div class="btn btn-primary">
+          <i class="bi bi-plus-circle-fill"></i> Opciones
+        </div>
+      <% end %>
     </div>
     <div class="card-body">
       <%= turbo_frame_tag custom_select_list, dom_id(CustomOptionList.new) %>

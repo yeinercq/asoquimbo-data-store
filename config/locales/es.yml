@@ -47,3 +47,5 @@ es:
       confirm_delete: "¿Está seguro que desea eliminar este registro?"
     file:
       import: "Seleccione un archivo CSV para importar"
+    custom_lists:
+      config: "Listas de selección"

@@ -13,12 +13,8 @@
         <li class="nav-item">
           <%= link_to_active t('activerecord.models.social_ecological_characterization.others'), social_ecological_characterizations_path, class: "nav-link" %>
         </li>
-
-        <li class="nav-item">
-          <%= link_to_active t('activerecord.models.custom_select_list.others'), custom_select_lists_path, class: "nav-link" %>
-        </li>
       </ul>
-      <div class="dropdown-center">
+      <div class="dropup-center">
         <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
           <%= current_user.email %>
         </button>
@@ -27,6 +23,10 @@
             <%= link_to destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') }, class: 'dropdown-item' do %>
               Cerrar sesión
             <% end %>
+          </li>
+          <li><hr class="dropdown-divider"></li>
+          <li>
+            <%= link_to_active t('common.custom_lists.config'), custom_select_lists_path, class: "dropdown-item" %>
           </li>
         </ul>
       </div>
