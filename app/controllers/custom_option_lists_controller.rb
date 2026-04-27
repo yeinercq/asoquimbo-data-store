@@ -4,6 +4,7 @@ class CustomOptionListsController < ApplicationController
 
   def new
     @custom_option_list = @custom_select_list.custom_option_lists.new
+    @custom_option_list.custom_options.build
   end
 
   def create
