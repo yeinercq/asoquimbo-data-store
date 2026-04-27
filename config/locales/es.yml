@@ -6,11 +6,11 @@ es:
         one: "Caracterización socioecológica"
         others: "Caracterizaciones socioecológicas"
       custom_select_list:
-        one: "Lista de selección personalizada"
-        others: "Listas de selección personalizadas"
+        one: "Lista de selección configurable"
+        others: "Listas de selección configurables"
       custom_option_list:
-        one: "Lista de opciones personalizada"
-        others: "Listas de opciones personalizadas"
+        one: "Lista de opciones configurable"
+        others: "Listas de opciones configurables"
     attributes:
       social_ecological_characterization:
         authors: "Autores"

@@ -33,6 +33,14 @@ class CustomOptionListsController < ApplicationController
   end
 
   def destroy
+    if @custom_option_list.destroy
+      respond_to do |format|
+        format.html { redirect_to custom_select_lists_path, notice: "Opción de lista configurable eliminada exitosamente." }
+        format.turbo_stream { flash.now[:notice] = "Opción de lista configurable eliminada exitosamente." }
+      end
+    else
+      redirect_to custom_select_lists_path, alert: "No se pudo eliminar la opción de lista configurable."
+    end
   end
 
   private
