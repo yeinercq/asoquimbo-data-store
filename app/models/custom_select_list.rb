@@ -10,7 +10,7 @@
 class CustomSelectList < ApplicationRecord
   has_many :custom_option_lists, dependent: :destroy
 
-  validates :model_name_association, presence: true
+  validates :model_name_association, presence: true, uniqueness: true
 
   scope :ordered, -> { order(id: :desc) }
 end
