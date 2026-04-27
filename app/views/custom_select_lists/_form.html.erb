@@ -4,8 +4,7 @@
 
     <div class="mb-3">
       <div class="row">
-        <%= f.input :model_name_association, collection: get_model_name_associations, label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-sm-6' } %>
-        <%= f.input :status, collection: CustomSelectList.statuses.map {|key, value| [key.humanize, key] }, label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-sm-6' } %>
+        <%= f.input :model_name_association, collection: get_model_name_associations, label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col' } %>
       </div>
     </div>
 

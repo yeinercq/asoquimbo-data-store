@@ -41,7 +41,7 @@ class CustomSelectListsController < ApplicationController
   private
 
   def custom_select_list_params
-    params.require(:custom_select_list).permit(:model_name_association, :status)
+    params.require(:custom_select_list).permit(:model_name_association)
   end
 
   def set_custom_select_list

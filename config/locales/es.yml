@@ -30,7 +30,6 @@ es:
         source_file: "Archivo"
       custom_select_list:
         model_name_association: "Nombre del modelo asociado"
-        status: "Estado"
       custom_option_list:
         model_field: "Campo del modelo"
     errors:
