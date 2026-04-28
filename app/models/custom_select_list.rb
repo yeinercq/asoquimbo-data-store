@@ -9,8 +9,14 @@
 #
 class CustomSelectList < ApplicationRecord
   has_many :custom_option_lists, dependent: :destroy
+  has_many :custom_options, through: :custom_option_lists
 
   validates :model_name_association, presence: true, uniqueness: true
 
   scope :ordered, -> { order(id: :desc) }
+  # scope :find_custom_option_name, ->(custom_option_id) { custom_option_lists.custom_options.find_by(id: custom_option_id)&.name }
+
+  def custom_option_name(custom_option_id)
+    custom_options.find_by(id: custom_option_id)&.name
+  end
 end

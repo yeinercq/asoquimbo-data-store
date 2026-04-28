@@ -17,7 +17,7 @@
         </dd>
 
         <dt class="col-12 col-lg-4">Tipo de documento</dt>
-        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.resource_type %></dd>
+        <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.resource_type) %></dd>
 
         <dt class="col-12 col-lg-4">Institución/Entidad</dt>
         <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.institution %></dd>
@@ -26,7 +26,7 @@
         <dd class="col-12 col-lg-8"><%= link_to "Ir al documento", @social_ecological_characterization.url, target: "_blank" %></dd>
 
         <dt class="col-12 col-lg-4">Nivel de acceso</dt>
-        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.access_level %></dd>
+        <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.access_level) %></dd>
       </dl>
     </div>
     <div class="col-12 col-md-6">
@@ -35,14 +35,14 @@
 
       <dl class="row">
         <dt class="col-12 col-lg-4">Área geográfica</dt>
-        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.geographic_area %></dd>
+        <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.geographic_area) %></dd>
 
         <dt class="col-12 col-lg-4">Cobertura espacial</dt>
-        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.spatial_coverage %></dd>
+        <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.spatial_coverage) %></dd>
 
         <dt class="col-12 col-lg-4">Escala de análisis</dt>
         <dd class="col-12 col-lg-8">
-          <p><%= @social_ecological_characterization.analysis_scale %></p>
+          <p><%= @custom_select_list.custom_option_name(@social_ecological_characterization.analysis_scale) %></p>
         </dd>
 
         <dt class="col-12 col-lg-4">Periodo de estudio</dt>
@@ -52,7 +52,7 @@
         <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.study_objective %></dd>
 
         <dt class="col-12 col-lg-4">Enfoque</dt>
-        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.approach %></dd>
+        <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.approach) %></dd>
 
         <dt class="col-12 col-lg-4">Metodología general empleada</dt>
         <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.general_methodology_used %></dd>

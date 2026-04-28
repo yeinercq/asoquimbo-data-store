@@ -1,5 +1,7 @@
 class SocialEcologicalCharacterizationsController < ApplicationController
   before_action :set_social_ecological_characterization, only: %i[show edit update destroy]
+  before_action :set_custom_select_list, only: %i[show]
+
   require "csv"
   def index
     # Check if the custom select list exists and if all option listable fields have their options defined
@@ -92,6 +94,10 @@ class SocialEcologicalCharacterizationsController < ApplicationController
 
   def set_social_ecological_characterization
     @social_ecological_characterization = SocialEcologicalCharacterization.includes(:user).find(params[:id])
+  end
+
+  def set_custom_select_list
+    @custom_select_list = CustomSelectList.includes(custom_option_lists: :custom_options).find_by(model_name_association: SocialEcologicalCharacterization.name.underscore)
   end
 
   def filtering_params(params)
