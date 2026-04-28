@@ -22,27 +22,27 @@
       </div>
 
       <div class="col-auto mb-2">
-        <%= form.select :resource_type, enum_options_for_select(SocialEcologicalCharacterization, :resource_types), { prompt: "Tipo de recurso" }, { class: 'form-select' } %>
+        <%= form.select :resource_type, custom_options_for_select(SocialEcologicalCharacterization.name.underscore, :resource_type), { prompt: "Tipo de recurso" }, { class: 'form-select' } %>
       </div>
 
       <div class="col-auto mb-2">
-        <%= form.select :access_level, enum_options_for_select(SocialEcologicalCharacterization, :access_levels), { prompt: "Nivel de acceso" }, { class: 'form-select' } %>
+        <%= form.select :access_level, custom_options_for_select(SocialEcologicalCharacterization.name.underscore, :access_level), { prompt: "Nivel de acceso" }, { class: 'form-select' } %>
       </div>
 
       <div class="col-auto mb-2">
-        <%= form.select :geographic_area, enum_options_for_select(SocialEcologicalCharacterization, :geographic_areas), { prompt: "Área geográfica" }, { class: 'form-select' } %>
+        <%= form.select :geographic_area, custom_options_for_select(SocialEcologicalCharacterization.name.underscore, :geographic_area), { prompt: "Área geográfica" }, { class: 'form-select' } %>
       </div>
 
       <div class="col-auto mb-2">
-        <%= form.select :spatial_coverage, enum_options_for_select(SocialEcologicalCharacterization, :spatial_coverages), { prompt: "Cobertura espacial" }, { class: 'form-select' } %>
+        <%= form.select :spatial_coverage, custom_options_for_select(SocialEcologicalCharacterization.name.underscore, :spatial_coverage), { prompt: "Cobertura espacial" }, { class: 'form-select' } %>
       </div>
 
       <div class="col-auto mb-2">
-        <%= form.select :analysis_scale, enum_options_for_select(SocialEcologicalCharacterization, :analysis_scales), { prompt: "Escala de análisis" }, { class: 'form-select' } %>
+        <%= form.select :analysis_scale, custom_options_for_select(SocialEcologicalCharacterization.name.underscore, :analysis_scale), { prompt: "Escala de análisis" }, { class: 'form-select' } %>
       </div>
 
       <div class="col-auto mb-2">
-        <%= form.select :approach, enum_options_for_select(SocialEcologicalCharacterization, :approaches), { prompt: "Enfoque" }, { class: 'form-select' } %>
+        <%= form.select :approach, custom_options_for_select(SocialEcologicalCharacterization.name.underscore, :approach), { prompt: "Enfoque" }, { class: 'form-select' } %>
       </div>
 
       <div class="col-auto mb-2">
