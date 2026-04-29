@@ -7,9 +7,9 @@ class SocialEcologicalCharacterizationsController < ApplicationController
     # Check if the custom select list exists and if all option listable fields have their options defined
     custom_select_list = CustomSelectList.find_by(model_name_association: SocialEcologicalCharacterization.name.underscore)
     if custom_select_list.blank?
-      flash.now[:notice] = "No hay una lista de selección definida para estas caracterizaciones. Por favor, revisa la opción de Listas de seleccion."
+      flash.now[:alert] = "No hay una lista de selección definida para estas caracterizaciones. Por favor, revisa la opción de Listas de seleccion."
     elsif SocialEcologicalCharacterization.option_listable_fields.map(&:to_s).any? { |field| custom_select_list.custom_option_lists.pluck(:model_field).exclude? field }
-      flash.now[:notice] = "Hay campos que aún no tinen sus opciones definidas en estas caracterizaciones. Por favor, revisa la opción de Listas de seleccion."
+      flash.now[:alert] = "Hay campos que aún no tinen sus opciones definidas en estas caracterizaciones. Por favor, revisa la opción de Listas de seleccion."
     end
 
     scope = SocialEcologicalCharacterization.includes(:user).ordered

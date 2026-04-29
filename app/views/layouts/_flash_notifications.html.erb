@@ -1,6 +1,7 @@
 <% flash.each do |flash_type, message| %>
+  <% flash_types = { "alert" => "text-bg-danger", "notice" => "text-bg-info" } %>
   <div 
-    class="toast align-items-center text-bg-primary border-0" 
+    class="toast align-items-center <%= flash_types[flash_type] || "text-bg-primary" %>" 
     role="alert" 
     aria-live="assertive"
     aria-atomic="true"
