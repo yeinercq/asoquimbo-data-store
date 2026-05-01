@@ -42,6 +42,7 @@ class SocialEcologicalCharacterization < ApplicationRecord
   validate :source_file_size_validation
 
   belongs_to :user
+  belongs_to :custom_select_list
 
   before_create :set_code
 

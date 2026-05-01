@@ -7,11 +7,10 @@ module ApplicationHelper
     end
   end
 
-  def custom_options_for_select(model_name_underscore, model_field)
-    custom_select_list = CustomSelectList.find_by(model_name_association: model_name_underscore)
-    return [] if custom_select_list.blank?
+  def custom_options_for_select(model_field)
+    return [] if @custom_select_list.blank?
 
-    custom_select_list.custom_option_lists.find_by(model_field: model_field.to_s).custom_options.map { |option| [ option.name, option.id ] }
+    @custom_select_list.custom_option_lists.find_by(model_field: model_field.to_s).custom_options.map { |option| [ option.name, option.id ] }
   end
 
   def render_turbo_stream_flash_messages
