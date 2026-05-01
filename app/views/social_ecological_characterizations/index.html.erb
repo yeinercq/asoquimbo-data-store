@@ -13,45 +13,48 @@
     <% end %>
   </div>
 </div>
-<div class="filters mt-2">
-  <%# Seach form %>
-  <div class="row">
-    <%= form_with( url: social_ecological_characterizations_path, method: :get, data: { turbo_frame: 'social_ecological_characterizations'}, class: "d-block d-md-flex flex-row flex-wrap gap-2 justify-content-end align-items-center" ) do |form| %>
-      <div class="col-auto">
-        Filtrar:
-      </div>
 
-      <div class="col-auto mb-2">
-        <%= form.select :resource_type, custom_options_for_select(:resource_type), { prompt: "Tipo de recurso" }, { class: 'form-select' } %>
-      </div>
+<% if custom_select_list_and_custom_options_for_select_exists? %>
+  <div class="filters mt-2">
+    <%# Seach form %>
+    <div class="row">
+      <%= form_with( url: social_ecological_characterizations_path, method: :get, data: { turbo_frame: 'social_ecological_characterizations'}, class: "d-block d-md-flex flex-row flex-wrap gap-2 justify-content-end align-items-center" ) do |form| %>
+        <div class="col-auto">
+          Filtrar:
+        </div>
 
-      <div class="col-auto mb-2">
-        <%= form.select :access_level, custom_options_for_select(:access_level), { prompt: "Nivel de acceso" }, { class: 'form-select' } %>
-      </div>
+        <div class="col-auto mb-2">
+          <%= form.select :resource_type, custom_options_for_select(:resource_type), { prompt: "Tipo de recurso" }, { class: 'form-select' } %>
+        </div>
 
-      <div class="col-auto mb-2">
-        <%= form.select :geographic_area, custom_options_for_select(:geographic_area), { prompt: "Área geográfica" }, { class: 'form-select' } %>
-      </div>
+        <div class="col-auto mb-2">
+          <%= form.select :access_level, custom_options_for_select(:access_level), { prompt: "Nivel de acceso" }, { class: 'form-select' } %>
+        </div>
 
-      <div class="col-auto mb-2">
-        <%= form.select :spatial_coverage, custom_options_for_select(:spatial_coverage), { prompt: "Cobertura espacial" }, { class: 'form-select' } %>
-      </div>
+        <div class="col-auto mb-2">
+          <%= form.select :geographic_area, custom_options_for_select(:geographic_area), { prompt: "Área geográfica" }, { class: 'form-select' } %>
+        </div>
 
-      <div class="col-auto mb-2">
-        <%= form.select :analysis_scale, custom_options_for_select(:analysis_scale), { prompt: "Escala de análisis" }, { class: 'form-select' } %>
-      </div>
+        <div class="col-auto mb-2">
+          <%= form.select :spatial_coverage, custom_options_for_select(:spatial_coverage), { prompt: "Cobertura espacial" }, { class: 'form-select' } %>
+        </div>
 
-      <div class="col-auto mb-2">
-        <%= form.select :approach, custom_options_for_select(:approach), { prompt: "Enfoque" }, { class: 'form-select' } %>
-      </div>
+        <div class="col-auto mb-2">
+          <%= form.select :analysis_scale, custom_options_for_select(:analysis_scale), { prompt: "Escala de análisis" }, { class: 'form-select' } %>
+        </div>
 
-      <div class="col-auto mb-2">
-        <%= form.submit "Buscar", class: "btn btn-primary" %>
-        <%= form.submit "Exportar", class: "btn btn-secondary", formaction: social_ecological_characterizations_path(format: :csv) %>
-      </div>
-    <% end %>
+        <div class="col-auto mb-2">
+          <%= form.select :approach, custom_options_for_select(:approach), { prompt: "Enfoque" }, { class: 'form-select' } %>
+        </div>
+
+        <div class="col-auto mb-2">
+          <%= form.submit "Buscar", class: "btn btn-primary" %>
+          <%= form.submit "Exportar", class: "btn btn-secondary", formaction: social_ecological_characterizations_path(format: :csv) %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <%= turbo_frame_tag "import_form" %>
 <%= turbo_frame_tag "social_ecological_characterizations" do %>

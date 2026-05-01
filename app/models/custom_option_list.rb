@@ -16,6 +16,7 @@ class CustomOptionList < ApplicationRecord
 
   validates :model_field, presence: true
   validate :ensure_at_least_one_custom_option, on: [ :create, :update ]
+  validate :exists_one_model_associated, on: :is_destroyed
 
   scope :ordered, -> { order(id: :desc) }
 
@@ -24,6 +25,13 @@ class CustomOptionList < ApplicationRecord
   def ensure_at_least_one_custom_option
     if custom_options.empty? || custom_options.all? { |option| option.marked_for_destruction? }
       errors.add(:base, "debe haber al menos una opción para la lista configurable.")
+    end
+  end
+
+  def exists_one_model_associated
+    model = custom_select_list.model_name_association.camelize.constantize rescue nil
+    if model.exists?
+      errors.add(:base, "No se puede eliminar esta lista porque hay una #{I18n.t("activerecord.models.#{custom_select_list.model_name_association}.one")} asociada a ella.")
     end
   end
 end
