@@ -11,6 +11,9 @@ es:
       custom_option_list:
         one: "Lista de opciones configurable"
         others: "Listas de opciones configurables"
+      monthly_report:
+        one: "Informe mensual"
+        others: "Informes mensuales"
     attributes:
       social_ecological_characterization:
         authors: "Autores"
@@ -28,6 +31,9 @@ es:
         approach: "Enfoque"
         general_methodology_used: "Metodología general utilizada"
         source_file: "Archivo"
+      monthly_report:
+        date_period: "Período reportado"
+        component: "Componente"
       custom_select_list:
         model_name_association: "Nombre del modelo asociado"
       custom_option_list:

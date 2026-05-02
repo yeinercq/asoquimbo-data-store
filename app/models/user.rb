@@ -18,4 +18,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :social_ecological_characterizations, dependent: :nullify
+  has_many :monthly_reports, dependent: :nullify
 end

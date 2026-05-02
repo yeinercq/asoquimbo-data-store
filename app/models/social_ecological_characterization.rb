@@ -22,6 +22,7 @@
 #  source_file              :string
 #  user_id                  :bigint           not null
 #  code                     :integer          default(0), not null
+#  custom_select_list_id    :bigint           not null
 #
 class SocialEcologicalCharacterization < ApplicationRecord
   validates :authors,

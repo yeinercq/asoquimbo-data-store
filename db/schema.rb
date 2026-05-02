@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_05_01_032647) do
+ActiveRecord::Schema[7.2].define(version: 2026_05_02_022745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,15 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_01_032647) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "monthly_reports", force: :cascade do |t|
+    t.string "date_period"
+    t.bigint "user_id", null: false
+    t.integer "component"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_monthly_reports_on_user_id"
+  end
+
   create_table "social_ecological_characterizations", force: :cascade do |t|
     t.string "authors", null: false
     t.integer "year", default: 1900, null: false
@@ -110,6 +119,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_01_032647) do
   add_foreign_key "actors", "users", column: "responsible_id"
   add_foreign_key "custom_option_lists", "custom_select_lists"
   add_foreign_key "custom_options", "custom_option_lists"
+  add_foreign_key "monthly_reports", "users"
   add_foreign_key "social_ecological_characterizations", "custom_select_lists"
   add_foreign_key "social_ecological_characterizations", "users"
 end
