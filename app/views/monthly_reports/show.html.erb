@@ -1,2 +1,11 @@
-<h1>MonthlyRerports#show</h1>
-<p>Find me in app/views/monthly_rerports/show.html.erb</p>
+<div class="header mt-3">
+  <h1>INFORME MENSUAL <%= @monthly_report.date_period.strftime("%B, %Y") %></h1>
+  <div class="d-flex justify-content-start gap-2">
+    <%= link_to monthly_reports_path, class: "btn btn-outline-primary", data: { turbo_frame: "_top" } do %>
+      <i class="bi bi-arrow-left"></i> Atrás
+    <% end %>
+    <%= link_to "#", class: "btn btn-primary", data: { turbo: false } do %>
+      <i class="bi bi-plus-circle-fill"></i> Nuevo actividad
+    <% end %>
+  </div>
+</div>
