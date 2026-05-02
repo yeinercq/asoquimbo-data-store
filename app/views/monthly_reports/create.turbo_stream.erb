@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend "monthly_reports", @monthly_report %>
+<%= turbo_stream.update MonthlyReport.new, "" %>
+<%= render_turbo_stream_flash_messages %>

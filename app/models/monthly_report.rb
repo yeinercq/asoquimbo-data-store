@@ -10,11 +10,10 @@
 #  updated_at  :datetime         not null
 #
 class MonthlyReport < ApplicationRecord
-  validates :date_period,
-  :component,
-  presence: true
+  validates :date_period, :component, presence: true
 
   belongs_to :user
+  belongs_to :custom_select_list
 
   scope :ordered, -> { order(id: :desc) }
 

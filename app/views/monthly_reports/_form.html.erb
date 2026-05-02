@@ -4,7 +4,7 @@
 
     <div class="mb-3">
       <div class="row">
-        <%= f.input :date_period, prompt: t("common.form.select_an_option"), input_html: { class: "form-control" }, wrapper_html: { class: 'col' } %>
+        <%= f.input :date_period, as: :date, order: [:month, :year], input_html: { class: "form-control" }, wrapper_html: { class: 'col' } %>
         <%= f.input :component, collection: custom_options_for_select(:component), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" },  wrapper_html: { class: 'col' } %>
       </div>
     </div>

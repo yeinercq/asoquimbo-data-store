@@ -20,6 +20,15 @@ module ApplicationHelper
     turbo_stream.prepend "flash_notifications", partial: "layouts/flash_notifications"
   end
 
+  def custom_select_custom_options_validation(model_name)
+    # Check if the custom select list exists and if all option listable fields have their options defined
+    if @custom_select_list.blank?
+      flash.now[:alert] = "No hay una lista de selección definida para #{I18n.t("activerecord.models.#{model_name.name.underscore}.others")}. Por favor, revisa la opción de Listas de seleccion."
+    elsif model_name.option_listable_fields.map(&:to_s).any? { |field| @custom_select_list.custom_option_lists.pluck(:model_field).exclude? field }
+      flash.now[:alert] = "Hay campos que aún no tinen sus opciones definidas en estas caracterizaciones. Por favor, revisa la opción de Listas de seleccion."
+    end
+  end
+
   # Adds active class to links
   def link_to_active(text = nil, path = nil, **options, &block)
     link = block_given? ? text : path
