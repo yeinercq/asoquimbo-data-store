@@ -1,2 +1,5 @@
-<h1>MonthlyRerports#edit</h1>
-<p>Find me in app/views/monthly_rerports/edit.html.erb</p>
+<h1>Editar Informe Mensual</h1>
+
+<%= turbo_frame_tag @monthly_report do %>
+  <%= render "form", monthly_report: @monthly_report %>
+<% end %>
