@@ -5,21 +5,19 @@
       <i class="bi bi-arrow-left"></i> Atrás
     <% end %>
     <%= link_to new_monthly_report_activity_path(@monthly_report), class: "btn btn-primary", data: { turbo_frame: dom_id(Activity.new) } do %>
-      <i class="bi bi-plus-circle-fill"></i> Nuevo actividad
+      <i class="bi bi-plus-circle-fill"></i> Nueva actividad
     <% end %>
   </div>
 </div>
-<div class="container-fluid">
-  <div class="row border rounded bg-success text-white px-2 mt-2">
-    <div class="col-2"><small>PROYECTO</small></div>
-    <div class="col-3"><small>OBJETIVO ASOCIADO</small></div>
-    <div class="col-2"><small>ACTIVIADAD</small></div>
-    <div class="col-2"><small>FECHA INICIO</small></div>
-    <div class="col-2"><small>FECHA FIN</small></div>
-    <div class="col-1"><small>ESTADO</small></div>
-  </div>
-  <%= turbo_frame_tag Activity.new %>
-  <%= turbo_frame_tag "activities" do %>
-    <%= render @monthly_report.activities.ordered %>
-  <% end %>
+<div class="d-flex border rounded px-3 mt-2 align-items-center bg-success text-white">
+  <div class="col-2"><small>PROYECTO</small></div>
+  <div class="col-3"><small>OBJETIVO ASOCIADO</small></div>
+  <div class="col-2"><small>ACTIVIADAD</small></div>
+  <div class="col-2"><small>FECHA INICIO</small></div>
+  <div class="col-2"><small>FECHA FIN</small></div>
+  <div class="col-1"><small>ESTADO</small></div>
 </div>
+<%= turbo_frame_tag Activity.new %>
+<%= turbo_frame_tag "activities" do %>
+  <%= render @monthly_report.activities.ordered %>
+<% end %>
