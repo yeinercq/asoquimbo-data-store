@@ -1,0 +1,16 @@
+<%= simple_form_for collaborator, url: collaborators_path, html: { class: "form" } do |f| %>
+  <div class="row border rounded py-2 px-3 shadow mt-2 align-items-end">
+    <%= form_error_notification(collaborator) %>
+    
+    <%= f.input :name, input_html: { autocomplete: 'off', spellcheck: false }, input_html: { class: "form-control" }, wrapper_html: { class: 'col-12 col-md-2' } %>
+    <%= f.input :email, input_html: { autocomplete: 'off', spellcheck: false }, input_html: { class: "form-control" }, wrapper_html: { class: 'col-12 col-md-2' } %>
+    <%= f.input :password, input_html: { autocomplete: 'off', spellcheck: false }, input_html: { class: "form-control" }, wrapper_html: { class: 'col-12 col-md-2' } %>
+    <%= f.input :password_confirmation, input_html: { autocomplete: 'off', spellcheck: false }, input_html: { class: "form-control" }, wrapper_html: { class: 'col-12 col-md-2' } %>
+    <%= f.input :role, collection: User.roles.map {|key, value| [key.humanize, key] }, label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-2' } %>
+    
+    <div class="col-12 col-md-2 d-flex justify-content-end gap-2 mt-2">
+      <%= link_to t("common.cancel"), collaborators_path, class: "btn btn-secondary" %>
+      <%= f.submit t("common.accept"), class: "btn btn-warning"%>
+    </div>
+  </div>
+<% end %>

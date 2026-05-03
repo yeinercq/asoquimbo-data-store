@@ -1,0 +1,17 @@
+<div class="d-flex border rounded py-2 px-3 shadow mt-2 align-items-center">
+  <div class="col"><%= collaborator.name %></div>
+  <div class="col"><%= collaborator.email %></div>
+  <div class="col"><%= collaborator.role %></div>
+  <div class="col d-flex justify-content-end gap-2">
+      <%= link_to edit_collaborator_path(collaborator) do %>
+        <div class="btn btn-sm btn-secondary">
+          <i class="bi bi-pencil"></i>
+        </div>
+      <% end %>
+      <%= link_to collaborator_path(collaborator), data: { turbo_method: :delete , turbo_confirm: t("common.form.confirm_delete")} do %>
+        <div class="btn btn-sm btn-danger">
+          <i class="bi bi-trash"></i>
+        </div>
+      <% end %>
+    </div>
+</div>

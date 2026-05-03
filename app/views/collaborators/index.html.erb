@@ -1,0 +1,19 @@
+<div class="header mt-3">
+  <h1>COLABORADORES</h1>
+  <div class="d-flex justify-content-start gap-2">
+    <%= link_to new_collaborator_path, class: "btn btn-primary", data: { turbo_frame: dom_id(User.new) } do %>
+      <i class="bi bi-plus-circle-fill"></i> Nuevo colaborador
+    <% end %>
+  </div>
+</div>
+
+<div class="d-flex border rounded px-3 mt-2 align-items-center bg-success text-white">
+  <div class="col">NOMBRE</div>
+  <div class="col">CORREO ELECTRÓNICO</div>
+  <div class="col">ROL</div>
+  <div class="col">ACCIONES</div>
+</div>
+<%= turbo_frame_tag User.new %>
+<%= turbo_frame_tag "collaborators" do %>
+  <%= render partial: "collaborators/collaborator", collection: @collaborators %>
+<% end %>

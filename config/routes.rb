@@ -28,4 +28,6 @@ Rails.application.routes.draw do
   resources :custom_select_lists, except: [ :show ] do
     resources :custom_option_lists, except: [ :show, :index ]
   end
+
+  resources :collaborators, except: [ :show ]
 end

@@ -17,6 +17,9 @@ es:
       activity:
         one: Actividad
         others: Actividades
+      user:
+        one: Colaborador
+        others: Colaboradores
     attributes:
       social_ecological_characterization:
         authors: "Autores"
@@ -49,6 +52,12 @@ es:
         start_date: Fecha inicio
         end_date: Fecha fin
         status: Estado
+      user:
+        email: Correo electrónico
+        name: Nombre
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
+        role: Rol
     errors:
       messages:
         blank: "no puede estar en blanco"
