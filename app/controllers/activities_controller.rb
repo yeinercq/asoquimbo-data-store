@@ -58,6 +58,6 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_params
-    params.require(:activity).permit(:project, :associated_objective, :activity_name, :description, :start_date, :end_date, :status)
+    params.require(:activity).permit(:project, :associated_objective, :activity_name, :description, :start_date, :end_date, :status, { source_files: [] })
   end
 end

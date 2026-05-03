@@ -18,6 +18,17 @@
     <hr>
     <div class="col">
       Soportes:
+      <% if activity.source_files? %>
+        <div class="col-12 mt-2">
+          <ul>
+            <% activity.source_files.each do |source_file| %>
+              <li><%= link_to t("common.download_file") + " (" + source_file.file.filename + ")", source_file.url, target: "_blank" %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% else %>
+        No hay soportes adjuntos
+      <% end %>
     </div>
     
     <div class="col d-flex justify-content-end gap-2">

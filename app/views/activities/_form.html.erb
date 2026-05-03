@@ -16,6 +16,26 @@
       <div class="row">
         <%= f.input :description, input_html: { class: "form-control" }, wrapper_html: { class: 'col' } %>
       </div>
+
+      <div class="col-12 mt-2">
+        <div class="col-12 mb-2">
+          <ul class="list-group">
+            <% activity.source_files.each do |source_file| %>
+              <%= hidden_field :activity, :source_files, multiple: true, value: source_file.identifier %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <%= link_to t("common.download_file") + " (" + source_file.file.filename + ")", source_file.url, target: "_blank" %>
+                <%= link_to "#", data: { turbo: false} do %>
+                  <div class="btn btn-sm btn-danger">
+                    <i class="bi bi-x-circle-fill"></i>
+                  </div>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        Soportes (pdf, doc, docx, xls, xlsx, csv; máximo 10 MB):
+        <%= f.file_field :source_files, multiple: true, accept: 'pdf/doc/docx/xls/xlsx/csv', class: 'form-control' %>
+      </div>
     </div>
     
     <div class="col-12 d-flex justify-content-end gap-2">
