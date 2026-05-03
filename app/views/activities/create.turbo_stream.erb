@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend "activities", @activity %>
+<%= turbo_stream.update Activity.new, "" %>
+<%= render_turbo_stream_flash_messages %>

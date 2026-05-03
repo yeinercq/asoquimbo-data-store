@@ -5,7 +5,8 @@
     <div class="col-2"><%= activity.custom_select_list.custom_option_name(activity.activity_name) %></div>
     <div class="col-2"><%= activity.start_date %></div>
     <div class="col-2"><%= activity.start_date %></div>
-    <div class="col-1"><%= activity.custom_select_list.custom_option_name(activity.status) %></div>
+    <% status_types = { 0 => "text-bg-primary", 1 => "text-bg-warning", 2 => "text-bg-success" } %>
+    <div class="col-1"><span class="badge rounded-pill <%= status_types[Activity.statuses[activity.status]] || "text-bg-primary" %>"><%= activity.status %></span></div>
   </div>
   <div class="row">
     <div class="col border border-dark-subtle rounded m-4 p-2">

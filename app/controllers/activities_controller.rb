@@ -11,7 +11,10 @@ class ActivitiesController < ApplicationController
     @activity = @monthly_report.activities.build(activity_params)
     @activity.custom_select_list = @custom_select_list
     if @activity.save
-      redirect_to monthly_report_path(@monthly_report), notice: "Actividad creada exitosamente."
+      respond_to do |format|
+        format.html { redirect_to monthly_report_path(@monthly_report), notice: "Actividad creada exitosamente." }
+        format.turbo_stream { flash.now[:notice] = "Actividad creada exitosamente." }
+      end
     else
       render :new, status: :unprocessable_entity
     end

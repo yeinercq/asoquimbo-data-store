@@ -28,8 +28,14 @@ class Activity < ApplicationRecord
 
   scope :ordered, -> { order(id: :desc) }
 
+  enum :status, {
+    "pendiente": 0,
+    "en ejecución": 1,
+    "cumplida": 2
+  }
+
   OPTION_LISTABLE_FIELDS = [
-    :project, :associated_objective, :activity_name, :status
+    :project, :associated_objective, :activity_name
   ].freeze
 
   def self.option_listable_fields

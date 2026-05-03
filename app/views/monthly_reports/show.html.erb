@@ -4,7 +4,7 @@
     <%= link_to monthly_reports_path, class: "btn btn-outline-primary", data: { turbo_frame: "_top" } do %>
       <i class="bi bi-arrow-left"></i> Atrás
     <% end %>
-    <%= link_to new_monthly_report_activity_path(@monthly_report), class: "btn btn-primary", data: { turbo: false } do %>
+    <%= link_to new_monthly_report_activity_path(@monthly_report), class: "btn btn-primary", data: { turbo_frame: dom_id(Activity.new) } do %>
       <i class="bi bi-plus-circle-fill"></i> Nuevo actividad
     <% end %>
   </div>
@@ -18,5 +18,8 @@
     <div class="col-2"><small>FECHA FIN</small></div>
     <div class="col-1"><small>ESTADO</small></div>
   </div>
-  <%= render @monthly_report.activities.ordered %>
+  <%= turbo_frame_tag Activity.new %>
+  <%= turbo_frame_tag "activities" do %>
+    <%= render @monthly_report.activities.ordered %>
+  <% end %>
 </div>
