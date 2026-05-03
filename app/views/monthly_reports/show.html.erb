@@ -9,3 +9,14 @@
     <% end %>
   </div>
 </div>
+<div class="container-fluid">
+  <div class="row border rounded bg-success text-white px-2 mt-2">
+    <div class="col-2"><small>PROYECTO</small></div>
+    <div class="col-3"><small>OBJETIVO ASOCIADO</small></div>
+    <div class="col-2"><small>ACTIVIADAD</small></div>
+    <div class="col-2"><small>FECHA INICIO</small></div>
+    <div class="col-2"><small>FECHA FIN</small></div>
+    <div class="col-1"><small>ESTADO</small></div>
+  </div>
+  <%= render @monthly_report.activities.ordered %>
+</div>

@@ -54,7 +54,7 @@ class MonthlyReportsController < ApplicationController
   private
 
   def set_monthly_report
-    @monthly_report = MonthlyReport.find(params[:id])
+    @monthly_report = MonthlyReport.includes(:activities).find(params[:id])
   end
 
   def set_custom_select_list

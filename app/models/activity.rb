@@ -26,6 +26,8 @@ class Activity < ApplicationRecord
   belongs_to :monthly_report
   belongs_to :custom_select_list
 
+  scope :ordered, -> { order(id: :desc) }
+
   OPTION_LISTABLE_FIELDS = [
     :project, :associated_objective, :activity_name, :status
   ].freeze

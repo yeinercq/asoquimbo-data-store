@@ -4,14 +4,14 @@
     
     <div class="mb-3">
       <div class="row">
-        <%= f.input :project, collection: custom_options_for_select(:project), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col' } %>
-        <%= f.input :associated_objective, collection: custom_options_for_select(:associated_objective), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col' } %>
-        <%= f.input :activity_name, collection: custom_options_for_select(:activity_name), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col' } %>
+        <%= f.input :project, collection: custom_options_for_select(:project), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-4' } %>
+        <%= f.input :associated_objective, collection: custom_options_for_select(:associated_objective), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-4' } %>
+        <%= f.input :activity_name, collection: custom_options_for_select(:activity_name), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-4' } %>
       </div>
       <div class="row">
-        <%= f.input :start_date, as: :date, html5: true, input_html: { class: "form-control" }, wrapper_html: { class: 'col' } %>
-        <%= f.input :end_date, as: :date, html5: true, input_html: { class: "form-control" }, wrapper_html: { class: 'col' } %>
-        <%= f.input :status, collection: custom_options_for_select(:status), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col' } %>
+        <%= f.input :start_date, as: :date, html5: true, input_html: { class: "form-control" }, wrapper_html: { class: 'col-12 col-md-4' } %>
+        <%= f.input :end_date, as: :date, html5: true, input_html: { class: "form-control" }, wrapper_html: { class: 'col-12 col-md-4' } %>
+        <%= f.input :status, collection: custom_options_for_select(:status), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-4' } %>
       </div>
       <div class="row">
         <%= f.input :description, input_html: { class: "form-control" }, wrapper_html: { class: 'col' } %>

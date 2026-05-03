@@ -1,0 +1,20 @@
+<div class="flex-row border rounded px-2 mt-2 shadow py-2">
+  <div class="row">
+    <div class="col-2"><%= activity.custom_select_list.custom_option_name(activity.project) %></div>
+    <div class="col-3"><%= activity.custom_select_list.custom_option_name(activity.associated_objective) %></div>
+    <div class="col-2"><%= activity.custom_select_list.custom_option_name(activity.activity_name) %></div>
+    <div class="col-2"><%= activity.start_date %></div>
+    <div class="col-2"><%= activity.start_date %></div>
+    <div class="col-1"><%= activity.custom_select_list.custom_option_name(activity.status) %></div>
+  </div>
+  <div class="row">
+    <div class="col border border-dark-subtle rounded m-4 p-2">
+      Descripcion:
+      <p><%= activity.description %></p>
+    </div>
+  </div>
+  <hr>
+  <div class="col">
+    Soportes:
+  </div>
+</div>
