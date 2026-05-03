@@ -1,2 +1,3 @@
-<h1>Collaborators#edit</h1>
-<p>Find me in app/views/collaborators/edit.html.erb</p>
+<%= turbo_frame_tag @collaborator do %>
+  <%= render "form", collaborator: @collaborator %>
+<% end %>
