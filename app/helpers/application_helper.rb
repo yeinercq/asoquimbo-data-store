@@ -25,7 +25,7 @@ module ApplicationHelper
     if @custom_select_list.blank?
       flash.now[:alert] = "No hay una lista de selección definida para #{I18n.t("activerecord.models.#{model_name.name.underscore}.others")}. Por favor, revisa la opción de Listas de seleccion."
     elsif model_name.option_listable_fields.map(&:to_s).any? { |field| @custom_select_list.custom_option_lists.pluck(:model_field).exclude? field }
-      flash.now[:alert] = "Hay campos que aún no tinen sus opciones definidas en estas caracterizaciones. Por favor, revisa la opción de Listas de seleccion."
+      flash.now[:alert] = "Hay campos que aún no tinen sus opciones definidas en #{I18n.t("activerecord.models.#{model_name.name.underscore}.others")}. Por favor, revisa la opción de Listas de seleccion."
     end
   end
 

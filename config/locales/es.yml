@@ -14,6 +14,9 @@ es:
       monthly_report:
         one: "Informe mensual"
         others: "Informes mensuales"
+      activity:
+        one: Actividad
+        others: Actividades
     attributes:
       social_ecological_characterization:
         authors: "Autores"
@@ -38,6 +41,14 @@ es:
         model_name_association: "Nombre del modelo asociado"
       custom_option_list:
         model_field: "Campo del modelo"
+      activity:
+        project: Proyecto
+        associated_objective: Objetivo asociado
+        activity_name: Actividad
+        description: Descripción
+        start_date: Fecha inicio
+        end_date: Fecha fin
+        status: Estado
     errors:
       messages:
         blank: "no puede estar en blanco"

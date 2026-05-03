@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_05_02_054842) do
+ActiveRecord::Schema[7.2].define(version: 2026_05_02_235712) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.integer "project"
+    t.integer "associated_objective"
+    t.integer "activity_name"
+    t.text "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "status"
+    t.bigint "monthly_report_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "custom_select_list_id", null: false
+    t.index ["custom_select_list_id"], name: "index_activities_on_custom_select_list_id"
+    t.index ["monthly_report_id"], name: "index_activities_on_monthly_report_id"
+  end
 
   create_table "actors", force: :cascade do |t|
     t.integer "actor_type"
@@ -48,81 +64,3 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_02_054842) do
     t.index ["responsible_id"], name: "index_actors_on_responsible_id"
   end
 
-  create_table "custom_option_lists", force: :cascade do |t|
-    t.bigint "custom_select_list_id", null: false
-    t.string "model_field", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["custom_select_list_id"], name: "index_custom_option_lists_on_custom_select_list_id"
-  end
-
-  create_table "custom_options", force: :cascade do |t|
-    t.bigint "custom_option_list_id", null: false
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["custom_option_list_id"], name: "index_custom_options_on_custom_option_list_id"
-  end
-
-  create_table "custom_select_lists", force: :cascade do |t|
-    t.string "model_name_association"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "monthly_reports", force: :cascade do |t|
-    t.date "date_period"
-    t.bigint "user_id", null: false
-    t.integer "component"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "custom_select_list_id", null: false
-    t.index ["custom_select_list_id"], name: "index_monthly_reports_on_custom_select_list_id"
-    t.index ["user_id"], name: "index_monthly_reports_on_user_id"
-  end
-
-  create_table "social_ecological_characterizations", force: :cascade do |t|
-    t.string "authors", null: false
-    t.integer "year", default: 1900, null: false
-    t.string "title", null: false
-    t.integer "resource_type", null: false
-    t.string "institution", null: false
-    t.string "url", null: false
-    t.integer "access_level", null: false
-    t.integer "geographic_area", null: false
-    t.integer "spatial_coverage", null: false
-    t.integer "analysis_scale", null: false
-    t.string "study_period", null: false
-    t.string "study_objective", null: false
-    t.integer "approach", null: false
-    t.string "general_methodology_used", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "source_file"
-    t.bigint "user_id", null: false
-    t.integer "code", default: 0, null: false
-    t.bigint "custom_select_list_id", null: false
-    t.index ["custom_select_list_id"], name: "idx_on_custom_select_list_id_274b36b3ff"
-    t.index ["user_id"], name: "index_social_ecological_characterizations_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  add_foreign_key "actors", "users", column: "responsible_id"
-  add_foreign_key "custom_option_lists", "custom_select_lists"
-  add_foreign_key "custom_options", "custom_option_lists"
-  add_foreign_key "monthly_reports", "custom_select_lists"
-  add_foreign_key "monthly_reports", "users"
-  add_foreign_key "social_ecological_characterizations", "custom_select_lists"
-  add_foreign_key "social_ecological_characterizations", "users"
-end

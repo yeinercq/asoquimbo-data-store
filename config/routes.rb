@@ -21,7 +21,9 @@ Rails.application.routes.draw do
       end
   end
 
-  resources :monthly_reports
+  resources :monthly_reports do
+    resources :activities, except: [ :index, :show ]
+  end
 
   resources :custom_select_lists, except: [ :show ] do
     resources :custom_option_lists, except: [ :show, :index ]

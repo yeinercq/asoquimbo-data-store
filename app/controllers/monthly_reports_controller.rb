@@ -3,6 +3,7 @@ class MonthlyReportsController < ApplicationController
   before_action :set_monthly_report, only: %i[show edit update destroy]
   def index
     helpers.custom_select_custom_options_validation(MonthlyReport)
+    # helpers.custom_select_custom_options_validation(Activity)
     @monthly_reports = current_user.monthly_reports.includes(:user).ordered
   end
 

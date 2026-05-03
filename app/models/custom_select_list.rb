@@ -11,6 +11,8 @@ class CustomSelectList < ApplicationRecord
   has_many :custom_option_lists, dependent: :destroy
   has_many :custom_options, through: :custom_option_lists
   has_many :social_ecological_characterizations
+  has_many :monthly_reports
+  has_many :activities
 
   validates :model_name_association, presence: true, uniqueness: true
   validate :exists_one_model_associated, on: :is_destroyed

@@ -4,7 +4,7 @@
     <%= link_to monthly_reports_path, class: "btn btn-outline-primary", data: { turbo_frame: "_top" } do %>
       <i class="bi bi-arrow-left"></i> Atrás
     <% end %>
-    <%= link_to "#", class: "btn btn-primary", data: { turbo: false } do %>
+    <%= link_to new_monthly_report_activity_path(@monthly_report), class: "btn btn-primary", data: { turbo: false } do %>
       <i class="bi bi-plus-circle-fill"></i> Nuevo actividad
     <% end %>
   </div>
