@@ -1,3 +1,5 @@
 <h1>Nueva actividad</h1>
 
-<%= render "form", monthly_report: @monthly_report, activity: @activity %>
+<%= turbo_frame_tag @activity do%>
+  <%= render "form", monthly_report: @monthly_report, activity: @activity %>
+<% end %>

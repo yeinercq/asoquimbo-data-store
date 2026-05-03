@@ -24,12 +24,30 @@ class ActivitiesController < ApplicationController
   end
 
   def update
+    if @activity.update(activity_params)
+      respond_to do |format|
+        format.html { redirect_to monthly_report_path(@monthly_report), notice: "Actividad actualizada exitosamente." }
+        format.turbo_stream { flash.now[:notice] = "Actividad actualizada exitosamente." }
+      end
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    if @activity.destroy
+      respond_to do |format|
+        format.html { redirect_to monthly_report_path(@monthly_report), notice: "Actividad eliminada exitosamente." }
+        format.turbo_stream { flash.now[:notice] = "Actividad eliminada exitosamente." }
+      end
+    end
   end
 
   private
+
+  def set_activity
+    @activity = @monthly_report.activities.find(params[:id])
+  end
 
   def set_monthly_report
     @monthly_report = current_user.monthly_reports.find(params[:monthly_report_id])

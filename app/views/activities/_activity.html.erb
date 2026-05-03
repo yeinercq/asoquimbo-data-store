@@ -1,21 +1,37 @@
-<div class="flex-row border rounded px-2 mt-2 shadow py-2">
-  <div class="row">
-    <div class="col-2"><%= activity.custom_select_list.custom_option_name(activity.project) %></div>
-    <div class="col-3"><%= activity.custom_select_list.custom_option_name(activity.associated_objective) %></div>
-    <div class="col-2"><%= activity.custom_select_list.custom_option_name(activity.activity_name) %></div>
-    <div class="col-2"><%= activity.start_date %></div>
-    <div class="col-2"><%= activity.start_date %></div>
-    <% status_types = { 0 => "text-bg-primary", 1 => "text-bg-warning", 2 => "text-bg-success" } %>
-    <div class="col-1"><span class="badge rounded-pill <%= status_types[Activity.statuses[activity.status]] || "text-bg-primary" %>"><%= activity.status %></span></div>
-  </div>
-  <div class="row">
-    <div class="col border border-dark-subtle rounded m-4 p-2">
-      Descripcion:
-      <p><%= activity.description %></p>
+<%= turbo_frame_tag activity do %>
+  <div class="flex-row border rounded px-2 mt-2 shadow py-3">
+    <div class="row">
+      <div class="col-2"><%= activity.custom_select_list.custom_option_name(activity.project) %></div>
+      <div class="col-3"><%= activity.custom_select_list.custom_option_name(activity.associated_objective) %></div>
+      <div class="col-2"><%= activity.custom_select_list.custom_option_name(activity.activity_name) %></div>
+      <div class="col-2"><%= activity.start_date %></div>
+      <div class="col-2"><%= activity.start_date %></div>
+      <% status_types = { 0 => "text-bg-primary", 1 => "text-bg-warning", 2 => "text-bg-success" } %>
+      <div class="col-1"><span class="badge rounded-pill <%= status_types[Activity.statuses[activity.status]] || "text-bg-primary" %>"><%= activity.status %></span></div>
     </div>
+    <div class="row">
+      <div class="col border border-dark-subtle rounded m-4 p-2">
+        Descripcion:
+        <p><%= activity.description %></p>
+      </div>
+    </div>
+    <hr>
+    <div class="col">
+      Soportes:
+    </div>
+    
+    <div class="col d-flex justify-content-end gap-2">
+      <%= link_to edit_monthly_report_activity_path(@monthly_report, activity) do %>
+        <div class="btn btn-sm btn-secondary">
+          <i class="bi bi-pencil"></i>
+        </div>
+      <% end %>
+      <%= link_to monthly_report_activity_path(@monthly_report, activity), data: { turbo_method: :delete , turbo_confirm: t("common.form.confirm_delete")} do %>
+        <div class="btn btn-sm btn-danger">
+          <i class="bi bi-trash"></i>
+        </div>
+      <% end %>
+    </div>
+    
   </div>
-  <hr>
-  <div class="col">
-    Soportes:
-  </div>
-</div>
+<% end %>
