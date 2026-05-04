@@ -11,6 +11,8 @@
 puts "Creando usuario..."
 user_params = {
   email: "ycarvajalq@gmail.com",
+  name: "Yeiner Carvajal Quina",
+  role: 0,
   password: "12345678",
   password_confirmation: "12345678"
 }
@@ -23,63 +25,63 @@ else
   puts "Usuario creado: #{user.email}"
 end
 
-social_ecological_characterizations_params = [
-  {
-    authors: "#{Faker::Book.author}, #{Faker::Book.author}",
-    year: Faker::Number.between(from: 1900, to: Time.now.year),
-    title: Faker::Book.title,
-    resource_type: rand(1..4),
-    institution: Faker::Company.name,
-    url: Faker::Internet.url,
-    access_level: rand(1..3),
-    geographic_area: rand(1..4),
-    spatial_coverage: rand(1..3),
-    analysis_scale: rand(1..3),
-    study_period: Faker::Lorem.sentence,
-    study_objective: Faker::Lorem.sentence,
-    approach: rand(1..3),
-    general_methodology_used: Faker::Lorem.sentence,
-    user_id: user.id
-  },
-  {
-    authors: "#{Faker::Book.author}, #{Faker::Book.author}",
-    year: Faker::Number.between(from: 1900, to: Time.now.year),
-    title: Faker::Book.title,
-    resource_type: rand(1..4),
-    institution: Faker::Company.name,
-    url: Faker::Internet.url,
-    access_level: rand(1..3),
-    geographic_area: rand(1..4),
-    spatial_coverage: rand(1..3),
-    analysis_scale: rand(1..3),
-    study_period: Faker::Lorem.sentence,
-    study_objective: Faker::Lorem.sentence,
-    approach: rand(1..3),
-    general_methodology_used: Faker::Lorem.paragraph,
-    user_id: user.id
-  },
-  {
-    authors: "#{Faker::Book.author}, #{Faker::Book.author}",
-    year: Faker::Number.between(from: 1900, to: Time.now.year),
-    title: Faker::Book.title,
-    resource_type: rand(1..4),
-    institution: Faker::Company.name,
-    url: Faker::Internet.url,
-    access_level: rand(1..3),
-    geographic_area: rand(1..4),
-    spatial_coverage: rand(1..3),
-    analysis_scale: rand(1..3),
-    study_period: Faker::Lorem.sentence,
-    study_objective: Faker::Lorem.sentence,
-    approach: rand(1..3),
-    general_methodology_used: Faker::Lorem.paragraph,
-    user_id: user.id
-  }
-]
+# social_ecological_characterizations_params = [
+#   {
+#     authors: "#{Faker::Book.author}, #{Faker::Book.author}",
+#     year: Faker::Number.between(from: 1900, to: Time.now.year),
+#     title: Faker::Book.title,
+#     resource_type: rand(1..4),
+#     institution: Faker::Company.name,
+#     url: Faker::Internet.url,
+#     access_level: rand(1..3),
+#     geographic_area: rand(1..4),
+#     spatial_coverage: rand(1..3),
+#     analysis_scale: rand(1..3),
+#     study_period: Faker::Lorem.sentence,
+#     study_objective: Faker::Lorem.sentence,
+#     approach: rand(1..3),
+#     general_methodology_used: Faker::Lorem.sentence,
+#     user_id: user.id
+#   },
+#   {
+#     authors: "#{Faker::Book.author}, #{Faker::Book.author}",
+#     year: Faker::Number.between(from: 1900, to: Time.now.year),
+#     title: Faker::Book.title,
+#     resource_type: rand(1..4),
+#     institution: Faker::Company.name,
+#     url: Faker::Internet.url,
+#     access_level: rand(1..3),
+#     geographic_area: rand(1..4),
+#     spatial_coverage: rand(1..3),
+#     analysis_scale: rand(1..3),
+#     study_period: Faker::Lorem.sentence,
+#     study_objective: Faker::Lorem.sentence,
+#     approach: rand(1..3),
+#     general_methodology_used: Faker::Lorem.paragraph,
+#     user_id: user.id
+#   },
+#   {
+#     authors: "#{Faker::Book.author}, #{Faker::Book.author}",
+#     year: Faker::Number.between(from: 1900, to: Time.now.year),
+#     title: Faker::Book.title,
+#     resource_type: rand(1..4),
+#     institution: Faker::Company.name,
+#     url: Faker::Internet.url,
+#     access_level: rand(1..3),
+#     geographic_area: rand(1..4),
+#     spatial_coverage: rand(1..3),
+#     analysis_scale: rand(1..3),
+#     study_period: Faker::Lorem.sentence,
+#     study_objective: Faker::Lorem.sentence,
+#     approach: rand(1..3),
+#     general_methodology_used: Faker::Lorem.paragraph,
+#     user_id: user.id
+#   }
+# ]
 
-puts "Creando registros de pruba..."
-social_ecological_characterizations_params.each do |params|
-  SocialEcologicalCharacterization.create!(params)
-end
+# puts "Creando registros de pruba..."
+# social_ecological_characterizations_params.each do |params|
+#   SocialEcologicalCharacterization.create!(params)
+# end
 
 puts "Registros creados exitosamente."

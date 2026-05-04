@@ -61,3 +61,7 @@ group :development do
   gem "i18n-tasks"
   gem "rails-i18n"
 end
+
+group :production do
+  gem "fog-aws"
+end
