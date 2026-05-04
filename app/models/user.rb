@@ -28,6 +28,7 @@ class User < ApplicationRecord
   scope :ordered_by_name, -> { order(:name) }
 
   enum :role, {
+    admin: 0,
     derector: 1,
     coodinator: 2,
     professional: 3

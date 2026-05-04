@@ -11,15 +11,19 @@
             <i class="bi bi-eye"></i>
           </div>
         <% end %>
-        <%= link_to edit_monthly_report_path(monthly_report) do %>
-          <div class="btn btn-secondary">
-            <i class="bi bi-pencil"></i>
-          </div>
+        <% if can? :update, monthly_report %>
+          <%= link_to edit_monthly_report_path(monthly_report) do %>
+            <div class="btn btn-secondary">
+              <i class="bi bi-pencil"></i>
+            </div>
+          <% end %>
         <% end %>
-        <%= link_to monthly_report_path(monthly_report), data: { turbo_method: :delete , turbo_confirm: t("common.form.confirm_delete")} do %>
-          <div class="btn btn-danger">
-            <i class="bi bi-trash"></i>
-          </div>
+        <% if can? :destroy, monthly_report %>
+          <%= link_to monthly_report_path(monthly_report), data: { turbo_method: :delete , turbo_confirm: t("common.form.confirm_delete")} do %>
+            <div class="btn btn-danger">
+              <i class="bi bi-trash"></i>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>

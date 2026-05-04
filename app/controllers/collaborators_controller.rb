@@ -1,5 +1,6 @@
 class CollaboratorsController < ApplicationController
   before_action :set_collaborator, only: [ :edit, :update, :destroy ]
+  load_and_authorize_resource :user
   def index
     @collaborators = User.ordered_by_name
   end

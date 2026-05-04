@@ -31,19 +31,20 @@
           No hay soportes adjuntos
         <% end %>
       </div>
-      
-      <div class="col d-flex justify-content-end gap-2">
-        <%= link_to edit_monthly_report_activity_path(@monthly_report, activity) do %>
-          <div class="btn btn-sm btn-secondary">
-            <i class="bi bi-pencil"></i>
-          </div>
-        <% end %>
-        <%= link_to monthly_report_activity_path(@monthly_report, activity), data: { turbo_method: :delete , turbo_confirm: t("common.form.confirm_delete")} do %>
-          <div class="btn btn-sm btn-danger">
-            <i class="bi bi-trash"></i>
-          </div>
-        <% end %>
-      </div>
+      <% if can? :update, activity %>
+        <div class="col d-flex justify-content-end gap-2">
+          <%= link_to edit_monthly_report_activity_path(@monthly_report, activity) do %>
+            <div class="btn btn-sm btn-secondary">
+              <i class="bi bi-pencil"></i>
+            </div>
+          <% end %>
+          <%= link_to monthly_report_activity_path(@monthly_report, activity), data: { turbo_method: :delete , turbo_confirm: t("common.form.confirm_delete")} do %>
+            <div class="btn btn-sm btn-danger">
+              <i class="bi bi-trash"></i>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
       
     </div>
 

@@ -4,8 +4,10 @@
     <%= link_to monthly_reports_path, class: "btn btn-outline-primary", data: { turbo_frame: "_top" } do %>
       <i class="bi bi-arrow-left"></i> Atrás
     <% end %>
+    <% if can? :craete, @monthly_report %>
     <%= link_to new_monthly_report_activity_path(@monthly_report), class: "btn btn-primary", data: { turbo_frame: dom_id(Activity.new) } do %>
       <i class="bi bi-plus-circle-fill"></i> Nueva actividad
+    <% end %>
     <% end %>
   </div>
 </div>
