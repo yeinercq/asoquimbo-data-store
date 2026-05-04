@@ -31,15 +31,17 @@
     </div>
   </div>
 <% end %>
-
-<div class="d-flex border rounded px-3 mt-2 align-items-center bg-success text-white">
-  <div class="col-4"><small>RESPONSABLE</small></div>
-  <div class="col-2"><small>PERIODO REPORTADO</small></div>
-  <div class="col-2"><small>FECHA DE PRESENTACION</small></div>
-  <div class="col-2"><small>COMPONENTE</small></div>
-  <div class="col-2"><small>ACCIONES</small></div>
+<div class="overflow-x-scroll">
+  <div class="d-flex border rounded px-3 mt-2 align-items-center bg-success text-white" style="min-width: 1200px;">
+    <div class="col-4"><small>RESPONSABLE</small></div>
+    <div class="col-2"><small>PERIODO REPORTADO</small></div>
+    <div class="col-2"><small>FECHA DE PRESENTACION</small></div>
+    <div class="col-2"><small>COMPONENTE</small></div>
+    <div class="col-2"><small>ACCIONES</small></div>
+  </div>
+  
+  <%= turbo_frame_tag MonthlyReport.new %>
+  <%= turbo_frame_tag "monthly_reports" do %>
+    <%= render @monthly_reports %>
+  <% end %>
 </div>
-<%= turbo_frame_tag MonthlyReport.new %>
-<%= turbo_frame_tag "monthly_reports" do %>
-  <%= render @monthly_reports %>
-<% end %>
