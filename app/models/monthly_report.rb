@@ -18,6 +18,8 @@ class MonthlyReport < ApplicationRecord
   has_many :activities, dependent: :destroy
 
   scope :ordered, -> { order(id: :desc) }
+  scope :filter_by_user_id, ->(user_id) { where(user_id: user_id) }
+  scope :filter_by_component, ->(component) { where(component: component) }
 
   OPTION_LISTABLE_FIELDS = [
     :component

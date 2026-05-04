@@ -7,12 +7,24 @@ class MonthlyReportsController < ApplicationController
   def index
     helpers.custom_select_custom_options_validation(MonthlyReport)
     # helpers.custom_select_custom_options_validation(Activity)
-
+    
     if current_user.admin?
-      @monthly_reports = MonthlyReport.includes(:user).ordered
+      scope = MonthlyReport.includes(:user).ordered
     else
-      @monthly_reports = current_user.monthly_reports.includes(:user).ordered
+      scope = current_user.monthly_reports.includes(:user).ordered
     end
+    
+    # Apply filters based on query parameters
+    filtering_params(params).each do | key, value |
+      scope = scope.public_send("filter_by_#{key}", value) if value.present?
+    end
+
+    @monthly_reports = scope
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
+    
   end
 
   def show
@@ -71,5 +83,9 @@ class MonthlyReportsController < ApplicationController
 
   def monthly_report_params
     params.require(:monthly_report).permit(:date_period, :component)
+  end
+
+  def filtering_params(params)
+    params.slice(:user_id, :component)
   end
 end
