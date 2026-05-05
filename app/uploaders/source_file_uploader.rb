@@ -40,7 +40,7 @@ class SourceFileUploader < CarrierWave::Uploader::Base
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_allowlist
-    %w[pdf doc docx xls xlsx csv]
+    %w[pdf doc docx xls xlsx csv png jpg jpeg]
   end
 
   # Override the filename of the uploaded files:

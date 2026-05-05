@@ -24,6 +24,7 @@ class Activity < ApplicationRecord
   :start_date,
   :status,
   presence: true
+  validate :source_file_size_validation
 
   belongs_to :monthly_report
   belongs_to :custom_select_list
@@ -44,5 +45,15 @@ class Activity < ApplicationRecord
 
   def self.option_listable_fields
     OPTION_LISTABLE_FIELDS
+  end
+
+  private
+
+  def source_file_size_validation
+    source_files.each do |source_file|
+      if source_file.size > 5.megabytes
+        errors.add(:source_files, I18n.t("activerecord.errors.messages.file_size_exceeded"))
+      end
+    end
   end
 end

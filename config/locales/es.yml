@@ -61,7 +61,7 @@ es:
     errors:
       messages:
         blank: "no puede estar en blanco"
-        file_size_exceeded: "el tamaño del archivo no puede exceder los 10 MB"
+        file_size_exceeded: "el tamaño del archivo no puede exceder los 5 MB"
   common:
     cancel: "Cancelar"
     accept: "Aceptar"

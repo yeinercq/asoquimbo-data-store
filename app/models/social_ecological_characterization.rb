@@ -63,7 +63,7 @@ class SocialEcologicalCharacterization < ApplicationRecord
   ].freeze
 
   def source_file_size_validation
-    if source_file.size > 10.megabytes
+    if source_file.size > 5.megabytes
       errors.add(:source_file, I18n.t("activerecord.errors.messages.file_size_exceeded"))
     end
   end

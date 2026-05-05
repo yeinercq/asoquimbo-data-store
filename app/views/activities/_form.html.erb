@@ -18,12 +18,13 @@
       </div>
 
       <div class="col-12 mt-2">
+        Soportes:
         <div class="col-12 mb-2">
           <ul>
             <% activity.source_files.each do |source_file| %>
               <%= hidden_field :activity, :source_files, multiple: true, value: source_file.identifier %>
               <li>
-                <%= link_to t("common.download_file") + " (" + source_file.file.filename + ")", source_file.url, target: "_blank" %>
+                <%= link_to source_file.file.filename, source_file.url, target: "_blank" %>
                 <!-- <%= link_to "#", data: { turbo: false} do %>
                   <div class="btn btn-sm btn-danger">
                     <i class="bi bi-x-circle-fill"></i>
@@ -33,7 +34,7 @@
             <% end %>
           </ul>
         </div>
-        Soportes (pdf, doc, docx, xls, xlsx, csv; máximo 10 MB):
+        Formatos (pdf, doc, docx, xls, xlsx, csv; máximo 5 MB):
         <%= f.file_field :source_files, multiple: true, accept: 'pdf/doc/docx/xls/xlsx/csv', class: 'form-control' %>
       </div>
     </div>
