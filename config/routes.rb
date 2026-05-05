@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   end
 
   resources :monthly_reports do
-    resources :activities, except: [ :index, :show ]
+    resources :activities, except: [ :index, :show ] do
+      post :destroy_soure_file, on: :member
+    end
   end
 
   resources :custom_select_lists, except: [ :show ] do

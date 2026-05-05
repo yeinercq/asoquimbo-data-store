@@ -28,6 +28,7 @@ class Activity < ApplicationRecord
 
   belongs_to :monthly_report
   belongs_to :custom_select_list
+  delegate :user, to: :monthly_report
 
   scope :ordered, -> { order(id: :desc) }
 

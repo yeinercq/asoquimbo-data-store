@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_monthly_report
-  before_action :set_activity, only: [ :edit, :update, :destroy ]
+  before_action :set_activity, only: [ :edit, :update, :destroy, :destroy_soure_file ]
   before_action :set_custom_select_list
   def new
     @activity = @monthly_report.activities.new
@@ -39,6 +39,26 @@ class ActivitiesController < ApplicationController
       respond_to do |format|
         format.html { redirect_to monthly_report_path(@monthly_report), notice: "Actividad eliminada exitosamente." }
         format.turbo_stream { flash.now[:notice] = "Actividad eliminada exitosamente." }
+      end
+    end
+  end
+
+  def destroy_soure_file
+    source_file_identifier = params[:source_file_identifier]
+    source_file = @activity.source_files.find { |f| f.identifier == source_file_identifier }
+    if source_file
+      new_source_files = @activity.source_files.reject { |f| f.identifier == source_file_identifier }
+      @activity.source_files = new_source_files
+      source_file.remove!
+      @activity.save
+      respond_to do |format|
+        format.html { redirect_to monthly_report_path(@monthly_report), notice: "Archivo eliminado exitosamente." }
+        format.turbo_stream { flash.now[:notice] = "Archivo eliminado exitosamente." }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to monthly_report_path(@monthly_report), alert: "Archivo no encontrado." }
+        format.turbo_stream { flash.now[:alert] = "Archivo no encontrado." }
       end
     end
   end
