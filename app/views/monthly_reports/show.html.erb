@@ -1,13 +1,27 @@
 <div class="header mt-3">
-  <h1>INFORME MENSUAL <%= @monthly_report.date_period.strftime("%B, %Y") %></h1>
-  <div class="d-flex justify-content-start gap-2">
-    <%= link_to monthly_reports_path, class: "btn btn-outline-primary", data: { turbo_frame: "_top" } do %>
-      <i class="bi bi-arrow-left"></i> Atrás
-    <% end %>
-    <% if can? :craete, @monthly_report %>
-    <%= link_to new_monthly_report_activity_path(@monthly_report), class: "btn btn-primary", data: { turbo_frame: dom_id(Activity.new) } do %>
-      <i class="bi bi-plus-circle-fill"></i> Nueva actividad
-    <% end %>
+  <div class="d-flex align-items-center gap-2">
+    <h1>INFORME MENSUAL <%= @monthly_report.date_period.strftime("%B, %Y") %></h1>
+    <div>
+      <%= tag.div id: "monthly_report_status" do %>
+        <%= render "monthly_reports/status", monthly_report: @monthly_report %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <%= link_to monthly_reports_path, class: "btn btn-outline-primary", data: { turbo_frame: "_top" } do %>
+        <i class="bi bi-arrow-left"></i> Atrás
+      <% end %>
+      <% if can? :create, @monthly_report %>
+        <%= link_to new_monthly_report_activity_path(@monthly_report), class: "btn btn-primary", data: { turbo_frame: dom_id(Activity.new) } do %>
+          <i class="bi bi-plus-circle-fill"></i> Nueva actividad
+        <% end %>
+      <% end %>
+    </div>
+    <%= tag.div class: "col-12 col-md-6" do %>
+      <div id="monthly_report_trigger_status">
+        <%= render "monthly_reports/trigger_status", monthly_report: @monthly_report %>
+      </div>
     <% end %>
   </div>
 </div>

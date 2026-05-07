@@ -1,0 +1,4 @@
+Gestiones:
+<% available_events_for(monthly_report).each do |event| %>
+  <%= link_to t("activerecord.attributes.monthly_report.event/#{event}"), trigger_status_monthly_report_path(monthly_report, event: event), class: "btn btn-info", data: { turbo_method: :patch, turbo_confirm: t("common.are_you_sure") } %>
+<% end %>

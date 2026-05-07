@@ -8,7 +8,7 @@ class Ability
 
     if user.admin? || user.derector? || user.coodinator?
       can :manage, MonthlyReport, user: user
-      can :read, MonthlyReport do |report|
+      can [ :read, :trigger_status ], MonthlyReport do |report|
         report.user != user
       end
       can :read, Activity do |report|

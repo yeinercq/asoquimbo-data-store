@@ -44,6 +44,10 @@ es:
         status/reported: Reportado
         status/revised: Revisado
         status/approved: Aprobado
+        event/revise: Pasar a revisado
+        event/unrevise: Devolver a reportado
+        event/approve: Pasar a aprobado
+        event/unapprove: Devolver a revisado
       custom_select_list:
         model_name_association: "Nombre del modelo asociado"
       custom_option_list:

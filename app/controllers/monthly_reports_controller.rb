@@ -1,19 +1,19 @@
 class MonthlyReportsController < ApplicationController
   before_action :set_custom_select_list, except: %i[destroy]
-  before_action :set_monthly_report, only: %i[show edit update destroy]
+  before_action :set_monthly_report, only: %i[show edit update destroy trigger_status]
   load_and_authorize_resource :monthly_report
   load_and_authorize_resource :activity, through: :monthly_report
 
   def index
     helpers.custom_select_custom_options_validation(MonthlyReport)
     # helpers.custom_select_custom_options_validation(Activity)
-    
+
     if current_user.admin?
       scope = MonthlyReport.includes(:user).ordered
     else
       scope = current_user.monthly_reports.includes(:user).ordered
     end
-    
+
     # Apply filters based on query parameters
     filtering_params(params).each do | key, value |
       scope = scope.public_send("filter_by_#{key}", value) if value.present?
@@ -24,7 +24,6 @@ class MonthlyReportsController < ApplicationController
       format.html
       format.turbo_stream
     end
-    
   end
 
   def show
@@ -67,6 +66,20 @@ class MonthlyReportsController < ApplicationController
       respond_to do |format|
         format.html { redirect_to monthly_reports_path, notice: "Informe mensual eliminado exitosamente." }
         format.turbo_stream
+      end
+    end
+  end
+
+  def trigger_status
+    event = params[:event] # event es un string
+    status, message = MonthlyReports::TriggerEventService.new.call(@monthly_report, event, current_user)
+    respond_to do |format|
+      if status
+        format.html { redirect_to @monthly_report, flash[:notice] = message }
+        format.turbo_stream { flash.now[:notice] = message }
+      else
+        format.html { redirect_to @monthly_report, flash[:alert] = message }
+        format.turbo_stream { flash.now[:alert] = message }
       end
     end
   end

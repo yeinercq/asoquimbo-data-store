@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :monthly_reports do
+    patch :trigger_status, on: :member
     resources :activities, except: [ :index, :show ] do
       post :destroy_soure_file, on: :member
     end
