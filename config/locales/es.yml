@@ -40,6 +40,10 @@ es:
       monthly_report:
         date_period: "Período reportado"
         component: "Componente"
+        status: Estado
+        status/reported: Reportado
+        status/revised: Revisado
+        status/approved: Aprobado
       custom_select_list:
         model_name_association: "Nombre del modelo asociado"
       custom_option_list:
