@@ -6,16 +6,34 @@ class Ability
   def initialize(user)
     return unless user.present?
 
-    if user.admin? || user.derector? || user.coodinator?
+    if user.admin?
+      can :manage, User
+      can :read, MonthlyReport
+      can :trigger_status, MonthlyReport do |report|
+        report.user_id != user.id
+      end
+    end
+
+    if user.director?
+      can :read, MonthlyReport
       can :manage, MonthlyReport, user: user
-      can [ :read, :trigger_status ], MonthlyReport do |report|
-        report.user != user
+      can :trigger_status, MonthlyReport do |report|
+        report.user.coordinator?
       end
-      can :read, Activity do |report|
-        report.monthly_report.user != user
+    end
+
+    if user.coordinator?
+      can :read, MonthlyReport
+      can :manage, MonthlyReport, user: user
+      can :trigger_status, MonthlyReport do |report|
+        report.user.professional?
       end
-      if user.admin?
-        can :manage, User
+    end
+
+    if user.inspector?
+      can :read, MonthlyReport
+      can :trigger_status, MonthlyReport do |report|
+        report.user_id != user.id
       end
     end
 

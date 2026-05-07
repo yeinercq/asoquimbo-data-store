@@ -2,13 +2,13 @@ class MonthlyReportsController < ApplicationController
   before_action :set_custom_select_list, except: %i[destroy]
   before_action :set_monthly_report, only: %i[show edit update destroy trigger_status]
   load_and_authorize_resource :monthly_report
-  load_and_authorize_resource :activity, through: :monthly_report
+  # load_and_authorize_resource :activity, through: :monthly_report
 
   def index
     helpers.custom_select_custom_options_validation(MonthlyReport)
     # helpers.custom_select_custom_options_validation(Activity)
 
-    if current_user.admin?
+    if current_user.role.in? [ "admin", "director", "coordinator", "inspector" ]
       scope = MonthlyReport.includes(:user).ordered
     else
       scope = current_user.monthly_reports.includes(:user).ordered

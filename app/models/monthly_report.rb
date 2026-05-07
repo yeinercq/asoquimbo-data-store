@@ -31,6 +31,17 @@ class MonthlyReport < ApplicationRecord
     :component
   ].freeze
 
+  ALLOWED_EVENTS_PER_ROLE = {
+    "admin" => [ "revise", "unrevise", "approve", "unapprove" ],
+    "director" => [ "approve", "unapprove" ],
+    "coordinator" => [ "approve", "unapprove" ],
+    "inspector" => [ "revise", "unrevise" ]
+  }
+
+  def self.allowed_events_per_role
+    ALLOWED_EVENTS_PER_ROLE
+  end
+
   def self.option_listable_fields
     OPTION_LISTABLE_FIELDS
   end

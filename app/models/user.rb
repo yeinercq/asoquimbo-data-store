@@ -29,8 +29,9 @@ class User < ApplicationRecord
 
   enum :role, {
     admin: 0,
-    derector: 1,
-    coodinator: 2,
-    professional: 3
+    director: 1,
+    coordinator: 2,
+    professional: 3,
+    inspector: 4
   }
 end

@@ -5,8 +5,7 @@
       <div class="col-2"><small><%= monthly_report.date_period.strftime("%B, %Y") %></small></div>
       <div class="col-2"><small><%= monthly_report.created_at.strftime("%Y-%m-%d") %></small></div>
       <div class="col-2"><small><%= @custom_select_list.custom_option_name(monthly_report.component) %></small></div>
-      <% status_types = { "reported" => "text-bg-primary", "revised" => "text-bg-warning", "approved" => "text-bg-success" } %>
-      <div class="col-2"><span class="badge rounded-pill <%= status_types[monthly_report.status] || "text-bg-primary" %>"><%= t("activerecord.attributes.monthly_report.status/#{monthly_report.status}") %></span></div>
+      <div class="col-2"><%= render "monthly_reports/status", monthly_report: monthly_report %></div>
       <div class="col-2 justify-content-end d-flex gap-2">
         <%= link_to monthly_report_path(monthly_report), data: { turbo_frame: "_top" } do %>
           <div class="btn btn-info">

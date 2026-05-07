@@ -1,2 +1,2 @@
 <% status_types = { "reported" => "text-bg-primary", "revised" => "text-bg-warning", "approved" => "text-bg-success" } %>
-<span class="badge rounded-pill <%= status_types[@monthly_report.status] || "text-bg-primary" %>"><%= t("activerecord.attributes.monthly_report.status/#{@monthly_report.status}").upcase %></span>
+<span class="badge rounded-pill <%= status_types[monthly_report.status] || "text-bg-primary" %>"><%= "#{t("activerecord.attributes.monthly_report.status/#{monthly_report.status}")} por #{monthly_report.transitions.last["user"]["name"].split(" ").first}" %></span>
