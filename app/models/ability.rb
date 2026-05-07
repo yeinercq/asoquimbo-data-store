@@ -20,6 +20,7 @@ class Ability
     end
 
     can :manage, MonthlyReport, user: user
+    cannot :trigger_status, MonthlyReport, user: user
     can :manage, Activity, monthly_report: { user: user }
   end
 end
