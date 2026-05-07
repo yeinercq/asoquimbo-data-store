@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-4">
       <%= link_to monthly_reports_path, class: "btn btn-outline-primary", data: { turbo_frame: "_top" } do %>
         <i class="bi bi-arrow-left"></i> Atrás
       <% end %>
@@ -18,15 +18,27 @@
         <% end %>
       <% end %>
     </div>
-    <%= tag.div class: "col-12 col-md-6" do %>
+    <%= tag.div class: "col-12 col-md-4" do %>
       <div id="monthly_report_trigger_status">
         <%= render "monthly_reports/trigger_status", monthly_report: @monthly_report %>
       </div>
     <% end %>
+    <div class="d-inline-flex justify-content-end col-12 col-md-4">
+      <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#monthly_report_history_collapse" aria-expanded="false" aria-controls="monthly_report_history_collapse">Ver historial</button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col my-1">
+    <div class="collapse multi-collapse" id="monthly_report_history_collapse">
+      <div class="card card-body" id="monthly_report_history">
+        <%= render "monthly_reports/history", monthly_report: @monthly_report %>
+      </div>
+    </div>
   </div>
 </div>
 <div class="overflow-x-scroll">
-  <div class="d-flex border rounded px-3 mt-2 align-items-center bg-success text-white" style="min-width: 1200px;">
+  <div class="d-flex border rounded px-3 align-items-center bg-success text-white" style="min-width: 1200px;">
     <div class="col-2"><small>PROYECTO</small></div>
     <div class="col-3"><small>OBJETIVO ASOCIADO</small></div>
     <div class="col-2"><small>ACTIVIADAD</small></div>

@@ -1,3 +1,4 @@
 <%= turbo_stream.update "monthly_report_status", render("monthly_reports/status", monthly_report: @monthly_report) %>
 <%= turbo_stream.update "monthly_report_trigger_status", render("monthly_reports/trigger_status", monthly_report: @monthly_report) %>
+<%= turbo_stream.update "monthly_report_history", render("monthly_reports/history", monthly_report: @monthly_report) %>
 <%= render_turbo_stream_flash_messages %>

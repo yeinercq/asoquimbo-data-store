@@ -1,0 +1,31 @@
+<% transitions = monthly_report.transitions %>
+<% if transitions.present? %>
+  <ul class="list-group list-group-flush">
+    <% transitions.each do |transition| %>
+      <% timestamp = Time.zone.parse(transition["timestamp"]) rescue nil %>
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <strong>
+            <%= t("activerecord.attributes.monthly_report.event/#{transition["current_event"].gsub("!", "")}",
+                  default: transition["current_event"]&.humanize) %>
+          </strong>
+          <small class="text-muted"><%= l(timestamp, format: :short) if timestamp %></small>
+        </div>
+        <div class="text-muted small">
+          <small>
+            <%= t("activerecord.attributes.monthly_report.status/#{transition["from_state"]}", default: transition["from_state"]) %>
+            &rarr;
+            <%= t("activerecord.attributes.monthly_report.status/#{transition["to_state"]}", default: transition["to_state"]) %>
+          </small>
+        </div>
+        <% if transition["user"].present? %>
+          <div class="text-muted small">
+            <small>Por: <%= transition["user"]["name"] %></small>
+          </div>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="text-muted text-center my-2">Sin historial de transiciones</p>
+<% end %>
