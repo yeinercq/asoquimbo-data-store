@@ -1,0 +1,22 @@
+.empty-state {
+  padding: 1rem;
+  border: solid 2px hsl(0, 6%, 93%);
+  border-style: dashed;
+  text-align: center;
+  margin-top: 1rem;
+
+  &__text {
+    font-size: 1.125rem;
+    color: hsl(0, 1%, 16%);
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+  }
+
+  &--only-child {
+    display: none;
+
+    &:only-child {
+      display: revert;
+    }
+  }
+}

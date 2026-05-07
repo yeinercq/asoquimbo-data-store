@@ -44,6 +44,7 @@
   
   <%= turbo_frame_tag MonthlyReport.new %>
   <%= turbo_frame_tag "monthly_reports" do %>
+    <%= render "empty_state" %>
     <%= render @monthly_reports %>
   <% end %>
 </div>

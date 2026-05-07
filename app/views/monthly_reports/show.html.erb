@@ -48,6 +48,7 @@
   </div>
   <%= turbo_frame_tag Activity.new %>
   <%= turbo_frame_tag "activities" do %>
+    <%= render "empty_state_activities" %>
     <%= render @monthly_report.activities.ordered %>
   <% end %>
 </div>

@@ -1,0 +1,8 @@
+<div class="empty-state empty-state--only-child">
+  <p class="empty-state__text">
+    Aún no hay reportes mensuales creados.
+  </p>
+  <%= link_to new_monthly_report_path, class: "btn btn-primary", data: { turbo_frame: dom_id(MonthlyReport.new) } do %>
+    <i class="bi bi-plus-circle-fill"></i> Nuevo informe
+  <% end %>
+</div>
