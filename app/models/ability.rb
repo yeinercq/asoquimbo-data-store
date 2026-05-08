@@ -9,7 +9,7 @@ class Ability
     if user.admin?
       can :manage, User
       can :read, MonthlyReport
-      can [ :trigger_status, :legal_documents_list ], MonthlyReport do |report|
+      can [ :trigger_status, :legal_documents_list, :export_pdf ], MonthlyReport do |report|
         report.user_id != user.id
       end
     end

@@ -6,7 +6,7 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.enable_reloading = false
   config.cache_classes = true
-  routes.default_url_options[:host] = 'localhost:3000'
+  routes.default_url_options[:host] = "localhost:3000"
   config.action_mailer.default_url_options = { host: Rails.application.credentials.dig(:server, :production_host) }
 
   # Eager load code on boot. This eager loads most of Rails and
@@ -20,12 +20,12 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
+    address:              "smtp.gmail.com",
     port:                 587,
-    domain:               'gmail.com',
+    domain:               "gmail.com",
     user_name:            Rails.application.credentials.dig(:gmail, :user),
     password:             Rails.application.credentials.dig(:gmail, :key),
-    authentication:       'plain',
+    authentication:       "plain",
     enable_starttls_auto: true,
     open_timeout:         5,
     read_timeout:         5
@@ -43,6 +43,7 @@ Rails.application.configure do
 
   # Do not fall back to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
+  config.assets.precompile += [ "pdf.css" ]
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"

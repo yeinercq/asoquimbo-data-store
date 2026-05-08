@@ -1,0 +1,74 @@
+<h1>INFORME MENSUAL</h1>
+<h2>Convenio 103 de 2026 &mdash; <%= l(@monthly_report.date_period, format: "%B, %Y") %></h2>
+
+<div class="section-title">
+  <h3>
+    Datos del informe
+  </h3>
+</div>
+<table>
+  <tr>
+    <td style="font-weight: bold;">Periodo reportado</td>
+    <td><%= l(@monthly_report.date_period, format: "%B, %Y") if @monthly_report.date_period %></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Fecha de presentación</td>
+    <td><%= l(@monthly_report.created_at.to_date, format: :long) %></td>
+  </tr>
+  <tr>
+    <td style="font-weight: bold;">Componente</td>
+    <td><%= @custom_select_list.custom_option_name(@monthly_report.component) %></td>
+  </tr>
+  <tr>
+    <td style="width: 180px; font-weight: bold;">Reportado por</td>
+    <td><%= @monthly_report.user&.name %></td>
+  </tr>
+  <tr>
+    <td style="width: 180px; font-weight: bold;">Revisado por</td>
+    <td>
+      <%= @monthly_report.transitioned_by("revised") %>
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 180px; font-weight: bold;">Aprobado por</td>
+    <td>
+      <%= @monthly_report.transitioned_by("approved") %>
+    </td>
+  </tr>
+</table>
+
+<div class="section-title">
+  <h1>Actividades</h1>
+</div>
+<% if @monthly_report.activities.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 15%;">Proyecto</th>
+        <th style="width: 20%;">Objetivo asociado</th>
+        <th style="width: 15%;">Actividad</th>
+        <th style="width: 30%;">Descripción</th>
+        <th style="width: 10%;">Fecha inicio</th>
+        <th style="width: 10%;">Fecha fin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @monthly_report.activities.each do |activity| %>
+        <tr>
+          <td><%= option_name(activity.project) %></td>
+          <td><%= option_name(activity.associated_objective) %></td>
+          <td><%= option_name(activity.activity_name) %></td>
+          <td><%= activity.description %></td>
+          <td><%= l(activity.start_date, format: :short) if activity.start_date %></td>
+          <td><%= l(activity.end_date, format: :short) if activity.end_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p><em>Sin actividades registradas</em></p>
+<% end %>
+
+<div class="footer">
+  Generado el <%= l(Time.current, format: :long) %> &mdash; Asoquimbo Data Store
+</div>

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   resources :monthly_reports do
     patch :trigger_status, on: :member
+    get :export_pdf, on: :member
     get :legal_documents_list, on: :member
     get :add_legal_documents, on: :member
     patch :save_legal_documents, on: :member

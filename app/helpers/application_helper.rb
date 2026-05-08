@@ -29,6 +29,11 @@ module ApplicationHelper
     end
   end
 
+  def option_name(custom_option_id)
+    return nil if custom_option_id.blank?
+    CustomOption.find_by(id: custom_option_id)&.name
+  end
+
   # Adds active class to links
   def link_to_active(text = nil, path = nil, **options, &block)
     link = block_given? ? text : path

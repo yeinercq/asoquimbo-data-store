@@ -25,12 +25,17 @@
         <%= render "monthly_reports/trigger_status", monthly_report: @monthly_report %>
       </div>
     <% end %>
-      <div class="d-inline-flex justify-content-end gap-1 col-12 col-md-4">
-        <% if can? :legal_documents_list, @monthly_report %>
-          <%= link_to "Documentos parafiscales", legal_documents_list_monthly_report_path(@monthly_report), class: "btn btn-primary", data: { turbo_frame: "remote_modal" } %>
+    <div class="d-inline-flex justify-content-end gap-1 col-12 col-md-4">
+      <% if can? :legal_documents_list, @monthly_report %>
+        <%= link_to "Documentos parafiscales", legal_documents_list_monthly_report_path(@monthly_report), class: "btn btn-primary", data: { turbo_frame: "remote_modal" } %>
+      <% end %>
+      <% if can? :export_pdf, @monthly_report %>
+        <%= link_to export_pdf_monthly_report_path(@monthly_report, format: :pdf), class: "btn btn-outline-danger", target: "_blank" do %>
+          <i class="bi bi-file-earmark-pdf"></i> PDF
         <% end %>
-        <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#monthly_report_history_collapse" aria-expanded="false" aria-controls="monthly_report_history_collapse">Ver historial</button>
-      </div>
+      <% end %>
+      <button class="btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#monthly_report_history_collapse" aria-expanded="false" aria-controls="monthly_report_history_collapse">Ver historial</button>
+    </div>
   </div>
 </div>
 <div class="row">

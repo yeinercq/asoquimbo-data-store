@@ -1,6 +1,6 @@
 class MonthlyReportsController < ApplicationController
   before_action :set_custom_select_list, except: %i[destroy]
-  before_action :set_monthly_report, only: %i[show edit update destroy trigger_status legal_documents_list add_legal_documents save_legal_documents destroy_legal_document]
+  before_action :set_monthly_report, only: %i[show edit update destroy trigger_status legal_documents_list add_legal_documents save_legal_documents destroy_legal_document export_pdf]
   load_and_authorize_resource :monthly_report
   # load_and_authorize_resource :activity, through: :monthly_report
 
@@ -118,6 +118,21 @@ class MonthlyReportsController < ApplicationController
       end
     else
       render :add_legal_documents, status: :unprocessable_entity
+    end
+  end
+
+  def export_pdf
+    # authorize! :read, @monthly_report
+
+    respond_to do |format|
+      format.pdf do
+        render pdf: "informe_mensual_#{@monthly_report.id}",
+               template: "monthly_reports/export_pdf",
+               layout: "pdf",
+               page_size: "A4",
+               orientation: "Landscape",
+               margin: { top: 10, bottom: 10, left: 15, right: 15 }
+      end
     end
   end
 
