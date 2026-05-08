@@ -85,7 +85,6 @@ class MonthlyReportsController < ApplicationController
   end
 
   def legal_documents_list
-    @legal_documents_list = @monthly_report.legal_documents
   end
 
   def add_legal_documents

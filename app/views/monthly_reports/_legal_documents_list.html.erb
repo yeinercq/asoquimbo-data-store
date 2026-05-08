@@ -1,0 +1,14 @@
+<div class="card card-body">
+  <% if monthly_report.legal_documents.empty? %>
+    <p>No hay documentos parafiscales adjuntos.</p>
+  <% else %>
+    <ul class="list-group list-group-flush">
+      <% monthly_report.legal_documents.each do |legal_document| %>
+        <li class="list-group-item">
+          <%= link_to legal_document.file.filename, legal_document.url, target: "_blank" %>
+          <%= link_to " - Eliminar soporte", "#", data: { turbo: false } if current_user == @monthly_report.user %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
