@@ -1,6 +1,6 @@
 class MonthlyReportsController < ApplicationController
   before_action :set_custom_select_list, except: %i[destroy]
-  before_action :set_monthly_report, only: %i[show edit update destroy trigger_status]
+  before_action :set_monthly_report, only: %i[show edit update destroy trigger_status legal_documents_list]
   load_and_authorize_resource :monthly_report
   # load_and_authorize_resource :activity, through: :monthly_report
 
@@ -82,6 +82,10 @@ class MonthlyReportsController < ApplicationController
         format.turbo_stream { flash.now[:alert] = message }
       end
     end
+  end
+
+  def legal_documents_list
+    @legal_documents_list = @monthly_report.legal_documents
   end
 
   private

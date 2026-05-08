@@ -9,7 +9,7 @@ class Ability
     if user.admin?
       can :manage, User
       can :read, MonthlyReport
-      can :trigger_status, MonthlyReport do |report|
+      can [ :trigger_status, :legal_documents_list ], MonthlyReport do |report|
         report.user_id != user.id
       end
     end
@@ -32,12 +32,12 @@ class Ability
 
     if user.inspector?
       can :read, MonthlyReport
-      can :trigger_status, MonthlyReport do |report|
+      can [ :trigger_status, :legal_documents_list ], MonthlyReport do |report|
         report.user_id != user.id
       end
     end
 
-    can :manage, MonthlyReport, user: user
+    can [ :manage, :legal_documents_list ], MonthlyReport, user: user
     cannot :trigger_status, MonthlyReport, user: user
     can :manage, Activity, monthly_report: { user: user }
   end

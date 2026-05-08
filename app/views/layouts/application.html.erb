@@ -33,7 +33,7 @@
 
     <%# remote_modal %>
     <div 
-      class="modal modal-xl fade modal-dialog-scrollable"
+      class="modal modal-xl fade"
       id="remote_modal_container" 
       data-bs-backdrop="static" 
       data-bs-keyboard="false" 
@@ -43,12 +43,11 @@
       data-controller="remote-modal" 
       data-action="turbo:frame-load->remote-modal#open turbo:submit-end->remote-modal#close"
     >
-      <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down" role="document">
-        <div class="modal-content">
-          <%= turbo_frame_tag "remote_modal" %>
-        </div>
+      <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-sm-down">
+        <%= turbo_frame_tag "remote_modal" do %>
+          <%= render "layouts/remote_modal_content", title: "" %>
+        <% end %>
       </div>
-      
     </div>
   </body>
 </html>

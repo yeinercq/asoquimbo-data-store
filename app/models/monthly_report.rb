@@ -18,6 +18,7 @@ class MonthlyReport < ApplicationRecord
   attr_accessor :current_user
 
   validates :date_period, :component, presence: true
+  validate :legal_documents_size_validation
 
   belongs_to :user
   belongs_to :custom_select_list
@@ -26,6 +27,8 @@ class MonthlyReport < ApplicationRecord
   scope :ordered, -> { order(id: :desc) }
   scope :filter_by_user_id, ->(user_id) { where(user_id: user_id) }
   scope :filter_by_component, ->(component) { where(component: component) }
+
+  mount_uploaders :legal_documents, SourceFileUploader
 
   OPTION_LISTABLE_FIELDS = [
     :component
@@ -81,5 +84,13 @@ class MonthlyReport < ApplicationRecord
       timestamp: Time.zone.now,
       user: current_user&.serializable_hash(only: [ :id, :name, :email, :role ])
     }
+  end
+
+  def legal_documents_size_validation
+    legal_documents.each do |legal_document|
+      if legal_document.size > 2.megabytes
+        errors.add(:legal_documents, I18n.t("activerecord.errors.messages.file_size_exceeded"))
+      end
+    end
   end
 end

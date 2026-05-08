@@ -1,9 +1,5 @@
 <%= turbo_frame_tag "remote_modal" do %>
-  <div class="modal-header">
-    <h4 class="modal-title">Nueva Caracterización Social y Ecológica</h4>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-  </div>
-  <div class="modal-body">
+  <%= render "layouts/remote_modal_content", title: "Nueva Caracterización Social y Ecológica" do %>
     <%= render "form", social_ecological_characterization: @social_ecological_characterization %>
-  </div>
+  <% end %>
 <% end %>

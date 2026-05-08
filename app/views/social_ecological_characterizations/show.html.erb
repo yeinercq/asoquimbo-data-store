@@ -1,5 +1,5 @@
 <%= turbo_frame_tag 'remote_modal' do %>
-  <div class="modal-body">
+  <%= render "layouts/remote_modal_content", title: "Editar Caracterización Social y Ecológica" do %>
     <div class="row">
       <div class="col-12 col-md-6">
         <h4>IDENTIFICACIÓN DE LA FUENTE</h4>
@@ -74,8 +74,4 @@
       Creado por: <span class="badge rounded-pill text-bg-success d-flex align-items-center"><%= @social_ecological_characterization.user.email %></span>
     </div>
   <% end %>
-  <div class="modal-footer">
-    <%= link_to "Cerrar", "#", class: "btn btn-secondary", data: { bs_dismiss: "modal" } %>
-  </div>
-
-  </div>
+<% end %>
