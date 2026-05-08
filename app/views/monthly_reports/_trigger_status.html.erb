@@ -1,6 +1,6 @@
 Gestiones:
 <% available_events_for(monthly_report).each do |event| %>
-  <% if MonthlyReport.allowed_events_per_role.keys.include?(current_user.role) && MonthlyReport.allowed_events_per_role[current_user.role].include?(event.to_s) && can?(:trigger_status, monthly_report)%>
+  <% if MonthlyReport.allowed_events_per_role.keys.include?(current_user.role) && MonthlyReport.allowed_events_per_role[current_user.role].include?(event.to_s) && can?(:trigger_status, monthly_report) %>
     <%= link_to t("activerecord.attributes.monthly_report.event/#{event}"), trigger_status_monthly_report_path(monthly_report, event: event), class: "btn btn-info", data: { turbo_method: :patch, turbo_confirm: t("common.are_you_sure") } %>
   <% end %>
 <% end %>

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     get :legal_documents_list, on: :member
     get :add_legal_documents, on: :member
     patch :save_legal_documents, on: :member
+    post :destroy_legal_document, on: :member
     resources :activities, except: [ :index, :show ] do
       post :destroy_soure_file, on: :member
     end

@@ -6,8 +6,8 @@
       <% @monthly_report.legal_documents.each do |legal_document| %>
         <%= hidden_field :monthly_report, :legal_documents, multiple: true, value: legal_document.identifier %>
       <% end %>
-      Formatos (pdf, doc, docx, xls, xlsx, csv, png, jpg, jpeg; máximo 5 MB):
-      <%= f.file_field :legal_documents, multiple: true, accept: 'pdf/doc/docx/xls/xlsx/csv', class: 'form-control' %>
+      <%= t("common.form.file_formats_label") %>
+      <%= f.file_field :legal_documents, multiple: true, accept: 'pdf/doc/docx/xls/xlsx/csv/jpg/jpeg/png', class: 'form-control' %>
     </div>
 
     <div class="col-12 d-flex justify-content-end gap-2">

@@ -88,7 +88,7 @@ class MonthlyReport < ApplicationRecord
 
   def legal_documents_size_validation
     legal_documents.each do |legal_document|
-      if legal_document.size > 5.megabytes
+      if legal_document.size > 3.megabytes
         errors.add(:legal_documents, I18n.t("activerecord.errors.messages.file_size_exceeded"))
       end
     end

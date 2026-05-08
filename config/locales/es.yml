@@ -48,6 +48,7 @@ es:
         event/unrevise: Devolver a reportado
         event/approve: Pasar a aprobado
         event/unapprove: Devolver a revisado
+        legal_documents: Documentos parafiscales
       custom_select_list:
         model_name_association: "Nombre del modelo asociado"
       custom_option_list:
@@ -69,7 +70,7 @@ es:
     errors:
       messages:
         blank: "no puede estar en blanco"
-        file_size_exceeded: "el tamaño del archivo no puede exceder los 5 MB"
+        file_size_exceeded: "el tamaño del archivo no puede exceder los 3 MB"
   common:
     cancel: "Cancelar"
     accept: "Aceptar"
@@ -79,6 +80,7 @@ es:
       select_an_option: "Seleccione una opción"
       error_message: "Por favor, corrija los siguientes errores: "
       confirm_delete: "¿Está seguro que desea eliminar este registro?"
+      file_formats_label: "Formatos (pdf, doc, docx, xls, xlsx, csv, png, jpg, jpeg; máximo 3 MB):"
     file:
       import: "Seleccione un archivo CSV para importar"
     custom_lists:

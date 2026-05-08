@@ -1,6 +1,6 @@
 class MonthlyReportsController < ApplicationController
   before_action :set_custom_select_list, except: %i[destroy]
-  before_action :set_monthly_report, only: %i[show edit update destroy trigger_status legal_documents_list add_legal_documents save_legal_documents]
+  before_action :set_monthly_report, only: %i[show edit update destroy trigger_status legal_documents_list add_legal_documents save_legal_documents destroy_legal_document]
   load_and_authorize_resource :monthly_report
   # load_and_authorize_resource :activity, through: :monthly_report
 
@@ -88,6 +88,26 @@ class MonthlyReportsController < ApplicationController
   end
 
   def add_legal_documents
+  end
+
+  def destroy_legal_document
+    legal_document_identifier = params[:legal_document_identifier]
+    legal_document = @monthly_report.legal_documents.find { |f| f.identifier == legal_document_identifier }
+    if legal_document
+      new_legal_documents = @monthly_report.legal_documents.reject { |f| f.identifier == legal_document_identifier }
+      @monthly_report.legal_documents = new_legal_documents
+      legal_document.remove!
+      @monthly_report.save
+      respond_to do |format|
+        format.html { redirect_to monthly_report_path(@monthly_report), notice: "Documento parafiscal eliminado exitosamente." }
+        format.turbo_stream { flash.now[:notice] = "Documento parafiscal eliminado exitosamente." }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to monthly_report_path(@monthly_report), alert: "Documento parafiscal no encontrado." }
+        format.turbo_stream { flash.now[:alert] = "Documento parafiscal no encontrado." }
+      end
+    end
   end
 
   def save_legal_documents
