@@ -1,6 +1,6 @@
 class MonthlyReportsController < ApplicationController
   before_action :set_custom_select_list, except: %i[destroy]
-  before_action :set_monthly_report, only: %i[show edit update destroy trigger_status legal_documents_list]
+  before_action :set_monthly_report, only: %i[show edit update destroy trigger_status legal_documents_list add_legal_documents save_legal_documents]
   load_and_authorize_resource :monthly_report
   # load_and_authorize_resource :activity, through: :monthly_report
 
@@ -88,6 +88,20 @@ class MonthlyReportsController < ApplicationController
     @legal_documents_list = @monthly_report.legal_documents
   end
 
+  def add_legal_documents
+  end
+
+  def save_legal_documents
+    if @monthly_report.update(monthly_report_params)
+      respond_to do |format|
+        format.html { redirect_to monthly_report_path(@monthly_report), notice: "Documentos parafiscales subidos exitósamente." }
+        format.turbo_stream { flash.now[:notice] = "Documentos parafiscales subidos exitósamente." }
+      end
+    else
+      render :add_legal_documents, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def set_monthly_report
@@ -99,7 +113,7 @@ class MonthlyReportsController < ApplicationController
   end
 
   def monthly_report_params
-    params.require(:monthly_report).permit(:date_period, :component)
+    params.require(:monthly_report).permit(:date_period, :component, { legal_documents: [] })
   end
 
   def filtering_params(params)

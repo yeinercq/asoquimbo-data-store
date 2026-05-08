@@ -25,11 +25,6 @@
               <%= hidden_field :activity, :source_files, multiple: true, value: source_file.identifier %>
               <li>
                 <%= link_to source_file.file.filename, source_file.url, target: "_blank" %>
-                <!-- <%= link_to "#", data: { turbo: false} do %>
-                  <div class="btn btn-sm btn-danger">
-                    <i class="bi bi-x-circle-fill"></i>
-                  </div>
-                <% end %> -->
               </li>
             <% end %>
           </ul>

@@ -7,7 +7,7 @@
         <ul class="list-group list-group-flush">
           <% @legal_documents_list.each do |legal_document| %>
             <li class="list-group-item">
-              <%= link_to legal_document.file.filename, source_file.url, target: "_blank" %>
+              <%= link_to legal_document.file.filename, legal_document.url, target: "_blank" %>
               <%= link_to " - Eliminar soporte", "#", data: { turbo: false } if current_user == @monthly_report.user %>
             </li>
           <% end %>
@@ -15,7 +15,7 @@
       <% end %>
     </div>
     <%= turbo_frame_tag "add_legal_documents" %>
-    <%= link_to "#", class: "btn btn-primary mt-2", data: { turbo_frame: "add_legal_documents" } do %>
+    <%= link_to add_legal_documents_monthly_report_path(@monthly_report), class: "btn btn-primary mt-2", data: { turbo_frame: "add_legal_documents" } do %>
       <i class="bi bi-file-earmark-arrow-up-fill"></i> Subir documentos parafiscales
     <% end %>
   <% end %>

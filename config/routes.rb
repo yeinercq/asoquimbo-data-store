@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   resources :monthly_reports do
     patch :trigger_status, on: :member
     get :legal_documents_list, on: :member
+    get :add_legal_documents, on: :member
+    patch :save_legal_documents, on: :member
     resources :activities, except: [ :index, :show ] do
       post :destroy_soure_file, on: :member
     end
