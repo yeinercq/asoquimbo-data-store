@@ -32,14 +32,13 @@ class SocialEcologicalCharacterizationsController < ApplicationController
     @social_ecological_characterization = current_user.social_ecological_characterizations.build(social_ecological_characterization_params)
     @social_ecological_characterization.custom_select_list = @custom_select_list
 
-    respond_to do |format|
-      if @social_ecological_characterization.save
+    if @social_ecological_characterization.save
+      respond_to do |format|
         format.html { redirect_to social_ecological_characterizations_path, notice: "Caracterización social y ecológica creada exitosamente." }
         format.turbo_stream { flash.now[:notice] = "Caracterización social y ecológica creada exitosamente." }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream { render :form_update, status: :unprocessable_entity }
       end
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -47,14 +46,13 @@ class SocialEcologicalCharacterizationsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @social_ecological_characterization.update(social_ecological_characterization_params)
+    if @social_ecological_characterization.update(social_ecological_characterization_params)
+      respond_to do |format|
         format.html { redirect_to social_ecological_characterizations_path, notice: "Caracterización social y ecológica actualizada exitosamente." }
         format.turbo_stream { flash.now[:notice] = "Caracterización social y ecológica actualizada exitosamente." }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.turbo_stream { render :form_update, status: :unprocessable_entity }
       end
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

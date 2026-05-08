@@ -30,6 +30,25 @@
     <div class="container-fluid min-vh-100 mb-2">
       <%= yield %>
     </div>
-    <%= turbo_frame_tag "remote_modal", target: "_top" %>
+
+    <%# remote_modal %>
+    <div 
+      class="modal modal-xl fade modal-dialog-scrollable"
+      id="remote_modal_container" 
+      data-bs-backdrop="static" 
+      data-bs-keyboard="false" 
+      tabindex="-1" 
+      aria-labelledby="remote_modal" 
+      aria-hidden="true" 
+      data-controller="remote-modal" 
+      data-action="turbo:frame-load->remote-modal#open turbo:submit-end->remote-modal#close"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down" role="document">
+        <div class="modal-content">
+          <%= turbo_frame_tag "remote_modal" %>
+        </div>
+      </div>
+      
+    </div>
   </body>
 </html>

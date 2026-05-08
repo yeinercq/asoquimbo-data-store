@@ -1,75 +1,81 @@
-<%= render 'layouts/remote_modal', title: "" do %>
-  <div class="row">
-    <div class="col-12 col-md-6">
-      <h4>IDENTIFICACIÓN DE LA FUENTE</h4>
-      <hr>
+<%= turbo_frame_tag 'remote_modal' do %>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <h4>IDENTIFICACIÓN DE LA FUENTE</h4>
+        <hr>
 
-      <dl class="row">
-        <dt class="col-12 col-lg-4">Autores</dt>
-        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.authors %></dd>
+        <dl class="row">
+          <dt class="col-12 col-lg-4">Autores</dt>
+          <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.authors %></dd>
 
-        <dt class="col-12 col-lg-4">Año</dt>
-        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.year %></dd>
+          <dt class="col-12 col-lg-4">Año</dt>
+          <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.year %></dd>
 
-        <dt class="col-12 col-lg-4">Título del documento</dt>
-        <dd class="col-12 col-lg-8">
-          <p><%= @social_ecological_characterization.title %></p>
-        </dd>
+          <dt class="col-12 col-lg-4">Título del documento</dt>
+          <dd class="col-12 col-lg-8">
+            <p><%= @social_ecological_characterization.title %></p>
+          </dd>
 
-        <dt class="col-12 col-lg-4">Tipo de documento</dt>
-        <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.resource_type) %></dd>
+          <dt class="col-12 col-lg-4">Tipo de documento</dt>
+          <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.resource_type) %></dd>
 
-        <dt class="col-12 col-lg-4">Institución/Entidad</dt>
-        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.institution %></dd>
+          <dt class="col-12 col-lg-4">Institución/Entidad</dt>
+          <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.institution %></dd>
 
-        <dt class="col-12 col-lg-4">Enlace o ubicación</dt>
-        <dd class="col-12 col-lg-8"><%= link_to "Ir al documento", @social_ecological_characterization.url, target: "_blank" %></dd>
+          <dt class="col-12 col-lg-4">Enlace o ubicación</dt>
+          <dd class="col-12 col-lg-8"><%= link_to "Ir al documento", @social_ecological_characterization.url, target: "_blank" %></dd>
 
-        <dt class="col-12 col-lg-4">Nivel de acceso</dt>
-        <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.access_level) %></dd>
-      </dl>
+          <dt class="col-12 col-lg-4">Nivel de acceso</dt>
+          <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.access_level) %></dd>
+        </dl>
+      </div>
+      <div class="col-12 col-md-6">
+        <h4>CARACTERIZACIÓN GENERAL</h4>
+        <hr>
+
+        <dl class="row">
+          <dt class="col-12 col-lg-4">Área geográfica</dt>
+          <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.geographic_area) %></dd>
+
+          <dt class="col-12 col-lg-4">Cobertura espacial</dt>
+          <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.spatial_coverage) %></dd>
+
+          <dt class="col-12 col-lg-4">Escala de análisis</dt>
+          <dd class="col-12 col-lg-8">
+            <p><%= @custom_select_list.custom_option_name(@social_ecological_characterization.analysis_scale) %></p>
+          </dd>
+
+          <dt class="col-12 col-lg-4">Periodo de estudio</dt>
+          <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.study_period %></dd>
+
+          <dt class="col-12 col-lg-4">Objetivo de estudio</dt>
+          <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.study_objective %></dd>
+
+          <dt class="col-12 col-lg-4">Enfoque</dt>
+          <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.approach) %></dd>
+
+          <dt class="col-12 col-lg-4">Metodología general empleada</dt>
+          <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.general_methodology_used %></dd>
+        </dl>
+      </div>
     </div>
-    <div class="col-12 col-md-6">
-      <h4>CARACTERIZACIÓN GENERAL</h4>
-      <hr>
-
-      <dl class="row">
-        <dt class="col-12 col-lg-4">Área geográfica</dt>
-        <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.geographic_area) %></dd>
-
-        <dt class="col-12 col-lg-4">Cobertura espacial</dt>
-        <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.spatial_coverage) %></dd>
-
-        <dt class="col-12 col-lg-4">Escala de análisis</dt>
-        <dd class="col-12 col-lg-8">
-          <p><%= @custom_select_list.custom_option_name(@social_ecological_characterization.analysis_scale) %></p>
-        </dd>
-
-        <dt class="col-12 col-lg-4">Periodo de estudio</dt>
-        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.study_period %></dd>
-
-        <dt class="col-12 col-lg-4">Objetivo de estudio</dt>
-        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.study_objective %></dd>
-
-        <dt class="col-12 col-lg-4">Enfoque</dt>
-        <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@social_ecological_characterization.approach) %></dd>
-
-        <dt class="col-12 col-lg-4">Metodología general empleada</dt>
-        <dd class="col-12 col-lg-8"><%= @social_ecological_characterization.general_methodology_used %></dd>
-      </dl>
+    <hr>
+    <h4>ARCHIVO ADJUNTO</h4>
+    
+    <% if @social_ecological_characterization.source_file? %>
+      <div class="col-12 mt-2">
+        <%= link_to t("common.download_file") + " (" + @social_ecological_characterization.source_file.file.filename + ")", @social_ecological_characterization.source_file_url, target: "_blank" %>
+      </div>
+    <% else %>
+      <p>No hay archivo adjunto disponible.</p>
+    <% end %>
+    <div class="col-12 mt-2 d-flex justify-content-end mb-2">
+      Creado por: <span class="badge rounded-pill text-bg-success d-flex align-items-center"><%= @social_ecological_characterization.user.email %></span>
     </div>
-  </div>
-  <hr>
-  <h4>ARCHIVO ADJUNTO</h4>
-  
-  <% if @social_ecological_characterization.source_file? %>
-    <div class="col-12 mt-2">
-      <%= link_to t("common.download_file") + " (" + @social_ecological_characterization.source_file.file.filename + ")", @social_ecological_characterization.source_file_url, target: "_blank" %>
-    </div>
-  <% else %>
-    <p>No hay archivo adjunto disponible.</p>
   <% end %>
-  <div class="col-12 mt-2 d-flex justify-content-end">
-    Creado por: <span class="badge rounded-pill text-bg-success d-flex align-items-center"><%= @social_ecological_characterization.user.email %></span>
+  <div class="modal-footer">
+    <%= link_to "Cerrar", "#", class: "btn btn-secondary", data: { bs_dismiss: "modal" } %>
   </div>
-<% end %>
+
+  </div>
