@@ -49,6 +49,7 @@ es:
         event/approve: Pasar a aprobado
         event/unapprove: Devolver a revisado
         legal_documents: Documentos parafiscales
+        goal: Logro del mes
       custom_select_list:
         model_name_association: "Nombre del modelo asociado"
       custom_option_list:

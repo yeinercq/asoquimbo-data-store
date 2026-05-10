@@ -9,8 +9,10 @@
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  custom_select_list_id :bigint           not null
-#  status                :string
+#  status                :string           default("reported")
 #  transitions           :jsonb
+#  legal_documents       :json
+#  goal                  :text
 #
 class MonthlyReport < ApplicationRecord
   include AASM

@@ -7,6 +7,15 @@
       <% end %>
     </div>
   </div>
+  <div class="row justify-content-end">
+    <figure class="col-12 col-md-6 text-end">
+      <blockquote class="blockquote">
+        <p><%= @monthly_report.goal.presence || "No tiene logro del mes" %></p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+        Logro del mes
+      </figcaption>
+    </figure>
 </div>
 <div>
   <div class="row align-items-center">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_05_08_152420) do
+ActiveRecord::Schema[7.2].define(version: 2026_05_10_023215) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,6 +97,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_08_152420) do
     t.string "status", default: "reported"
     t.jsonb "transitions", default: []
     t.json "legal_documents"
+    t.text "goal"
     t.index ["custom_select_list_id"], name: "index_monthly_reports_on_custom_select_list_id"
     t.index ["user_id"], name: "index_monthly_reports_on_user_id"
   end

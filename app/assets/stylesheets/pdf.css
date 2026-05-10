@@ -84,3 +84,17 @@ table td {
   color: #999;
 }
 
+.monthly_report_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.monthly_report_header .monthly_report_header__report_data {
+  width: 35%;
+}
+
+.monthly_report_header .monthly_report_header__goal {
+  width: 60%;
+}

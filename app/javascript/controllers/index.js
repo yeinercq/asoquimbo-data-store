@@ -18,3 +18,6 @@ application.register("show-toast", ShowToastController)
 
 import RailsNestedForm from '@stimulus-components/rails-nested-form'
 application.register('nested-form', RailsNestedForm)
+
+import TextareaAutogrow from 'stimulus-textarea-autogrow'
+application.register('textarea-autogrow', TextareaAutogrow)

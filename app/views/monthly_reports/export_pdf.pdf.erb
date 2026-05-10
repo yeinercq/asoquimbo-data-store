@@ -9,36 +9,44 @@
     Datos del informe
   </h3>
 </div>
-<table>
-  <tr>
-    <td style="font-weight: bold;">Periodo reportado</td>
-    <td><%= date_period_short_format(@monthly_report.date_period) if @monthly_report.date_period %></td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Fecha de presentación</td>
-    <td><%= l(@monthly_report.created_at.to_date, format: :long) %></td>
-  </tr>
-  <tr>
-    <td style="font-weight: bold;">Componente</td>
-    <td><%= @custom_select_list.custom_option_name(@monthly_report.component) %></td>
-  </tr>
-  <tr>
-    <td style="width: 180px; font-weight: bold;">Reportado por</td>
-    <td><%= @monthly_report.user&.name %></td>
-  </tr>
-  <tr>
-    <td style="width: 180px; font-weight: bold;">Revisado por</td>
-    <td>
-      <%= @monthly_report.transitioned_by("revised") %> - <%= @monthly_report.transitioned_date_by("revised").to_time.strftime("%d/%m/%Y %H:%M") %>
-    </td>
-  </tr>
-  <tr>
-    <td style="width: 180px; font-weight: bold;">Aprobado por</td>
-    <td>
-      <%= @monthly_report.transitioned_by("approved") %> - <%= @monthly_report.transitioned_date_by("approved").to_time.strftime("%d/%m/%Y %H:%M") %>
-    </td>
-  </tr>
-</table>
+<div class="monthly_report_header">
+  <div class="monthly_report_header__report_data">
+    <table>
+      <tr>
+        <td style="font-weight: bold;">Periodo reportado</td>
+        <td><%= date_period_short_format(@monthly_report.date_period) if @monthly_report.date_period %></td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold;">Fecha de presentación</td>
+        <td><%= l(@monthly_report.created_at.to_date, format: :long) %></td>
+      </tr>
+      <tr>
+        <td style="font-weight: bold;">Componente</td>
+        <td><%= @custom_select_list.custom_option_name(@monthly_report.component) %></td>
+      </tr>
+      <tr>
+        <td style="width: 180px; font-weight: bold;">Reportado por</td>
+        <td><%= @monthly_report.user&.name %></td>
+      </tr>
+      <tr>
+        <td style="width: 180px; font-weight: bold;">Revisado por</td>
+        <td>
+          <%= @monthly_report.transitioned_by("revised") %> - <%= @monthly_report.transitioned_date_by("revised").to_time.strftime("%d/%m/%Y %H:%M") %>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 180px; font-weight: bold;">Aprobado por</td>
+        <td>
+          <%= @monthly_report.transitioned_by("approved") %> - <%= @monthly_report.transitioned_date_by("approved").to_time.strftime("%d/%m/%Y %H:%M") %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="monthly_report_header__goal">
+    <h3>Logro del mes</h3>
+    <%= @monthly_report.goal || "-" %>
+  </div>
+</div>
 
 <div class="section-title">
   <h1>Actividades</h1>
@@ -77,6 +85,8 @@
     <p class="signature-label">Quien elabora:</p>
     <div class="signature-line">&nbsp;</div>
     <p class="signature-name"><%= @monthly_report.user&.name %></p>
+    <p class="signature-date"><%= @monthly_report.created_at.strftime("%d/%m/%Y") %></p>
+
   </div>
 
   <div class="signature-block">

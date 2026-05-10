@@ -147,7 +147,7 @@ class MonthlyReportsController < ApplicationController
   end
 
   def monthly_report_params
-    params.require(:monthly_report).permit(:date_period, :component, { legal_documents: [] })
+    params.require(:monthly_report).permit(:date_period, :component, :goal, { legal_documents: [] })
   end
 
   def filtering_params(params)
