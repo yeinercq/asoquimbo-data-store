@@ -126,7 +126,7 @@ class MonthlyReportsController < ApplicationController
 
     respond_to do |format|
       format.pdf do
-        render pdf: "informe_mensual_#{@monthly_report.id}",
+        render pdf: "informe_mensual_#{@monthly_report.user.name.underscore}_#{ l @monthly_report.date_period, format: ('%B_%Y')}",
                template: "monthly_reports/export_pdf",
                layout: "pdf",
                page_size: "A4",

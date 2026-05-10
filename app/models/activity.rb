@@ -22,6 +22,7 @@ class Activity < ApplicationRecord
   :activity_name,
   :description,
   :start_date,
+  :end_date,
   :status,
   presence: true
   validate :source_file_size_validation

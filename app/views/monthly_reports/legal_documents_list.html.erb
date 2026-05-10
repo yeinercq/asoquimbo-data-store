@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "remote_modal" do %>
-  <%= render "layouts/remote_modal_content", title: "Documentos parafiscales para #{ @monthly_report.date_period.strftime("%B, %Y") }" do %>
+  <%= render "layouts/remote_modal_content", title: "Documentos parafiscales para #{ date_period_short_format(@monthly_report.date_period) }" do %>
     <%= turbo_frame_tag "legal_documents" do %>
       <%= render "legal_documents_list", monthly_report: @monthly_report %>
     <% end %>

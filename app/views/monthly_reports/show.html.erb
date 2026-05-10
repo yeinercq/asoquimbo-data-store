@@ -1,6 +1,6 @@
 <div class="header mt-3">
   <div class="d-flex align-items-center gap-2">
-    <h1>INFORME MENSUAL <%= @monthly_report.date_period.strftime("%B, %Y") %></h1>
+    <h1>INFORME MENSUAL <%= date_period_short_format(@monthly_report.date_period) %></h1>
     <div>
       <%= tag.div id: "monthly_report_status" do %>
         <%= render "monthly_reports/status", monthly_report: @monthly_report %>
@@ -29,7 +29,7 @@
       <% if can? :legal_documents_list, @monthly_report %>
         <%= link_to "Documentos parafiscales", legal_documents_list_monthly_report_path(@monthly_report), class: "btn btn-primary", data: { turbo_frame: "remote_modal" } %>
       <% end %>
-      <% if can? :export_pdf, @monthly_report %>
+      <% if can?( :export_pdf, @monthly_report) && @monthly_report.status == "approved" %>
         <%= link_to export_pdf_monthly_report_path(@monthly_report, format: :pdf), class: "btn btn-outline-danger", target: "_blank" do %>
           <i class="bi bi-file-earmark-pdf"></i> PDF
         <% end %>

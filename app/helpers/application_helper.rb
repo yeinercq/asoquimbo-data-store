@@ -46,4 +46,8 @@ module ApplicationHelper
       link_to text, path, options
     end
   end
+
+  def date_period_short_format(date_period)
+    l date_period, format: ("%B, %Y")
+  end
 end

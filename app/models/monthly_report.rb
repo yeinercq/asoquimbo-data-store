@@ -82,6 +82,15 @@ class MonthlyReport < ApplicationRecord
     end
   end
 
+  def transitioned_date_by(state)
+    transition = transitions.select { |transition| transition["to_state"] == state }.last
+    if transition.empty?
+      "-"
+    else
+      transition["timestamp"]
+    end
+  end
+
   private
 
   def log_transition

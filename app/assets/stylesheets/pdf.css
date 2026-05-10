@@ -23,7 +23,6 @@ table {
   width: 100%; 
   border-collapse: collapse; 
   margin-bottom: 12px;
-  background-color: blue; 
 }
 
 table th { 
@@ -41,3 +40,47 @@ table td {
   font-size: 9px; 
   vertical-align: top; 
 }
+
+.footer {
+   text-align: center;
+   font-size: 8px;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   width: 100%;
+}
+
+.signatures {
+  margin-top: 20px;
+  page-break-inside: avoid;
+}
+
+.signature-block {
+  margin-bottom: 24px;
+}
+
+.signature-label {
+  font-weight: bold;
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+
+.signature-line {
+  width: 30%;
+  border-bottom: 1px solid #333;
+  min-height: 28px;
+  margin-top: 8px;
+}
+
+.signature-name {
+  font-size: 9px;
+  color: #555;
+  margin-top: 4px;
+  margin-bottom: 2px;
+}
+
+.signature-date {
+  font-size: 8px;
+  color: #999;
+}
+

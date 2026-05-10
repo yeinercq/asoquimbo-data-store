@@ -2,7 +2,7 @@
   <div class="container-fluid" style="min-width: 1200px;">
     <div class="row border rounded mt-2 py-2 align-items-center shadow">
       <div class="col-2"><small><%= monthly_report.user.name %></small></div>
-      <div class="col-2"><small><%= monthly_report.date_period.strftime("%B, %Y") %></small></div>
+      <div class="col-2"><small><%= date_period_short_format(monthly_report.date_period) %></small></div>
       <div class="col-2"><small><%= monthly_report.created_at.strftime("%Y-%m-%d") %></small></div>
       <div class="col-2"><small><%= @custom_select_list.custom_option_name(monthly_report.component) %></small></div>
       <div class="col-2"><%= render "monthly_reports/status", monthly_report: monthly_report %></div>
