@@ -25,6 +25,10 @@
         </div>
 
         <div class="col-auto mb-2">
+          <%= form.select :status , MonthlyReport.aasm.states.map {|state| [t("activerecord.attributes.monthly_report.status/#{state.default_display_name.downcase}"), state] }, { prompt: "Estado" }, { class: 'form-select' } %>
+        </div>
+
+        <div class="col-auto mb-2">
           <%= form.submit "Filtrar", class: "btn btn-primary" %>
         </div>
       <% end %>

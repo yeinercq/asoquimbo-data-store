@@ -151,6 +151,6 @@ class MonthlyReportsController < ApplicationController
   end
 
   def filtering_params(params)
-    params.slice(:user_id, :component)
+    params.slice(:user_id, :component, :status)
   end
 end

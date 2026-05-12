@@ -71,6 +71,13 @@ es:
         password: Contraseña
         password_confirmation: Confirmación de contraseña
         role: Rol
+        enums:
+          role:
+            admin: Administrador
+            director: Director
+            coordinator: Coordinador
+            professional: Profesional
+            inspector: Administrativo
     errors:
       messages:
         blank: "no puede estar en blanco"

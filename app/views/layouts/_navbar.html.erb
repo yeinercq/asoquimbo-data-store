@@ -25,7 +25,7 @@
       </ul>
       <div class="dropup-center">
         <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <%= current_user.name || current_user.email %>
+          <%= "#{current_user.name || current_user.email} (#{t("activerecord.attributes.user.enums.role.#{current_user.role}")})" %>
         </button>
         <ul class="dropdown-menu">
           <li>
