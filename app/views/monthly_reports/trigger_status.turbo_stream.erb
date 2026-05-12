@@ -5,4 +5,5 @@
   <%= render "empty_state_activities" %>
   <%= render @monthly_report.activities.ordered %>
 <% end %>
+<%= turbo_stream.update "new_activity_button", render("monthly_reports/new_activity_button", monthly_report: @monthly_report) %>
 <%= render_turbo_stream_flash_messages %>
