@@ -4,7 +4,7 @@
       <%= render "legal_documents_list", monthly_report: @monthly_report %>
     <% end %>
     <%= turbo_frame_tag "add_legal_documents" %>
-    <% if can?(:add_legal_documents, @monthly_report) && @monthly_report.status == "reported" %>
+    <% if can?(:add_legal_documents, @monthly_report) && @monthly_report.status == "created" %>
       <%= link_to add_legal_documents_monthly_report_path(@monthly_report), class: "btn btn-primary mt-2", data: { turbo_frame: "add_legal_documents" } do %>
         <i class="bi bi-file-earmark-arrow-up-fill"></i> Subir documentos parafiscales
       <% end %>

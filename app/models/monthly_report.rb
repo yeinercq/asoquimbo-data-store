@@ -37,10 +37,11 @@ class MonthlyReport < ApplicationRecord
   ].freeze
 
   ALLOWED_EVENTS_PER_ROLE = {
-    "admin" => [ "revise", "unrevise", "approve", "unapprove" ],
-    "director" => [ "approve", "unapprove" ],
-    "coordinator" => [ "approve", "unapprove" ],
-    "inspector" => [ "revise", "unrevise" ]
+    "admin" => [ "report", "unreport", "revise", "unrevise", "approve", "unapprove" ],
+    "director" => [ "report", "unreport", "approve", "unapprove" ],
+    "coordinator" => [ "report", "unreport", "approve", "unapprove" ],
+    "inspector" => [ "revise", "unrevise" ],
+    "professional" => [ "report", "unreport" ]
   }
 
   def self.allowed_events_per_role
@@ -52,11 +53,20 @@ class MonthlyReport < ApplicationRecord
   end
 
   aasm column: :status do
-    state :reported, initial: true
+    state :created, initial: true
+    state :reported
     state :revised
     state :approved
 
     after_all_transitions :log_transition
+
+    event :report do
+      transitions from: :created, to: :reported
+    end
+
+    event :unreport do
+      transitions from: :reported, to: :created
+    end
 
     event :revise do
       transitions from: :reported, to: :revised

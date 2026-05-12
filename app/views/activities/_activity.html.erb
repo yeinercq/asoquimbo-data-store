@@ -25,7 +25,7 @@
               <% activity.source_files.each do |source_file| %>
                 <li>
                   <%= link_to source_file.file.filename, source_file.url, target: "_blank" %>
-                  <%= link_to " - Eliminar soporte", destroy_soure_file_monthly_report_activity_path(@monthly_report, activity, source_file_identifier: source_file.identifier ), data: { turbo_method: :post, turbo_confirm: I18n.t("common.form.confirm_delete") } if current_user == activity.user && @monthly_report.status == "reported" %>
+                  <%= link_to " - Eliminar soporte", destroy_soure_file_monthly_report_activity_path(@monthly_report, activity, source_file_identifier: source_file.identifier ), data: { turbo_method: :post, turbo_confirm: I18n.t("common.form.confirm_delete") } if current_user == activity.user && @monthly_report.status == "created" %>
                 </li>
               <% end %>
             </ul>
@@ -34,7 +34,7 @@
           No hay soportes adjuntos
         <% end %>
       </div>
-      <% if can?(:update, activity) && @monthly_report.status == "reported" %>
+      <% if can?(:update, activity) && @monthly_report.status == "created" %>
         <div class="col d-flex justify-content-end gap-2">
           <%= link_to edit_monthly_report_activity_path(@monthly_report, activity) do %>
             <div class="btn btn-sm btn-secondary">

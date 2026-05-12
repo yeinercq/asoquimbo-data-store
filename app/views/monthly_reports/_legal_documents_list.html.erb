@@ -6,7 +6,7 @@
       <% monthly_report.legal_documents.each do |legal_document| %>
         <li class="list-group-item">
           <%= link_to legal_document.file.filename, legal_document.url, target: "_blank" %>
-          <%= link_to " - Eliminar soporte", destroy_legal_document_monthly_report_path(@monthly_report, legal_document_identifier: legal_document.identifier), data: { turbo_method: :post, turbo_confirm: t("common.form.confirm_delete") } if current_user == @monthly_report.user && @monthly_report.status == "reported" %>
+          <%= link_to " - Eliminar soporte", destroy_legal_document_monthly_report_path(@monthly_report, legal_document_identifier: legal_document.identifier), data: { turbo_method: :post, turbo_confirm: t("common.form.confirm_delete") } if current_user == @monthly_report.user && @monthly_report.status == "created" %>
         </li>
       <% end %>
     </ul>

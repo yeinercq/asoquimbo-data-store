@@ -41,12 +41,15 @@ es:
         date_period: "Período reportado"
         component: "Componente"
         status: Estado
+        status/created: Creado
         status/reported: Reportado
         status/revised: Revisado
         status/approved: Aprobado
-        event/revise: Pasar a revisado
+        event/report: Reportado
+        event/unreport: Devolver a creado
+        event/revise: Revisado
         event/unrevise: Devolver a reportado
-        event/approve: Pasar a aprobado
+        event/approve: Aprobado
         event/unapprove: Devolver a revisado
         legal_documents: Documentos parafiscales
         goal: Logro del mes

@@ -37,8 +37,8 @@ class Ability
       end
     end
 
-    can [ :manage, :legal_documents_list, :add_legal_documents, :destroy_legal_documents ], MonthlyReport, user: user
-    cannot :trigger_status, MonthlyReport, user: user
+    can [ :manage, :trigger_status, :legal_documents_list, :add_legal_documents, :destroy_legal_documents ], MonthlyReport, user: user
+    # cannot :trigger_status, MonthlyReport, user: user
     can :manage, Activity, monthly_report: { user: user }
   end
 end
