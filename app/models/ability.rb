@@ -17,7 +17,7 @@ class Ability
     if user.director?
       can :read, MonthlyReport
       can :manage, MonthlyReport, user: user
-      can [ :trigger_status, :export_pdf ], MonthlyReport do |report|
+      can [ :trigger_status, :legal_documents_list, :export_pdf ], MonthlyReport do |report|
         report.user.coordinator?
       end
     end
@@ -25,7 +25,7 @@ class Ability
     if user.coordinator?
       can :read, MonthlyReport
       can :manage, MonthlyReport, user: user
-      can [ :trigger_status, :export_pdf ], MonthlyReport do |report|
+      can [ :trigger_status, :legal_documents_list, :export_pdf ], MonthlyReport do |report|
         report.user.professional?
       end
     end

@@ -56,8 +56,8 @@ class MonthlyReport < ApplicationRecord
   aasm column: :status do
     state :created, initial: true
     state :reported
-    state :revised
     state :approved
+    state :revised
 
     after_all_transitions :log_transition
 
@@ -69,20 +69,20 @@ class MonthlyReport < ApplicationRecord
       transitions from: :reported, to: :created
     end
 
-    event :revise do
-      transitions from: :reported, to: :revised
-    end
-
-    event :unrevise do
-      transitions from: :revised, to: :reported
-    end
-
     event :approve do
-      transitions from: :revised, to: :approved
+      transitions from: :reported, to: :approved
     end
 
     event :unapprove do
+      transitions from: :approved, to: :reported
+    end
+
+    event :revise do
       transitions from: :approved, to: :revised
+    end
+
+    event :unrevise do
+      transitions from: :revised, to: :approved
     end
   end
 
