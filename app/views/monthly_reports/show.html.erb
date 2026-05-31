@@ -8,9 +8,12 @@
     </div>
   </div>
   <div class="row justify-content-end">
-    <figure class="col-12 col-md-6 text-end">
-      <blockquote class="blockquote">
-        <p><%= @monthly_report.goal.presence || "No tiene logro del mes" %></p>
+    <figure class="col-12 col-md-8 text-end">
+      <blockquote class="blockquote" data-controller="read-more" data-read-more-more-text-value="Leer más ↓" data-read-more-less-text-value="Leer menos ↑">
+        <p class="line-clamp fs-6" data-read-more-target="content">
+          <%= @monthly_report.goal.presence || "No tiene logro del mes" %>
+        </p>
+        <button class="btn btn-link" data-action="read-more#toggle">Leer más ↓</button>
       </blockquote>
       <figcaption class="blockquote-footer">
         Logro del mes
@@ -36,7 +39,7 @@
       <% if can? :legal_documents_list, @monthly_report %>
         <%= link_to "Documentos parafiscales", legal_documents_list_monthly_report_path(@monthly_report), class: "btn btn-primary", data: { turbo_frame: "remote_modal" } %>
       <% end %>
-      <% if can?( :export_pdf, @monthly_report) && @monthly_report.status == "approved" %>
+      <% if can?(:export_pdf, @monthly_report) && @monthly_report.status.in?(["approved", "revised"]) %>
         <%= link_to export_pdf_monthly_report_path(@monthly_report, format: :pdf), class: "btn btn-outline-danger", target: "_blank" do %>
           <i class="bi bi-file-earmark-pdf"></i> PDF
         <% end %>

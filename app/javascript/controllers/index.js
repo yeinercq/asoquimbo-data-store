@@ -21,3 +21,6 @@ application.register('nested-form', RailsNestedForm)
 
 import TextareaAutogrow from 'stimulus-textarea-autogrow'
 application.register('textarea-autogrow', TextareaAutogrow)
+
+import ReadMore from '@stimulus-components/read-more'
+application.register('read-more', ReadMore)
