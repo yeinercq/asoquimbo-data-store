@@ -88,7 +88,7 @@ class MonthlyReport < ApplicationRecord
 
   def transitioned_by(state)
     transition = transitions.select { |transition| transition["to_state"] == state }.last
-    if transition.empty?
+    if transition.blank?
       "-"
     else
       transition["user"]["name"]
@@ -97,8 +97,8 @@ class MonthlyReport < ApplicationRecord
 
   def transitioned_date_by(state)
     transition = transitions.select { |transition| transition["to_state"] == state }.last
-    if transition.empty?
-      "-"
+    if transition.blank?
+      nil
     else
       transition["timestamp"]
     end

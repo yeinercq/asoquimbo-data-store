@@ -26,18 +26,18 @@
       </tr>
       <tr>
         <td style="width: 180px; font-weight: bold;">Reportado por</td>
-        <td><%= @monthly_report.user&.name %></td>
-      </tr>
-      <tr>
-        <td style="width: 180px; font-weight: bold;">Revisado por</td>
-        <td>
-          <%= @monthly_report.transitioned_by("revised") %> - <%= @monthly_report.transitioned_date_by("revised").to_time.strftime("%d/%m/%Y %H:%M") %>
-        </td>
+        <td><%= @monthly_report.user&.name %> - <%= event_date_format(@monthly_report.transitioned_date_by("reported")) %> </td>
       </tr>
       <tr>
         <td style="width: 180px; font-weight: bold;">Aprobado por</td>
         <td>
-          <%= @monthly_report.transitioned_by("approved") %> - <%= @monthly_report.transitioned_date_by("approved").to_time.strftime("%d/%m/%Y %H:%M") %>
+          <%= @monthly_report.transitioned_by("approved") %> - <%= event_date_format(@monthly_report.transitioned_date_by("approved")) %>
+        </td>
+      </tr>
+      <tr>
+        <td style="width: 180px; font-weight: bold;">Revisado por</td>
+        <td>
+          <%= @monthly_report.transitioned_by("revised") %> - <%= event_date_format(@monthly_report.transitioned_date_by("revised")) %>
         </td>
       </tr>
     </table>
@@ -85,28 +85,22 @@
     <p class="signature-label">Quien elabora:</p>
     <div class="signature-line">&nbsp;</div>
     <p class="signature-name"><%= @monthly_report.user&.name %></p>
-    <p class="signature-date"><%= @monthly_report.created_at.strftime("%d/%m/%Y") %></p>
+    <p class="signature-date"><%= event_date_format(@monthly_report.transitioned_date_by("reported")) %></p>
 
+  </div>
+  
+  <div class="signature-block">
+    <p class="signature-label">Quien aprueba:</p>
+    <div class="signature-line">&nbsp;</div>
+    <p class="signature-name"><%= @monthly_report.transitioned_by("approved") %></p>
+    <p class="signature-date"><%= event_date_format(@monthly_report.transitioned_date_by("approved")) %></p>
   </div>
 
   <div class="signature-block">
     <p class="signature-label">Quien revisa:</p>
     <div class="signature-line">&nbsp;</div>
     <p class="signature-name"><%= @monthly_report.transitioned_by("revised") %></p>
-    <% revised_date = @monthly_report.transitioned_date_by("revised") %>
-    <% if revised_date != "-" %>
-      <p class="signature-date"><%= revised_date.to_time.strftime("%d/%m/%Y") %></p>
-    <% end %>
-  </div>
-
-  <div class="signature-block">
-    <p class="signature-label">Quien aprueba:</p>
-    <div class="signature-line">&nbsp;</div>
-    <p class="signature-name"><%= @monthly_report.transitioned_by("approved") %></p>
-    <% approved_date = @monthly_report.transitioned_date_by("approved") %>
-    <% if approved_date != "-" %>
-      <p class="signature-date"><%= approved_date.to_time.strftime("%d/%m/%Y") %></p>
-    <% end %>
+    <p class="signature-date"><%= event_date_format(@monthly_report.transitioned_date_by("revised")) %></p>
   </div>
 </div>
 
