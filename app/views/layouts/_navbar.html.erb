@@ -8,37 +8,41 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to_active t('activerecord.models.social_ecological_characterization.others'), social_ecological_characterizations_path, class: "nav-link" %>
-        </li>
-
-        <li class="nav-item">
-          <%= link_to_active t('activerecord.models.monthly_report.others'), monthly_reports_path, class: "nav-link" %>
-        </li>
-        <% if can? :manage, User %>
+    <% if user_signed_in? %>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <%= link_to_active t('activerecord.models.user.others'), collaborators_path, class: "nav-link" %>
+            <%= link_to_active t('activerecord.models.social_ecological_characterization.others'), social_ecological_characterizations_path, class: "nav-link" %>
           </li>
-        <% end %>
-      </ul>
-      <div class="dropup-center">
-        <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <%= "#{current_user.name || current_user.email} (#{t("activerecord.attributes.user.enums.role.#{current_user.role}")})" %>
-        </button>
-        <ul class="dropdown-menu">
-          <li>
-            <%= link_to destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') }, class: 'dropdown-item' do %>
-              Cerrar sesión
-            <% end %>
+
+          <li class="nav-item">
+            <%= link_to_active t('activerecord.models.monthly_report.others'), monthly_reports_path, class: "nav-link" %>
           </li>
-          <li><hr class="dropdown-divider"></li>
-          <li>
-            <%= link_to_active t('common.custom_lists.config'), custom_select_lists_path, class: "dropdown-item" %>
-          </li>
+          <% if can? :manage, User %>
+            <li class="nav-item">
+              <%= link_to_active t('activerecord.models.user.others'), collaborators_path, class: "nav-link" %>
+            </li>
+          <% end %>
         </ul>
+        <div class="dropup-center">
+          <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= "#{current_user.name || current_user.email} (#{t("activerecord.attributes.user.enums.role.#{current_user.role}")})" %>
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: t('common.are_you_sure') }, class: 'dropdown-item' do %>
+                Cerrar sesión
+              <% end %>
+            </li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <%= link_to_active t('common.custom_lists.config'), custom_select_lists_path, class: "dropdown-item" %>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
+    <% else %>
+      <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-outline-dark" %>
+    <% end %>
   </div>
 </nav>

@@ -39,9 +39,6 @@
     </style>
   </head>
   <body>
-    <!-- Navbar -->
-    <%= render "layouts/navbar" %>
-
     <!-- Flash notifications -->
     <div aria-live="polite" aria-atomic="true" class="position-relative">
       <div id="flash_notifications" class="toast-container position-fixed top-0 end-0 p-3">
@@ -49,27 +46,9 @@
         <%= render "layouts/flash_notifications" %>
       </div>
     </div>
+    
     <div class="container-fluid min-vh-100 mb-2">
       <%= yield %>
-    </div>
-
-    <%# remote_modal %>
-    <div 
-      class="modal modal-xl fade"
-      id="remote_modal_container" 
-      data-bs-backdrop="static" 
-      data-bs-keyboard="false" 
-      tabindex="-1" 
-      aria-labelledby="remote_modal" 
-      aria-hidden="true" 
-      data-controller="remote-modal" 
-      data-action="turbo:frame-load->remote-modal#open turbo:submit-end->remote-modal#close"
-    >
-      <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-sm-down">
-        <%= turbo_frame_tag "remote_modal" do %>
-          <%= render "layouts/remote_modal_content", title: "" %>
-        <% end %>
-      </div>
     </div>
   </body>
 </html>
