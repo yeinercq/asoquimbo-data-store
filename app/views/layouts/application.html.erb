@@ -40,7 +40,11 @@
   </head>
   <body>
     <!-- Navbar -->
-    <%= render "layouts/navbar" %>
+    <% if current_page?(root_path) %>
+      <%= render "layouts/nav_pill" %>
+    <% else %>
+      <%= render "layouts/navbar"%>
+    <% end %>
 
     <!-- Flash notifications -->
     <div aria-live="polite" aria-atomic="true" class="position-relative">
@@ -49,9 +53,12 @@
         <%= render "layouts/flash_notifications" %>
       </div>
     </div>
+
     <div class="container-fluid min-vh-100 mb-2">
       <%= yield %>
     </div>
+
+    <%= render "layouts/footer" if current_page?(root_path) %>
 
     <%# remote_modal %>
     <div 

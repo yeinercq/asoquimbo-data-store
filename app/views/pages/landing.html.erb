@@ -1,0 +1,115 @@
+<section class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8 text-center">
+        <h1 class="display-4 fw-bold mb-4">Fondo para la vida</h1>
+        <p class="lead mb-4">
+          Plataforma integral para la gestión, seguimiento y aprobación de proyectos
+          socio-ecológicos. Centralice la información de caracterizaciones, informes
+          mensuales, actividades y colaboradores en un solo lugar, con flujos de
+          trabajo adaptados a los roles de su organización.
+        </p>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 mb-5 text-start">
+          <div class="col">
+            <div class="card border-1 h-100">
+              <div class="card-body text-center">
+                <i class="bi bi-journal-text display-5 text-success mb-3"></i>
+                <h5 class="card-title">Informes Mensuales</h5>
+                <p class="card-text text-muted small">
+                  Registre y gestione informes mensuales con actividades, documentos
+                  legales y exportación a PDF. Flujo de aprobación con estados:
+                  creado, reportado, aprobado y revisado.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card border-1 h-100">
+              <div class="card-body text-center">
+                <i class="bi bi-book display-5 text-success mb-3"></i>
+                <h5 class="card-title">Caracterizaciones</h5>
+                <p class="card-text text-muted small">
+                  Catálogo de estudios e investigaciones socio-ecológicas con
+                  metadatos completos: área geográfica, escala de análisis, tipo de
+                  recurso y más. Carga de archivos de origen.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card border-1 h-100">
+              <div class="card-body text-center">
+                <i class="bi bi-people display-5 text-success mb-3"></i>
+                <h5 class="card-title">Colaboradores</h5>
+                <p class="card-text text-muted small">
+                  Registro de actores externos con datos de contacto, nivel de
+                  participación territorial y seguimiento del estado de gestión.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%= link_to "#" do %>
+          <button class="btn btn-success btn-lg px-5"
+                  data-bs-toggle="tooltip" data-bs-placement="bottom"
+                  title="Funcionalidad disponible próximamente">
+            <i class="bi bi-arrow-right-circle"></i> Conocer más
+          </button>
+        <% end %>        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="d-flex align-items-center justify-content-center bg-light" style="min-height: 100vh;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8 text-center">
+        <h2 class="fw-bold mb-4">Nuestros patrocinadores</h2>
+
+        <div class="row row-cols-2 row-cols-md-3 g-4 justify-content-center">
+          <div class="col">
+            <div class="card shadow-sm border-1 h-100">
+              <div class="card-body d-flex flex-column align-items-center justify-content-center py-4">
+                <i class="bi bi-building display-4 text-secondary mb-2"></i>
+                <span class="fw-semibold">Patrocinador 1</span>
+                <small class="text-muted">Organización</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card shadow-sm border-1 h-100">
+              <div class="card-body d-flex flex-column align-items-center justify-content-center py-4">
+                <i class="bi bi-globe-americas display-4 text-secondary mb-2"></i>
+                <span class="fw-semibold">Patrocinador 2</span>
+                <small class="text-muted">Entidad internacional</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+            <div class="card shadow-sm border-1 h-100">
+              <div class="card-body d-flex flex-column align-items-center justify-content-center py-4">
+                <i class="bi bi-shield-check display-4 text-secondary mb-2"></i>
+                <span class="fw-semibold">Patrocinador 3</span>
+                <small class="text-muted">ONG</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-muted mt-4">
+          <small>
+            ¿Le interesa patrocinar este proyecto?
+            <%= mail_to "contacto@asoquimbo.com", "Contáctenos", class: "text-decoration-none" %>
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
