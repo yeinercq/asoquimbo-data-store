@@ -76,13 +76,17 @@
           <%= image_tag "logo-FVB-horizontal.png", alt: "FVB", class: "img-fluid", style: "max-height: 150px;" %>
         </div>
 
-        <p class="text-muted mt-4">
+        <!-- <p class="text-muted mt-4">
           <small>
             ¿Le interesa patrocinar este proyecto?
             <%= mail_to "contacto@asoquimbo.com", "Contáctenos", class: "text-decoration-none" %>
           </small>
-        </p>
+        </p> -->
       </div>
     </div>
   </div>
 </section>
+
+<%= link_to new_user_session_path, class: "position-fixed bottom-0 end-0 m-4 btn btn-warning rounded-pill shadow-lg px-4 py-2" do %>
+  <i class="bi bi-box-arrow-in-right me-2"></i>¿Ya eres parte del proyecto? Inicia sesión aquí
+<% end %>
