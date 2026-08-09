@@ -37,7 +37,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "simple_form"
-gem "carrierwave", "~> 3.0"
+gem "carrierwave", "~> 3.1"
 gem "devise"
 gem "letter_opener"
 gem "cancancan"
