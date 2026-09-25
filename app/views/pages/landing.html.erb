@@ -1,72 +1,32 @@
 <section id="sobre-el-proyecto" class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 col-lg-8 text-center">
-        <h1 class="display-4 fw-bold mb-4">Fondo para la vida</h1>
-        <p class="lead mb-4">
-          Plataforma integral para la gestión, seguimiento y aprobación de proyectos
-          socio-ecológicos. Centralice la información de caracterizaciones, informes
-          mensuales, actividades y colaboradores en un solo lugar, con flujos de
-          trabajo adaptados a los roles de su organización.
-        </p>
-
-        <div class="row row-cols-1 row-cols-md-3 g-4 mt-3 mb-5 text-start">
-          <div class="col">
-            <div class="card border-1 h-100">
-              <div class="card-body text-center">
-                <i class="bi bi-journal-text display-5 text-success mb-3"></i>
-                <h5 class="card-title">Informes Mensuales</h5>
-                <p class="card-text text-muted small">
-                  Registre y gestione informes mensuales con actividades, documentos
-                  legales y exportación a PDF. Flujo de aprobación con estados:
-                  creado, reportado, aprobado y revisado.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card border-1 h-100">
-              <div class="card-body text-center">
-                <i class="bi bi-book display-5 text-success mb-3"></i>
-                <h5 class="card-title">Caracterizaciones</h5>
-                <p class="card-text text-muted small">
-                  Catálogo de estudios e investigaciones socio-ecológicas con
-                  metadatos completos: área geográfica, escala de análisis, tipo de
-                  recurso y más. Carga de archivos de origen.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card border-1 h-100">
-              <div class="card-body text-center">
-                <i class="bi bi-people display-5 text-success mb-3"></i>
-                <h5 class="card-title">Colaboradores</h5>
-                <p class="card-text text-muted small">
-                  Registro de actores externos con datos de contacto, nivel de
-                  participación territorial y seguimiento del estado de gestión.
-                </p>
-              </div>
-            </div>
+      <div class="col-12">
+        <h1 class="display-4 fw-bold mb-3 text-start text-light">Plan de monitoreo socioecológico comunitario y participativo en el Quimbo</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-3 text-start">
+          <div class="input-group">
+            <input type="search" class="form-control form-control-lg border-end-0 bg-white" placeholder="Buscar en la base de datos" aria-label="Buscar">
+            <span class="input-group-text bg-white border-start-0 text-dark">
+              <i class="bi bi-search"></i>
+            </span>
           </div>
         </div>
 
-        <%= link_to "#" do %>
-          <button class="btn btn-success btn-lg px-5"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom"
-                  title="Funcionalidad disponible próximamente">
-            <i class="bi bi-arrow-right-circle"></i> Conocer más
+        <div class="btn-group btn-group" role="group" aria-label="Basic checkbox toggle button group">
+          <button type="button" class="btn btn-dark opacity-75" data-bs-toggle="popover" data-bs-content="Funcionalidad disponible próximamente">
+            Metodologías para el monitoreo socioecológico
           </button>
-        <% end %>        
+          <button type="button" class="btn btn-dark opacity-75" data-bs-toggle="popover" data-bs-content="Funcionalidad disponible próximamente">
+            Monitoreos previos y antecedentes socioecológicos
+          </button>
+        </div>      
       </div>
     </div>
   </div>
 </section>
 
 <section id="patrocinadores" class="d-flex align-items-center justify-content-center bg-light" style="min-height: 100vh;">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-12 col-lg-8 text-center">
         <h2 class="fw-bold mb-4">Nuestros patrocinadores</h2>

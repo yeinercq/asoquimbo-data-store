@@ -15,28 +15,30 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-    <style>
-      body {
-        position: relative;
-        background-color: #fff;
-      }
+    <% if current_page?(root_path) %>
+      <style>
+        body {
+          position: relative;
+          background-color: #fff;
+        }
 
-      body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("<%= asset_path('logo-home.png') %>");
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: 40%;
-        opacity: 0.1;
-        z-index: -1;
-        pointer-events: none;
-      }
-    </style>
+        body::before {
+          content: "";
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url("<%= asset_path('landing-page-background.jpg') %>");
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: 100%;
+          opacity: 0.8;
+          z-index: -1;
+          pointer-events: none;
+        }
+      </style>
+    <% end %>
   </head>
   <body data-bs-spy="scroll" data-bs-target="#pillNav" data-bs-smooth-scroll="true" tabindex="0">
     <!-- Navbar -->
@@ -54,7 +56,7 @@
       </div>
     </div>
 
-    <div class="container-fluid min-vh-100 mb-2">
+    <div class="<%= current_page?(root_path) ? "min-vh-100" : "container-fluid min-vh-100 mb-2" %>">
       <%= yield %>
     </div>
 
