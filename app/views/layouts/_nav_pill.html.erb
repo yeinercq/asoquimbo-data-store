@@ -1,8 +1,32 @@
-<nav 
-  id="pillNav" 
-  style="top: 10px; max-width: 1040px; --bs-nav-link-color: var(--bs-white); --bs-nav-pills-link-active-color: var(--bs-success); --bs-nav-pills-link-active-bg: var(--bs-white);" 
-  class="nav nav-pills nav-fill gap-2 p-1 small bg-success rounded-5 shadow sticky-top py-2 px-3 mx-auto"
->
-  <a class="nav-link rounded-5" href="#sobre-el-proyecto">Plan de monitoreo</a>
-  <a class="nav-link rounded-5" href="#patrocinadores">Patrocinadores</a>
+<nav class="navbar navbar-expand-lg py-3 bg-transparent">
+  <div class="container-fluid">
+    <div class="ms-auto d-lg-none">
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav align-items-lg-center gap-lg-2 mb-2 mb-lg-0 fs-5">
+        <li class="nav-item">
+          <a class="nav-link active text-white fw-bold" aria-current="page" href="#">Inicio</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Explorar datos
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">"
+            <li><a class="dropdown-item" href="#">Metodologías para el monitoreo socioecológico</a></li>
+            <li><a class="dropdown-item" href="#">Monitoreos previos y antecedentes socioecológicos</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white fw-bold" href="#">Acerca del convenio</a>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-outline-light rounded-4" %>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>

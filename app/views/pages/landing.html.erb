@@ -1,26 +1,36 @@
-<section id="sobre-el-proyecto" class="d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+<section id="sobre-el-proyecto" class="d-flex align-items-start justify-content-center" style="min-height: 100vh; padding-top: 100px;">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12">
-        <h1 class="display-4 fw-bold mb-3 text-start text-light">Plan de monitoreo socioecológico comunitario y participativo en el Quimbo</h1>
-        <div class="row row-cols-1 row-cols-md-3 g-4 mb-3 text-start">
+    <div class="row justify-content-start">
+      <div class="col-12 col-md-10">
+        <h1 class="display-3 fw-bold mb-3 text-start text-light">Plan de monitoreo socioecológico, comunitario y participativo en El Quimbo</h1>
+        <h3 class="display-6 mb-3 text-start text-light">Convenio 103 de 2026 FPVB-ASOQUIMBO</h3>
+
+        <div class="btn-group mb-2 gap-2 bg-dark bg-opacity-75 py-2  col-12 col-md-auto px-4" role="group" aria-label="Basic radio toggle button group">
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+          <label class="btn btn-outline-success rounded-4" for="btnradio1" style="width: 130px;">Todo</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+          <label class="btn btn-outline-success rounded-4" for="btnradio2" style="width: 130px;">Metodologías</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+          <label class="btn btn-outline-success rounded-4" for="btnradio3" style="width: 130px;">Antecedentes</label>
+        </div>
+
+      </div>
+      <div class="col-12 col-md-10">
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-2 text-start">
           <div class="input-group">
-            <input type="search" class="form-control form-control-lg border-end-0 bg-white" placeholder="Buscar en la base de datos" aria-label="Buscar">
+            <input type="search" class="form-control form-control-lg border-end-0 bg-white search-placeholder" id="search-home-page" placeholder="Buscar en la base de datos. Ej.: pesca artesanal, calidad del agua, caudal, biodiversidad" aria-label="Buscar">
             <span class="input-group-text bg-white border-start-0 text-dark">
               <i class="bi bi-search"></i>
             </span>
           </div>
         </div>
-
-        <div class="btn-group btn-group" role="group" aria-label="Basic checkbox toggle button group">
-          <button type="button" class="btn btn-dark opacity-75" data-bs-toggle="popover" data-bs-content="Funcionalidad disponible próximamente">
-            Metodologías para el monitoreo socioecológico
-          </button>
-          <button type="button" class="btn btn-dark opacity-75" data-bs-toggle="popover" data-bs-content="Funcionalidad disponible próximamente">
-            Monitoreos previos y antecedentes socioecológicos
-          </button>
-        </div>      
       </div>
+
+      <p class="col-12 col-md-10 text-start text-light">
+        Consulta metodologías, estudios, monitoreos y antecedentes sociales y econógicos relacionados con el área de influencia del proyecto hdroelectríco El Quimbo 
+      </p>
     </div>
   </div>
 </section>
@@ -36,17 +46,7 @@
           <%= image_tag "logo-FVB-horizontal.png", alt: "FVB", class: "img-fluid", style: "max-height: 150px;" %>
         </div>
 
-        <!-- <p class="text-muted mt-4">
-          <small>
-            ¿Le interesa patrocinar este proyecto?
-            <%= mail_to "contacto@asoquimbo.com", "Contáctenos", class: "text-decoration-none" %>
-          </small>
-        </p> -->
       </div>
     </div>
   </div>
 </section>
-
-<%= link_to new_user_session_path, class: "position-fixed bottom-0 end-0 m-4 btn btn-warning rounded-pill shadow-lg px-4 py-2" do %>
-  <i class="bi bi-box-arrow-in-right me-2"></i>¿Ya eres parte del proyecto? Inicia sesión aquí
-<% end %>
