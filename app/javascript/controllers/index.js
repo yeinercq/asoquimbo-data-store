@@ -24,3 +24,6 @@ application.register('textarea-autogrow', TextareaAutogrow)
 
 import ReadMore from '@stimulus-components/read-more'
 application.register('read-more', ReadMore)
+
+import AnimatedNumber from '@stimulus-components/animated-number'
+application.register('animated-number', AnimatedNumber)
