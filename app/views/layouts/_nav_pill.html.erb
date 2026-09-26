@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg py-3 bg-transparent">
+<nav class="navbar navbar-expand-lg py-3 bg-dark bg-opacity-25 fixed-top shadow">
   <div class="container-fluid">
     <div class="ms-auto d-lg-none">
       <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,19 +9,19 @@
     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
       <ul class="navbar-nav align-items-lg-center gap-lg-2 mb-2 mb-lg-0 fs-5">
         <li class="nav-item">
-          <a class="nav-link active text-white fw-bold" aria-current="page" href="#">Inicio</a>
+          <a class="nav-link active text-white fw-bold" aria-current="page" href="#landing">Inicio</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown dropdown-center">
           <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Explorar datos
           </a>
-          <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0">
+          <ul class="dropdown-menu dropdown-menu-dark shadow-sm border-0">
             <li><a class="dropdown-item" href="#">Metodologías para el monitoreo socioecológico</a></li>
             <li><a class="dropdown-item" href="#">Monitoreos previos y antecedentes socioecológicos</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white fw-bold" href="#">Acerca del convenio</a>
+          <a class="nav-link text-white fw-bold" href="#about">Acerca del convenio</a>
         </li>
         <li class="nav-item">
           <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-outline-light rounded-4" %>
