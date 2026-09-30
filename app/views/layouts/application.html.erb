@@ -15,35 +15,12 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-    <% if current_page?(root_path) %>
-      <style>
-        body {
-          position: relative;
-          background-color: #fff;
-        }
-
-        body::before {
-          content: "";
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-image: linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)), url("<%= asset_path('landing-page-background.jpg') %>");
-          background-position: center center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          z-index: -1;
-          pointer-events: none;
-        }
-      </style>
-    <% end %>
   </head>
-  <body data-bs-spy="scroll" data-bs-target="#pillNav" data-bs-smooth-scroll="true" tabindex="0">
+  <body class="<%= 'landing-page' if current_page?(root_path) %>" style="<%= "--landing-bg-image: url('#{asset_path('landing-page-background.jpg')}')" if current_page?(root_path) %>" data-bs-spy="scroll" data-bs-target="#pillNav" data-bs-smooth-scroll="true" tabindex="0">
     <!-- Navbar -->
     <% if current_page?(root_path) %>
       <%= render "layouts/nav_pill" %>
-    <% else %>
+    <% elsif !current_page?('/pages/data_bases_index') %>
       <%= render "layouts/navbar"%>
     <% end %>
 
