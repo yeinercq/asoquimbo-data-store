@@ -1,0 +1,103 @@
+<%= turbo_frame_tag 'remote_modal' do %>
+  <%= render "layouts/remote_modal_content", title: "Registro de base de datos" do %>
+    <% record_type = @data_base_record.record_type.presence || DataBaseRecord.record_types.key(@data_base_record.record_type_before_type_cast.to_i) %>
+
+    <div class="row">
+      <div class="col-12">
+        <h4>IDENTIFICACIÓN, CLASIFICACIÓN Y TRAZABILIDAD DOCUMENTAL</h4>
+        <hr>
+
+        <dl class="row">
+          <dt class="col-12 col-lg-4">Tipo de registro</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.record_type %></dd>
+
+          <dt class="col-12 col-lg-4">Título del documento</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.document_title %></dd>
+
+          <dt class="col-12 col-lg-4">Autores</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.authors %></dd>
+
+          <dt class="col-12 col-lg-4">Año</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.year %></dd>
+
+          <dt class="col-12 col-lg-4">Familia documental</dt>
+          <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@data_base_record.document_family) %></dd>
+
+          <dt class="col-12 col-lg-4">Tipo de documento</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.document_type %></dd>
+
+          <dt class="col-12 col-lg-4">Instituciones/Entidades</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.institutions_entities %></dd>
+
+          <dt class="col-12 col-lg-4">Cita APA</dt>
+          <dd class="col-12 col-lg-8"><%= simple_format(@data_base_record.apa_citation) %></dd>
+
+          <% if record_type == "ecologica" %>
+            <dt class="col-12 col-lg-4">Componente ecológico</dt>
+            <dd class="col-12 col-lg-8"><%= @data_base_record.ecological_component %></dd>
+          <% end %>
+
+          <dt class="col-12 col-lg-4">Área geográfica</dt>
+          <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@data_base_record.geographic_area) %></dd>
+
+          <dt class="col-12 col-lg-4">Área geográfica específica</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.specific_geographic_area %></dd>
+
+          <dt class="col-12 col-lg-4">Nivel de acceso</dt>
+          <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@data_base_record.access_level) %></dd>
+
+          <dt class="col-12 col-lg-4">Tomado de</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.taken_from %></dd>
+
+          <dt class="col-12 col-lg-4">Comentario documental</dt>
+          <dd class="col-12 col-lg-8"><%= simple_format(@data_base_record.documental_comment) %></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h4>CARACTERIZACIÓN GENERAL</h4>
+        <hr>
+
+        <dl class="row">
+          <dt class="col-12 col-lg-4">Cobertura espacial</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.spatial_coverage %></dd>
+
+          <dt class="col-12 col-lg-4">Escala de análisis</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.analysis_scale %></dd>
+
+          <dt class="col-12 col-lg-4">Escala territorial</dt>
+          <dd class="col-12 col-lg-8"><%= @custom_select_list.custom_option_name(@data_base_record.territorial_scale) %></dd>
+
+          <dt class="col-12 col-lg-4">Periodo de estudio</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.study_period %></dd>
+
+          <dt class="col-12 col-lg-4">Objetivo de estudio</dt>
+          <dd class="col-12 col-lg-8"><%= simple_format(@data_base_record.study_goal) %></dd>
+
+          <dt class="col-12 col-lg-4">Familias de interés</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.focus_families %></dd>
+
+          <dt class="col-12 col-lg-4">Enfoque</dt>
+          <dd class="col-12 col-lg-8"><%= @data_base_record.approach %></dd>
+
+          <dt class="col-12 col-lg-4">Metodología</dt>
+          <dd class="col-12 col-lg-8"><%= simple_format(@data_base_record.methodology) %></dd>
+        </dl>
+      </div>
+    </div>
+    <hr>
+    <h4>ARCHIVO ADJUNTO</h4>
+    
+    <% if @data_base_record.source_file? %>
+      <div class="col-12 mt-2">
+        <%= link_to t("common.download_file") + " (" + @data_base_record.source_file.file.filename + ")", @data_base_record.source_file_url, target: "_blank" %>
+      </div>
+    <% else %>
+      <p>No hay archivo adjunto disponible.</p>
+    <% end %>
+    <div class="col-12 mt-2 d-flex justify-content-end mb-2">
+      Creado por: <span class="badge rounded-pill text-bg-success d-flex align-items-center"><%= @data_base_record.user.email %></span>
+    </div>
+  <% end %>
+<% end %>

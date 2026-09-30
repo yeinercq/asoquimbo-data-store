@@ -3,7 +3,8 @@ module CustomSelectListsHelper
     model_names_list = {
       social_ecological_characterization: I18n.t("activerecord.models.social_ecological_characterization.others"),
       monthly_report: I18n.t("activerecord.models.monthly_report.others"),
-      activity: I18n.t("activerecord.models.activity.others")
+      activity: I18n.t("activerecord.models.activity.others"),
+      data_base_record: I18n.t("activerecord.models.data_base_record.others")
     }
     model_names_list.map { |key, value| [ value, key.to_sym ] }
   end

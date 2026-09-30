@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_05_12_033743) do
+ActiveRecord::Schema[7.2].define(version: 2026_09_30_041354) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -87,6 +87,39 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_12_033743) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "data_base_records", force: :cascade do |t|
+    t.string "code"
+    t.integer "ecological_component"
+    t.string "document_title"
+    t.string "authors"
+    t.integer "year", default: 1900, null: false
+    t.string "document_type"
+    t.integer "document_family"
+    t.string "institutions_entities"
+    t.text "apa_citation"
+    t.integer "geographic_area"
+    t.string "specific_geographic_area"
+    t.integer "access_level"
+    t.string "taken_from"
+    t.text "documental_comment"
+    t.string "spatial_coverage"
+    t.string "analysis_scale"
+    t.integer "territorial_scale"
+    t.string "study_period"
+    t.text "study_goal"
+    t.string "focus_families"
+    t.string "approach"
+    t.text "methodology"
+    t.integer "record_type"
+    t.bigint "user_id", null: false
+    t.bigint "custom_select_list_id", null: false
+    t.string "source_file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["custom_select_list_id"], name: "index_data_base_records_on_custom_select_list_id"
+    t.index ["user_id"], name: "index_data_base_records_on_user_id"
+  end
+
   create_table "monthly_reports", force: :cascade do |t|
     t.date "date_period"
     t.bigint "user_id", null: false
@@ -146,6 +179,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_12_033743) do
   add_foreign_key "actors", "users", column: "responsible_id"
   add_foreign_key "custom_option_lists", "custom_select_lists"
   add_foreign_key "custom_options", "custom_option_lists"
+  add_foreign_key "data_base_records", "custom_select_lists"
+  add_foreign_key "data_base_records", "users"
   add_foreign_key "monthly_reports", "custom_select_lists"
   add_foreign_key "monthly_reports", "users"
   add_foreign_key "social_ecological_characterizations", "custom_select_lists"

@@ -1,0 +1,59 @@
+
+<div class="header mt-3">
+  <h1>REGISTROS DE BASE DE DATOS</h1>
+  <div class="d-flex justify-content-start gap-2">
+    <%= link_to new_data_base_record_path, class: "btn btn-primary", data: { turbo_frame: "remote_modal" } do %>
+      <i class="bi bi-plus-circle-fill"></i> Nuevo registro
+    <% end %>
+    <%= link_to "#", class: "btn btn-secondary", data: { turbo_frame: "import_form" } do %>
+      <i class="bi bi-database-fill-up"></i> Importar registros
+    <% end %>
+    <%= link_to "#", class: "btn btn-secondary", data: { turbo: false } do %>
+      <i class="bi bi-database-fill-down"></i> Exportar registros
+    <% end %>
+  </div>
+</div>
+
+<% if custom_select_list_and_custom_options_for_select_exists?(DataBaseRecord) %>
+  <div class="filters mt-2">
+    <%# Seach form %>
+    <div class="row">
+      <%= form_with( url: data_base_records_path, method: :get, data: { turbo_frame: 'data_base_records'}, class: "d-block d-md-flex flex-row flex-wrap gap-2 justify-content-end align-items-center" ) do |form| %>
+        <div class="col-auto">
+          Filtrar:
+        </div>
+
+        <div class="col-auto mb-2">
+          <%= form.select :record_type, DataBaseRecord.record_types.map { |key, value| [key, key] }, { prompt: "Tipo de registro" }, { class: 'form-select' } %>
+        </div>
+
+        <div class="col-auto mb-2">
+          <%= form.select :document_family, custom_options_for_select(:document_family), { prompt: "Familia documental" }, { class: 'form-select' } %>
+        </div>
+
+        <div class="col-auto mb-2">
+          <%= form.select :geographic_area, custom_options_for_select(:geographic_area), { prompt: "Área geográfica" }, { class: 'form-select' } %>
+        </div>
+
+        <div class="col-auto mb-2">
+          <%= form.select :access_level, custom_options_for_select(:access_level), { prompt: "Nivel de acceso" }, { class: 'form-select' } %>
+        </div>
+
+        <div class="col-auto mb-2">
+          <%= form.select :territorial_scale, custom_options_for_select(:territorial_scale), { prompt: "Escala territorial" }, { class: 'form-select' } %>
+        </div>
+
+        <div class="col-auto mb-2">
+          <%= form.submit "Buscar", class: "btn btn-primary" %>
+          <%= form.submit "Exportar", class: "btn btn-secondary", formaction: data_base_records_path(format: :csv) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%= turbo_frame_tag "import_form" %>
+<%= turbo_frame_tag "data_base_records" do %>
+  <%= render "empty_state" %>
+  <%= render @data_base_records %>
+<% end %>

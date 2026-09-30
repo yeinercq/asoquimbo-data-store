@@ -1,0 +1,8 @@
+<div class="empty-state empty-state--only-child">
+  <p class="empty-state__text">
+    Aún no hay registros de base de datos creados.
+  </p>
+  <%= link_to new_data_base_record_path, class: "btn btn-primary", data: { turbo_frame: "remote_modal" } do %>
+    <i class="bi bi-plus-circle-fill"></i> Nuevo registro
+  <% end %>
+</div>

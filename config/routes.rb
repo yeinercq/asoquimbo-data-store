@@ -39,4 +39,6 @@ Rails.application.routes.draw do
   end
 
   resources :collaborators, except: [ :show ]
+
+  resources :data_base_records
 end

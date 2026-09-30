@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "remote_modal" do %>
+  <%= render "layouts/remote_modal_content", title: "Nueva registro de base de datos" do %>
+    <%= render "form", data_base_record: @data_base_record %>
+  <% end %>
+<% end %>

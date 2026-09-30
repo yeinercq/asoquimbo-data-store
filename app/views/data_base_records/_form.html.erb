@@ -1,0 +1,74 @@
+<%= simple_form_for data_base_record, html: { class: "form container" } do |f| %>
+  <%= form_error_notification(data_base_record) %>
+
+  <div class="mb-3">
+    <h5>IDENTIFICACIÓN, CLASIFICACIÓN Y TRAZABILIDAD DOCUMENTAL</h5>
+    <hr>
+    <div class="row">
+      <%= f.input :record_type, collection: DataBaseRecord.record_types.map { |key, value| [key, key] }, label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" } %>
+    </div>
+    <div class="row">
+      <%= f.input :document_title, input_html: { autocomplete: 'off', spellcheck: false }, wrapper_html: { class: 'col-12 col-md-6' } %>
+      <%= f.input :authors, input_html: { autofocus: true, autocomplete: 'off', spellcheck: false }, wrapper_html: { class: 'col-12 col-md-6' } %>
+    </div>
+    <div class="row">
+      <%= f.input :year, wrapper_html: { class: 'col-12 col-md-4' } %>
+      <%= f.input :document_family, collection: custom_options_for_select(:document_family), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-4' } %>
+      <%= f.input :document_type, input_html: { autocomplete: 'off', spellcheck: false }, wrapper_html: { class: 'col-12 col-md-4' } %>
+    </div>
+    <div class="row mb-4">
+      <%= f.input :institutions_entities, input_html: { autocomplete: 'off', spellcheck: false } %>
+    </div>
+    <div class="row mb-4">
+      <%= f.input :apa_citation, as: :text, input_html: { class: "form-control", data: { controller: "textarea-autogrow" } } %>
+    </div>
+    <div class="row mb-4">
+      <%= f.input :geographic_area, collection: custom_options_for_select(:geographic_area), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-6' } %>
+      <%= f.input :specific_geographic_area, input_html: { autocomplete: 'off', spellcheck: false }, wrapper_html: { class: 'col-12 col-md-6' } %>
+    </div>
+    <div class="row mb-4">
+      <%= f.input :access_level, collection: custom_options_for_select(:access_level), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select" }, wrapper_html: { class: 'col-12 col-md-6' } %>
+      <%= f.input :taken_from, input_html: { autocomplete: 'off', spellcheck: false }, wrapper_html: { class: 'col-12 col-md-6' } %>
+    </div>
+    <div class="row mb-4">
+      <%= f.input :documental_comment, as: :text, input_html: { class: "form-control", data: { controller: "textarea-autogrow" } }, wrapper_html: { class: 'col-12' } %>
+    </div>
+    
+    <h5>CARACTERIZACIÓN GENERAL</h5>
+    <hr>
+
+    <div class="row">
+      <%= f.input :spatial_coverage, input_html: { autocomplete: 'off', spellcheck: false }, wrapper_html: { class: 'col-12 col-md-6' } %>
+      <%= f.input :analysis_scale, input_html: { autocomplete: 'off', spellcheck: false }, wrapper_html: { class: 'col-12 col-md-6' } %>      
+    </div>
+    <div class="row">
+      <%= f.input :territorial_scale, collection: custom_options_for_select(:territorial_scale), label_method: :first, value_method: :second, prompt: t("common.form.select_an_option"), input_html: { class: "form-select"}, wrapper_html: { class: 'col-12 col-md-6' } %>
+      <%= f.input :study_period, input_html: { autocomplete: 'off', spellcheck: false }, wrapper_html: { class: 'col-12 col-md-6' } %>
+    </div>
+    <div class="row">
+      <%= f.input :study_goal, as: :text, input_html: { autocomplete: 'off', spellcheck: false, data: { controller: "textarea-autogrow" } } %>
+    </div>
+    <div class="row">
+      <%= f.input :focus_families, input_html: { autocomplete: 'off', spellcheck: false }, wrapper_html: { class: 'col-12 col-md-6' } %>
+      <%= f.input :approach,  input_html: { autocomplete: 'off', spellcheck: false }, wrapper_html: { class: 'col-12 col-md-6' } %>
+    </div>
+    <div class="row">
+      <%= f.input :methodology, as: :text, input_html: { autocomplete: 'off', spellcheck: false, data: { controller: "textarea-autogrow" } } %>
+    </div>
+    <% if data_base_record.source_file? %>
+      <div class="col-12 mt-2">
+        <%= link_to t("common.download_file") + " (" + data_base_record.source_file.file.filename + ")", data_base_record.source_file_url, target: "_blank" %>
+      </div>
+    <% end %>
+    <div class="col-12 mt-2">
+      Archivo adjunto (pdf, doc, docx, xls, xlsx, csv; máximo 3 MB):
+      <%= f.file_field :source_file, accept: 'pdf/doc/docx/xls/xlsx/csv', class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="col-12 d-flex justify-content-end gap-2">
+    <%= link_to t("common.cancel"), "#", class: "btn btn-secondary", data: { bs_dismiss: "modal" } %>
+    <%= f.submit t("common.accept"), class: "btn btn-warning"%>
+  </div>
+
+<% end %>

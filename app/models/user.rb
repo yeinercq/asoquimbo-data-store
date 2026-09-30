@@ -24,6 +24,7 @@ class User < ApplicationRecord
 
   has_many :social_ecological_characterizations, dependent: :nullify
   has_many :monthly_reports, dependent: :nullify
+  has_many :data_base_records, dependent: :nullify
 
   scope :ordered_by_name, -> { order(:name) }
 

@@ -20,6 +20,9 @@ es:
       user:
         one: Colaborador
         others: Colaboradores
+      data_base_record:
+        one: Registro de base de datos
+        others: Registros de base de datos
     attributes:
       social_ecological_characterization:
         authors: "Autores"
@@ -78,6 +81,30 @@ es:
             coordinator: Coordinador
             professional: Profesional
             inspector: Administrativo
+      data_base_record:
+        code: Código
+        ecological_component: Componente ecológico 
+        document_title: Título del documento
+        authors: Autores
+        year: Año
+        document_type: Tipo de documento
+        document_family: Familia documental
+        institutions_entities: Instituciones/Entidades
+        apa_citation: Cita Apa
+        geographic_area: Área geográfica
+        specific_geographic_area: Área geografica específica
+        access_level: Nivel de acceso
+        taken_from: Enlace a fuente original
+        documental_comment: Observación documental
+        spatial_coverage: Cobertura espacial
+        analysis_scale: Escala de análisis
+        territorial_scale: Escala territorial
+        study_period: Periodo de estudio/monitoreo
+        study_goal: Objetivo de estudio/monitoreo
+        focus_families: Familias de enfoque
+        approach: Enfoque
+        methodology: Metodología general empleada
+        record_type: Tipo de registro
     errors:
       messages:
         blank: "no puede estar en blanco"

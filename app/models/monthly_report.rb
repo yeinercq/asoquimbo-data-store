@@ -9,7 +9,7 @@
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  custom_select_list_id :bigint           not null
-#  status                :string           default("reported")
+#  status                :string
 #  transitions           :jsonb
 #  legal_documents       :json
 #  goal                  :text
