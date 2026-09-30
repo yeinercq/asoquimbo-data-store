@@ -1,0 +1,5 @@
+<%= turbo_stream.update "import_form", "" %>
+<%= turbo_stream.update "custom_select_lists" do %>
+    <% render @custom_select_lists %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>

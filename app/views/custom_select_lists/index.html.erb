@@ -5,12 +5,19 @@
     <%= link_to new_custom_select_list_path, class: "btn btn-primary", data: { turbo_frame: dom_id(CustomSelectList.new) } do %>
       <i class="bi bi-plus-circle-fill"></i> Nueva lista
     <% end %>
+    <%= link_to import_form_custom_select_lists_path, class: "btn btn-secondary", data: { turbo_frame: "import_form" } do %>
+      <i class="bi bi-database-fill-up"></i> Importar listas
+    <% end %>
+    <%= link_to custom_select_lists_path(format: :csv), class: "btn btn-secondary", data: { turbo: false } do %>
+      <i class="bi bi-database-fill-down"></i> Exportar opciones
+    <% end %>
   </div>
 </div>
 
 <div class="container">
   <%= turbo_frame_tag CustomSelectList.new %>
 
+  <%= turbo_frame_tag "import_form" %>
   <%= turbo_frame_tag "custom_select_lists", class: "row row-cols-md-2 mb-4"  do %>
     <%= render @custom_select_lists %>
   <% end %>

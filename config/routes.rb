@@ -16,10 +16,10 @@ Rails.application.routes.draw do
   root "pages#landing"
 
   resources :social_ecological_characterizations do
-      collection do
-        get "import_form"
-        post "import_file"
-      end
+    collection do
+      get "import_form"
+      post "import_file"
+    end
   end
 
   resources :monthly_reports do
@@ -35,10 +35,19 @@ Rails.application.routes.draw do
   end
 
   resources :custom_select_lists, except: [ :show ] do
+    collection do
+      get "import_form"
+      post "import_file"
+    end
     resources :custom_option_lists, except: [ :show, :index ]
   end
 
   resources :collaborators, except: [ :show ]
 
-  resources :data_base_records
+  resources :data_base_records do
+    collection do
+      get "import_form"
+      post "import_file"
+    end
+  end
 end
