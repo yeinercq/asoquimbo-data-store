@@ -1,5 +1,7 @@
 <%= turbo_stream.update "import_form", "" %>
-<%= turbo_stream.update "custom_select_lists" do %>
-    <% render @custom_select_lists %>
+<% unless @custom_select_lists.blank? %>
+    <%= turbo_stream.update "custom_select_lists" do %>
+        <% render @custom_select_lists %>
+    <% end %>
 <% end %>
 <%= render_turbo_stream_flash_messages %>

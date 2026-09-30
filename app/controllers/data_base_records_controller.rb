@@ -67,15 +67,23 @@ class DataBaseRecordsController < ApplicationController
 
   def import_file
     file = params[:file]
-    if file.present?
-      # result = SocialEcologicalCharacterizationImportService.new(file).call
-      # if result[:success]
-      #   redirect_to social_ecological_characterizations_path, notice: "Archivo importado exitosamente. #{result[:imported_count]} registros importados."
-      # else
-      #   redirect_to social_ecological_characterizations_path, alert: "Error al importar el archivo: #{result[:error]}"
-      # end
-    else
-      redirect_to social_ecological_characterizations_path, alert: "Por favor, seleccione un archivo para importar."
+    respond_to do |format|
+      if file.present?
+        result, message = ImportFileService.new(file, DataBaseRecord, current_user).call
+        if result
+          @data_base_records = DataBaseRecord.includes(:user).ordered
+          format.html { redirect_to data_base_records_path, notice: "Registro importado exitosamente: #{message}" }
+          format.turbo_stream { flash.now[:notice] = "Registro importado exitosamente: #{message}" }
+        else
+          @data_base_records = DataBaseRecord.includes(:user).ordered
+          format.html { redirect_to data_base_records_path, alert: "Error al importar el registro: #{message}}" }
+          format.turbo_stream { flash.now[:notice] = "Error al importar el registro: #{message}" }
+        end
+      else
+        @data_base_records = DataBaseRecord.includes(:user).ordered
+        format.html { redirect_to data_base_records_path, alert: "Por favor, seleccione un archivo para importar." }
+        format.turbo_stream { flash.now[:notice] = "Por favor, seleccione un archivo para importar" }
+      end
     end
   end
 

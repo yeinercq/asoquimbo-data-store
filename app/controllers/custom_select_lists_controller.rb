@@ -89,12 +89,12 @@ class CustomSelectListsController < ApplicationController
 
   def generate_csv(collection)
     CSV.generate(headers: true) do |csv|
-      csv << %w[model_name_association model_field name id]
+      csv << %w[model_name_association custom_select_list_id model_field name id]
 
       collection.where(model_name_association: "data_base_record").each do |custom_select_list|
         custom_select_list.custom_option_lists.each do |custom_option_list|
           custom_option_list.custom_options.each do |custom_option|
-            csv << [ I18n.t("activerecord.models.#{custom_select_list.model_name_association}.one"), I18n.t("activerecord.attributes.#{custom_select_list.model_name_association}.#{custom_option_list.model_field}"), custom_option.name, custom_option.id ]
+            csv << [ I18n.t("activerecord.models.#{custom_select_list.model_name_association}.one"), custom_select_list.id, I18n.t("activerecord.attributes.#{custom_select_list.model_name_association}.#{custom_option_list.model_field}"), custom_option.name, custom_option.id ]
           end
         end
       end

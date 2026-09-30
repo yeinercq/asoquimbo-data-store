@@ -5,7 +5,7 @@
     <%= link_to new_data_base_record_path, class: "btn btn-primary", data: { turbo_frame: "remote_modal" } do %>
       <i class="bi bi-plus-circle-fill"></i> Nuevo registro
     <% end %>
-    <%= link_to "#", class: "btn btn-secondary", data: { turbo_frame: "import_form" } do %>
+    <%= link_to import_form_data_base_records_path, class: "btn btn-secondary", data: { turbo_frame: "import_form" } do %>
       <i class="bi bi-database-fill-up"></i> Importar registros
     <% end %>
     <%= link_to "#", class: "btn btn-secondary", data: { turbo: false } do %>
