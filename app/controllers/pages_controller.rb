@@ -21,7 +21,6 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.html
       format.turbo_stream
-      format.csv { send_data generate_csv(@data_base_records), filename: "registro-base-de-datos-#{Date.today}.csv" }
     end
   end
 

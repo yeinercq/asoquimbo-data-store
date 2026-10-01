@@ -33,7 +33,6 @@
 
         <div class="col-auto mb-2">
           <%= form.submit "Buscar", class: "btn btn-primary" %>
-          <%= form.submit "Exportar", class: "btn btn-secondary", formaction: data_base_records_path(format: :csv) %>
         </div>
       <% end %>
     </div>
@@ -42,5 +41,9 @@
 
 <%= turbo_frame_tag "data_base_records" do %>
   <%= render "empty_state" %>
-  <%= render @data_base_records %>
+  <% if @data_base_records.any? %>
+    <div class="row row-cols-1 g-4 mt-2">
+      <%= render partial: "index_data_base_record", collection: @data_base_records, as: :data_base_record %>
+    </div>
+  <% end %>
 <% end %>
