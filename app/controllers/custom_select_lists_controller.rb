@@ -59,7 +59,7 @@ class CustomSelectListsController < ApplicationController
     file = params[:file]
     respond_to do |format|
       if file.present?
-        result, message = ImportFileService.new(file, CustomSelectList).call
+        result, message = ImportFileService.new(file, CustomSelectList, current_user).call
         if result
           @custom_select_lists = CustomSelectList.includes(:custom_option_lists).ordered
           format.html { redirect_to custom_select_lists_path, notice: "Archivo importado exitosamente: #{message}" }
