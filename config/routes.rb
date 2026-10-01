@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get "pages/home"
   get "pages/landing"
   get "pages/data_bases_index"
+  get "pages/data_base_record_detail/:id", to: "pages#data_base_record_detail", as: "data_base_record_detail"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

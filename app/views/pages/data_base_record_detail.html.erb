@@ -1,0 +1,96 @@
+<%= turbo_frame_tag "data_base_record_detail" do %>
+  <% record_type_labels = { "metodologia" => "Metodología", "social" => "Social", "ecologica" => "Ecológica" } %>
+  <% record_type_badges = { "metodologia" => "text-bg-primary", "social" => "text-bg-success", "ecologica" => "text-bg-info" } %>
+  <% record_type = @data_base_record.record_type.presence || DataBaseRecord.record_types.key(@data_base_record.record_type_before_type_cast.to_i) %>
+
+  <div class="d-flex align-items-center justify-content-between gap-3 mb-3">
+    <span class="badge rounded-pill <%= record_type_badges[record_type] %>"><%= record_type_labels[record_type] || record_type %></span>
+    <span class="text-muted small text-nowrap">
+      <i class="bi bi-calendar3 me-1"></i><%= @data_base_record.year %>
+    </span>
+  </div>
+
+  <h4 class="fw-bold mb-1"><%= @data_base_record.document_title %></h4>
+  <p class="text-muted small mb-4">
+    <i class="bi bi-people me-1"></i><%= @data_base_record.authors %>
+    <span class="mx-1">·</span>
+    <i class="bi bi-building me-1"></i><%= @data_base_record.institutions_entities %>
+  </p>
+
+  <section>
+    <h6 class="text-uppercase fw-bold text-muted mb-0" style="letter-spacing: .04em;">Identificación y trazabilidad documental</h6>
+    <hr class="mt-2 mb-3">
+    <dl class="row mb-0">
+      <dt class="col-12 col-sm-4 text-muted">Familia documental</dt>
+      <dd class="col-12 col-sm-8"><%= @custom_select_list.custom_option_name(@data_base_record.document_family) %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Tipo de documento</dt>
+      <dd class="col-12 col-sm-8"><%= @data_base_record.document_type %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Cita APA</dt>
+      <dd class="col-12 col-sm-8"><%= simple_format(@data_base_record.apa_citation) %></dd>
+
+      <% if record_type == "ecologica" %>
+        <dt class="col-12 col-sm-4 text-muted">Componente ecológico</dt>
+        <dd class="col-12 col-sm-8"><%= @data_base_record.ecological_component %></dd>
+      <% end %>
+
+      <dt class="col-12 col-sm-4 text-muted">Área geográfica</dt>
+      <dd class="col-12 col-sm-8"><%= @custom_select_list.custom_option_name(@data_base_record.geographic_area) %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Área geográfica específica</dt>
+      <dd class="col-12 col-sm-8"><%= @data_base_record.specific_geographic_area %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Nivel de acceso</dt>
+      <dd class="col-12 col-sm-8"><%= @custom_select_list.custom_option_name(@data_base_record.access_level) %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Tomado de</dt>
+      <dd class="col-12 col-sm-8"><%= @data_base_record.taken_from %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Comentario documental</dt>
+      <dd class="col-12 col-sm-8"><%= simple_format(@data_base_record.documental_comment) %></dd>
+    </dl>
+  </section>
+
+  <section class="mt-4">
+    <h6 class="text-uppercase fw-bold text-muted mb-0" style="letter-spacing: .04em;">Caracterización general</h6>
+    <hr class="mt-2 mb-3">
+    <dl class="row mb-0">
+      <dt class="col-12 col-sm-4 text-muted">Cobertura espacial</dt>
+      <dd class="col-12 col-sm-8"><%= @data_base_record.spatial_coverage %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Escala de análisis</dt>
+      <dd class="col-12 col-sm-8"><%= @data_base_record.analysis_scale %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Escala territorial</dt>
+      <dd class="col-12 col-sm-8"><%= @custom_select_list.custom_option_name(@data_base_record.territorial_scale) %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Periodo de estudio</dt>
+      <dd class="col-12 col-sm-8"><%= @data_base_record.study_period %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Objetivo de estudio</dt>
+      <dd class="col-12 col-sm-8"><%= simple_format(@data_base_record.study_goal) %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Familias de interés</dt>
+      <dd class="col-12 col-sm-8"><%= @data_base_record.focus_families %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Enfoque</dt>
+      <dd class="col-12 col-sm-8"><%= @data_base_record.approach %></dd>
+
+      <dt class="col-12 col-sm-4 text-muted">Metodología</dt>
+      <dd class="col-12 col-sm-8"><%= simple_format(@data_base_record.methodology) %></dd>
+    </dl>
+  </section>
+
+  <section class="mt-4">
+    <h6 class="text-uppercase fw-bold text-muted mb-0" style="letter-spacing: .04em;">Archivo adjunto</h6>
+    <hr class="mt-2 mb-3">
+    <% if @data_base_record.source_file? %>
+      <%= link_to @data_base_record.source_file_url, target: "_blank", class: "btn btn-outline-success btn-sm rounded-pill" do %>
+        <i class="bi bi-download me-1"></i>Descargar archivo (<%= @data_base_record.source_file.file.filename %>)
+      <% end %>
+    <% else %>
+      <p class="text-muted mb-0">No hay archivo adjunto disponible.</p>
+    <% end %>
+  </section>
+<% end %>

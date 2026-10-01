@@ -10,6 +10,9 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import OffcanvasController from "./offcanvas_controller"
+application.register("offcanvas", OffcanvasController)
+
 import RemoteModalController from "./remote_modal_controller"
 application.register("remote-modal", RemoteModalController)
 

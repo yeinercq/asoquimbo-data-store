@@ -72,6 +72,7 @@ class DataBaseRecord < ApplicationRecord
   scope :filter_by_access_level, ->(level) { where(access_level: level) }
   scope :filter_by_territorial_scale, ->(scale) { where(territorial_scale: scale) }
   scope :filter_by_record_type, ->(type) { where(record_type: type) }
+  scope :filter_by_year, ->(year) { where(year: year) }
 
   mount_uploader :source_file, SourceFileUploader
 

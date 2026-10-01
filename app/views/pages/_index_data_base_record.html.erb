@@ -7,9 +7,16 @@
     <div class="card-body d-flex flex-column">
       <div class="d-flex align-items-center justify-content-between mb-3">
         <span class="badge rounded-pill <%= record_type_badges[record_type] %>"><%= record_type_labels[record_type] || record_type %></span>
-        <span class="text-muted small">
-          <i class="bi bi-calendar3 me-1"></i><%= data_base_record.year %>
-        </span>
+        <div class="d-flex align-items-center gap-3 text-muted small">
+          <span>
+            <i class="bi bi-calendar3 me-1"></i><%= data_base_record.year %>
+          </span>
+          <% if data_base_record.source_file? %>
+            <span class="text-success fs-6" title="Incluye archivo adjunto">
+              <i class="bi bi-paperclip"></i>
+            </span>
+          <% end %>
+        </div>
       </div>
 
       <h5 class="card-title fw-semibold mb-2"><%= data_base_record.document_title %></h5>
@@ -23,9 +30,9 @@
       </p>
 
       <div class="mt-auto d-flex justify-content-end">
-        <button type="button" class="btn btn-outline-success btn-sm rounded-pill px-3">
+        <%= link_to data_base_record_detail_path(data_base_record), class: "btn btn-outline-success btn-sm rounded-pill px-3", data: { turbo_frame: "data_base_record_detail" } do %>
           <i class="bi bi-arrows-angle-expand me-1"></i>Ver más
-        </button>
+        <% end %>  
       </div>
     </div>
   </div>

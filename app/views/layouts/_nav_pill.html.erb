@@ -17,13 +17,13 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-dark shadow-sm border-0">
             <li>
-              <%= link_to "Metodologías para el monitoreo socioecológico", pages_data_bases_index_path, class: "dropdown-item", data: { turbo_frame: "_top" } %>
+              <%= link_to "Metodologías para el monitoreo socioecológico", pages_data_bases_index_path(record_type: "metodologia"), class: "dropdown-item", data: { turbo_frame: "_top" } %>
             </li>
             <li>
-              <%= link_to "Monitoreos previos y antecedentes sociales", pages_data_bases_index_path, class: "dropdown-item", data: { turbo_frame: "_top" } %>
+              <%= link_to "Monitoreos previos y antecedentes sociales", pages_data_bases_index_path(record_type: "monitoreo_social"), class: "dropdown-item", data: { turbo_frame: "_top" } %>
             </li>
             <li>
-              <%= link_to "Monitoreos previos y antecedentes ecológicos", pages_data_bases_index_path, class: "dropdown-item", data: { turbo_frame: "_top" } %>
+              <%= link_to "Monitoreos previos y antecedentes ecológicos", pages_data_bases_index_path(record_type: "monitoreo_ecologico"), class: "dropdown-item", data: { turbo_frame: "_top" } %>
             </li>
           </ul>
         </li>
