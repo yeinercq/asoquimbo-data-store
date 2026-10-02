@@ -24,9 +24,9 @@ class ImportFileService
       end
       [ true, "Se importaron #{rows_read} opciones." ]
     elsif @model_name == DataBaseRecord
-      quote_chars = %w[" | ~ ^ & *]
+      # quote_chars = %w[" | ~ ^ & *]
       DataBaseRecord.transaction do
-        CSV.foreach(@file.path, headers: true, encoding: "bom|utf-8", col_sep: "=", quote_char: quote_chars.shift) do |row|
+        CSV.foreach(@file.path, headers: true, encoding: "bom|utf-8", col_sep: "=") do |row|
           data = row.to_h
           data.store("user_id", @current_user.id)
           rows_read += 1

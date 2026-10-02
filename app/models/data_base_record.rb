@@ -79,7 +79,7 @@ class DataBaseRecord < ApplicationRecord
   enum :record_type, metodologia: 1, social: 2, ecologica: 3
 
   OPTION_LISTABLE_FIELDS = [
-    :document_family, :geographic_area, :access_level, :territorial_scale
+    :document_family, :geographic_area, :access_level, :territorial_scale, :ecological_component
   ].freeze
 
   def source_file_size_validation
