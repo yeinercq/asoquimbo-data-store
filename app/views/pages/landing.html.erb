@@ -148,16 +148,41 @@
     </div>
 
     <div class="row mt-5">
-      <div class="row">
+      <div class="row align-items-center">
         <div class="col-4">
-          <%= image_tag('landing-page-background.jpg', alt: "Logotipo", class: "img-fluid rounded shadow") %>
+          <div id="carouselExample" class="carousel slide carousel-fade shadow" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <%= image_tag('landing-page-about-section.jpeg', alt: "Logotipo", class: "d-block w-100 img-fluid rounded") %>
+              </div>
+              <div class="carousel-item">
+                <%= image_tag('landing-page-about-section-2.jpeg', alt: "Logotipo", class: "d-block w-100 img-fluid rounded") %>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+
+
         </div>
         <div class="col-8">
           <h2>Sobre el plan de monitoreo</h2>
           <p class="lh-lg">
-            El plan de monitoreo socioecológico, comunitario y participativo en El Quimbo es una iniciativa para cosolidar, curar y poner a diposición pública, información 
-            relevante sobre los componentes sociales y ecológicos del área de influencia del proyecto hidroeléctico El Quimbo, promoviendo el acceso abierto al conocimiento
-            y el fortalecimiento de la participación cuidadana.
+            El Convenio No. 103 de 2026 fue suscrito entre el Fondo para la Vida y la Biodiversidad y la Asociación Campesina y de Afectados por la Construcción del Proyecto Hidroeléctrico El Quimbo (ASOQUIMBO).
+          </p>
+          <p class="lh-lg">
+            Su objeto es aunar esfuerzos para la formulación del Plan para el monitoreo socioecológico de la represa El Quimbo, promoviendo la participación activa y decisoria de las comunidades.
+            Como parte de este proceso, el Convenio contempla la consolidación y análisis de información secundaria relacionada con el estado social y ecológico de El Quimbo, a partir de fuentes institucionales, académicas, comunitarias y de experiencias previas de monitoreo. 
+          </p>
+          <p class="lh-lg">
+            Esta plataforma pone a disposición el trabajo de curaduría y sistematización, organizada en dos grandes conjuntos de información: metodologías para el monitoreo y antecedentes sociales y ecológicos.
+            La información aquí disponible constituyó un insumo documental y metodológico para la formulación del Plan de Monitoreo.
           </p>
         </div>
       </div>
