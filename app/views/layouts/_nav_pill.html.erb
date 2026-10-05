@@ -31,7 +31,11 @@
           <a class="nav-link text-white fw-bold" href="#about">Acerca del convenio</a>
         </li>
         <li class="nav-item">
-          <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-outline-light rounded-4" %>
+          <% if user_signed_in? %>
+            <%= link_to "Actualizar base de datos", data_base_records_path, method: :delete, class: "btn btn-outline-light rounded-4" %>
+          <% else %>
+            <%= link_to "Iniciar sesión", new_user_session_path, class: "btn btn-outline-light rounded-4" %>
+          <% end %>
         </li>
       </ul>
     </div>

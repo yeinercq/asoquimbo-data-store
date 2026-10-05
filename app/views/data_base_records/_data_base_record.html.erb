@@ -1,40 +1,44 @@
+<% record_type_labels = { "metodologia" => "Metodología", "social" => "Social", "ecologica" => "Ecológica" } %>
+<% record_type_badges = { "metodologia" => "text-bg-primary", "social" => "text-bg-success", "ecologica" => "text-bg-info" } %>
+<% record_type = data_base_record.record_type %>
+
 <%= turbo_frame_tag data_base_record do %>
-  <div class="card shadow mt-2">
-    <div class="card-body">
-      <div class="row align-items-center">
-        <div class="col-12 col-md-3">
-          <strong>Título:</strong> <%= data_base_record.document_title %>
-        </div>
-
-        <div class="col-12 col-md-3">
-          <strong>Autores:</strong> <%= data_base_record.authors %>
-        </div>
-
-        <div class="col-12 col-md-1">
-          <strong>Año:</strong> <%= data_base_record.year %>
-        </div>
-
-        <div class="col-12 col-md-3">
-          <strong>Institución/Entidad:</strong> <%= data_base_record.institutions_entities %>
-        </div>
-
-        <div class="col-12 col-md-2 justify-content-end d-flex gap-2">
-          <%= link_to data_base_record_path(data_base_record), data: { turbo_frame: "remote_modal" } do %>
-            <div class="btn btn-info">
-              <i class="bi bi-eye"></i>
-            </div>
-          <% end %>
-          <%= link_to edit_data_base_record_path(data_base_record), data: { turbo_frame: "remote_modal" } do %>
-            <div class="btn btn-secondary">
-              <i class="bi bi-pencil"></i>
-            </div>
-          <% end %>
-          <%= link_to data_base_record_path(data_base_record), data: { turbo_method: :delete , turbo_confirm: t("common.form.confirm_delete")} do %>
-            <div class="btn btn-danger">
-              <i class="bi bi-trash"></i>
-            </div>
+  <div class="card border shadow rounded-4 h-100 mb-3">
+    <div class="card-body d-flex flex-column">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <span class="badge rounded-pill <%= record_type_badges[record_type] %>"><%= record_type_labels[record_type] || record_type %></span>
+        <div class="d-flex align-items-center gap-3 text-muted small">
+          <span>
+            <i class="bi bi-calendar3 me-1"></i><%= data_base_record.year %>
+          </span>
+          <% if data_base_record.source_file? %>
+            <span class="text-success fs-6" title="Incluye archivo adjunto">
+              <i class="bi bi-paperclip"></i>
+            </span>
           <% end %>
         </div>
+      </div>
+
+      <h5 class="card-title fw-semibold mb-2"><%= data_base_record.document_title %></h5>
+
+      <p class="text-muted small mb-1">
+        <i class="bi bi-people me-1"></i><%= data_base_record.authors %>
+      </p>
+
+      <p class="text-muted small mb-3">
+        <i class="bi bi-building me-1"></i><%= data_base_record.institutions_entities %>
+      </p>
+
+      <div class="mt-auto d-flex justify-content-end gap-2">
+        <%= link_to data_base_record_path(data_base_record), data: { turbo_frame: "remote_modal" }, class: "btn btn-info", title: "Ver" do %>
+          <i class="bi bi-eye"></i>
+        <% end %>
+        <%= link_to edit_data_base_record_path(data_base_record), data: { turbo_frame: "remote_modal" }, class: "btn btn-secondary", title: "Editar" do %>
+          <i class="bi bi-pencil"></i>
+        <% end %>
+        <%= link_to data_base_record_path(data_base_record), data: { turbo_method: :delete, turbo_confirm: t("common.form.confirm_delete") }, class: "btn btn-danger", title: "Eliminar" do %>
+          <i class="bi bi-trash"></i>
+        <% end %>
       </div>
     </div>
   </div>
