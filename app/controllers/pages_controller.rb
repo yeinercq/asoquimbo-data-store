@@ -35,9 +35,9 @@ class PagesController < ApplicationController
   end
 
   def set_whitelist_tags
-    tags_metodologias = DataBaseRecord.where(record_type: "metodologia").limit(100).map(&:tags).flatten.uniq || []
-    tags_social = DataBaseRecord.where(record_type: "social").limit(100).map(&:tags).flatten.uniq || []
-    tags_ecologica = DataBaseRecord.where(record_type: "ecologica").limit(100).map(&:tags).flatten.uniq || []
-    @whitelist_tags = tags_metodologias + tags_social + tags_ecologica
+    tags_metodologias = DataBaseRecord.where(record_type: "metodologia").limit(100).map(&:tags).flatten || []
+    tags_social = DataBaseRecord.where(record_type: "social").limit(100).map(&:tags).flatten || []
+    tags_ecologica = DataBaseRecord.where(record_type: "ecologica").limit(100).map(&:tags).flatten || []
+    @whitelist_tags = (tags_metodologias + tags_social + tags_ecologica).uniq.sort
   end
 end
