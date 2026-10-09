@@ -73,6 +73,7 @@ class DataBaseRecord < ApplicationRecord
   scope :filter_by_territorial_scale, ->(scale) { where(territorial_scale: scale) }
   scope :filter_by_record_type, ->(type) { where(record_type: type) }
   scope :filter_by_year, ->(year) { where(year: year) }
+  scope :filter_by_tag, ->(tag) { where("tags @> ?", [ tag ].to_json) }
 
   mount_uploader :source_file, SourceFileUploader
 

@@ -26,7 +26,7 @@ class PagesController < ApplicationController
   end
 
   def filtering_record_params(params)
-    params.slice(:document_family, :geographic_area, :access_level, :territorial_scale, :record_type, :year)
+    params.slice(:document_family, :geographic_area, :access_level, :territorial_scale, :record_type, :year, :tag)
   end
 
   def set_custom_select_list

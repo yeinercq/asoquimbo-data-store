@@ -152,7 +152,7 @@ class DataBaseRecordsController < ApplicationController
   end
 
   def filtering_params(params)
-    params.slice(:document_family, :geographic_area, :access_level, :territorial_scale, :record_type)
+    params.slice(:document_family, :geographic_area, :access_level, :territorial_scale, :record_type, :year, :tag)
   end
 
   def generate_csv(collection)
