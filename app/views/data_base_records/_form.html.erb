@@ -56,7 +56,7 @@
       <%= f.input :methodology, as: :text, input_html: { autocomplete: 'off', spellcheck: false, data: { controller: "textarea-autogrow" } } %>
     </div>
     <div class="row">
-      <%= f.input :tags_list, as: :string, placeholder: 'Escribe una etiqueta y presiona Enter', input_html: { autocomplete: 'off', spellcheck: false, data: { controller: "tags" } }, wrapper_html: { class: 'col-12' } %>
+      <%= f.input :tags_list, as: :string, placeholder: 'Escribe una etiqueta y presiona Enter', input_html: { autocomplete: 'off', spellcheck: false, data: { controller: "tags", tags_whitelist_value: @whitelist_tags } }, wrapper_html: { class: 'col-12' } %>
     </div>
     <% if data_base_record.source_file? %>
       <div class="col-12 mt-2">

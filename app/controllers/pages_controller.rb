@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :landing, :data_bases_index, :data_base_record_detail ]
   before_action :set_custom_select_list, only: [ :data_bases_index, :data_base_record_detail ]
+  before_action :set_whitelist_tags, only: [ :landing, :data_bases_index ]
 
   def home
   end
@@ -31,5 +32,12 @@ class PagesController < ApplicationController
 
   def set_custom_select_list
     @custom_select_list = CustomSelectList.includes(custom_option_lists: :custom_options).find_by(model_name_association: DataBaseRecord.name.underscore)
+  end
+
+  def set_whitelist_tags
+    tags_metodologias = DataBaseRecord.where(record_type: "metodologia").limit(100).map(&:tags).flatten.uniq || []
+    tags_social = DataBaseRecord.where(record_type: "social").limit(100).map(&:tags).flatten.uniq || []
+    tags_ecologica = DataBaseRecord.where(record_type: "ecologica").limit(100).map(&:tags).flatten.uniq || []
+    @whitelist_tags = tags_metodologias + tags_social + tags_ecologica
   end
 end

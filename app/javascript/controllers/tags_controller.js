@@ -3,7 +3,12 @@ import Tagify from "@yaireo/tagify"
 
 // Connects to data-controller="tags"
 export default class extends Controller {
+  static values = {
+    whitelist: Array
+  }
+
   connect() {
+    console.log(this.whitelistValue)
     const initialValue = this.element.value.trim()
 
     // Tagify espera JSON por defecto; limpiamos antes de inicializar
@@ -11,6 +16,7 @@ export default class extends Controller {
     this.element.value = ""
 
     this.tagify = new Tagify(this.element, {
+      whitelist : this.whitelistValue,
       delimiters: ",",
       originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(",")
     })

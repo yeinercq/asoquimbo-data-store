@@ -26,7 +26,7 @@
         <div class="row row-cols-1 row-cols-md-3 g-4 mb-2 text-start">
           <%= form_with( url: pages_data_bases_index_path, method: :get, data: { turbo_frame: '_top'}, class: "input-group" ) do |form| %>
             <%= form.hidden_field :record_type, value: "" %>
-            <%= form.text_field :tags, placeholder: "Buscar en la base de datos. Ej.: pesca artesanal, calidad del agua, caudal, biodiversidad...", id: "search-home-page", class: "form-control form-control-lg border-end-0 bg-white", data: { controller: "tags" } %>
+            <%= form.text_field :tags, placeholder: "Buscar en la base de datos. Ej.: pesca artesanal, calidad del agua, caudal, biodiversidad...", id: "search-home-page", class: "form-control form-control-lg border-end-0 bg-white", data: { controller: "tags", tags_whitelist_value: @whitelist_tags } %>
             <%= form.button type: :submit, class: "input-group-text bg-white border-start-0 text-dark", aria: { label: "Buscar" } do %>
               <i class="bi bi-search" aria-hidden="true"></i> 
             <% end %>

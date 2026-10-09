@@ -1,6 +1,7 @@
 class DataBaseRecordsController < ApplicationController
   before_action :set_data_base_record, only: %i[show edit update destroy]
   before_action :set_custom_select_list, except: %i[destroy]
+  before_action :set_whitelist_tags, only: %i[index new edit]
   def index
     helpers.custom_select_custom_options_validation(DataBaseRecord)
 
@@ -164,5 +165,12 @@ class DataBaseRecordsController < ApplicationController
         csv << attributes.map { |attr| record.send(attr) }
       end
     end
+  end
+
+  def set_whitelist_tags
+    tags_metodologias = DataBaseRecord.where(record_type: "metodologia").limit(100).map(&:tags).flatten.uniq || []
+    tags_social = DataBaseRecord.where(record_type: "social").limit(100).map(&:tags).flatten.uniq || []
+    tags_ecologica = DataBaseRecord.where(record_type: "ecologica").limit(100).map(&:tags).flatten.uniq || []
+    @whitelist_tags = tags_metodologias + tags_social + tags_ecologica
   end
 end

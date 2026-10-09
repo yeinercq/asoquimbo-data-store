@@ -47,7 +47,7 @@
         </div>
 
         <div class="col-12 mb-2">
-          <%= form.text_field :tags, placeholder: "Filtrar por etiquetas", class: "form-control", data: { controller: "tags" } %>
+          <%= form.text_field :tags, placeholder: "Filtrar por etiquetas", class: "form-control", data: { controller: "tags", tags_whitelist_value: @whitelist_tags } %>
         </div>
 
         <div class="col-auto mb-2">

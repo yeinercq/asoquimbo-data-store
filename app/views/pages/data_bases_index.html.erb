@@ -5,7 +5,7 @@
       <% if custom_select_list_and_custom_options_for_select_exists?(DataBaseRecord) %>
         <div class="filters">
           <%# Seach form %>
-          <div class="row"
+          <div class="row">
             <%= form_with( url: pages_data_bases_index_path, method: :get, data: { turbo_frame: 'data_base_records'}, class: "d-block d-md-flex flex-row flex-wrap gap-2 justify-content-end align-items-center" ) do |form| %>
               <div class="col mb-2">
                 <%= form.select :record_type, DataBaseRecord.record_types.map { |key, value| [key, key] }, { prompt: "Tipo de registro", selected: params[:record_type] }, { class: 'form-select' } %>
@@ -32,7 +32,7 @@
               </div>
 
               <div class="col-12 mb-2">
-                <%= form.text_field :tags, placeholder: "Filtrar por etiquetas", class: "form-control", data: { controller: "tags" }, value: params[:tags] %>
+                <%= form.text_field :tags, placeholder: "Filtrar por etiquetas", class: "form-control", data: { controller: "tags", tags_whitelist_value: @whitelist_tags }, value: params[:tags] %>
               </div>
 
               <div class="col-12 mb-2">
