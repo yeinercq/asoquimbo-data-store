@@ -105,6 +105,7 @@ es:
         approach: Enfoque
         methodology: Metodología general empleada
         record_type: Tipo de registro
+        tags_list: Etiquetas
     errors:
       messages:
         blank: "no puede estar en blanco"

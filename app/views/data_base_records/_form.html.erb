@@ -55,6 +55,9 @@
     <div class="row">
       <%= f.input :methodology, as: :text, input_html: { autocomplete: 'off', spellcheck: false, data: { controller: "textarea-autogrow" } } %>
     </div>
+    <div class="row">
+      <%= f.input :tags_list, as: :string, placeholder: 'Escribe una etiqueta y presiona Enter', input_html: { autocomplete: 'off', spellcheck: false, data: { controller: "tags" } }, wrapper_html: { class: 'col-12' } %>
+    </div>
     <% if data_base_record.source_file? %>
       <div class="col-12 mt-2">
         <%= link_to t("common.download_file") + " (" + data_base_record.source_file.file.filename + ")", data_base_record.source_file_url, target: "_blank" %>

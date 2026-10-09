@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_09_30_041354) do
+ActiveRecord::Schema[7.2].define(version: 2026_10_09_033809) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -107,7 +107,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_09_30_041354) do
     t.integer "territorial_scale"
     t.string "study_period"
     t.text "study_goal"
-    t.string "focus_families"
+    t.integer "focus_families"
     t.string "approach"
     t.text "methodology"
     t.integer "record_type"
@@ -116,6 +116,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_09_30_041354) do
     t.string "source_file"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "tags"
     t.index ["custom_select_list_id"], name: "index_data_base_records_on_custom_select_list_id"
     t.index ["user_id"], name: "index_data_base_records_on_user_id"
   end

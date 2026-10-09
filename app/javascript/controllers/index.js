@@ -30,3 +30,6 @@ application.register('read-more', ReadMore)
 
 import AnimatedNumber from '@stimulus-components/animated-number'
 application.register('animated-number', AnimatedNumber)
+
+import TagsController from "./tags_controller"
+application.register("tags", TagsController)

@@ -29,6 +29,14 @@
         <i class="bi bi-building me-1"></i><%= data_base_record.institutions_entities %>
       </p>
 
+      <% if data_base_record.tags.present? %>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <% data_base_record.tags.each do |tag| %>
+            <span class="badge rounded-pill text-bg-success"><%= tag %></span>
+          <% end %>
+        </div>
+      <% end %>
+
       <div class="mt-auto d-flex justify-content-end gap-2">
         <%= link_to data_base_record_path(data_base_record), data: { turbo_frame: "remote_modal" }, class: "btn btn-info", title: "Ver" do %>
           <i class="bi bi-eye"></i>

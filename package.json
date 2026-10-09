@@ -19,6 +19,7 @@
     "@stimulus-components/notification": "^3.0.0",
     "@stimulus-components/rails-nested-form": "^5.0.0",
     "@stimulus-components/read-more": "^5.0.0",
+    "@yaireo/tagify": "^4.39.0",
     "autoprefixer": "^10.4.27",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",

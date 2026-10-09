@@ -29,6 +29,14 @@
         <i class="bi bi-building me-1"></i><%= data_base_record.institutions_entities %>
       </p>
 
+      <% if data_base_record.tags.present? %>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <% data_base_record.tags.each do |tag| %>
+            <span class="badge rounded-pill text-bg-success"><%= tag %></span>
+          <% end %>
+        </div>
+      <% end %>
+
       <div class="mt-auto d-flex justify-content-end">
         <%= link_to data_base_record_detail_path(data_base_record), class: "btn btn-outline-success btn-sm rounded-pill px-3", data: { turbo_frame: "data_base_record_detail" } do %>
           <i class="bi bi-arrows-angle-expand me-1"></i>Ver más

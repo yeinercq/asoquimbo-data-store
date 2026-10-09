@@ -95,4 +95,13 @@ class DataBaseRecord < ApplicationRecord
   def self.option_listable_fields
     OPTION_LISTABLE_FIELDS
   end
+
+  # Limpiar y formatear las etiquetas antes de guardar
+  def tags_list=(names)
+    self.tags = names.is_a?(String) ? names.split(",").map(&:strip) : names
+  end
+
+  def tags_list
+    self.tags&.join(", ")
+  end
 end

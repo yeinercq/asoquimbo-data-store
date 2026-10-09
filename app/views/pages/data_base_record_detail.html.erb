@@ -17,6 +17,16 @@
     <i class="bi bi-building me-1"></i><%= @data_base_record.institutions_entities %>
   </p>
 
+  <% if @data_base_record.tags.present? %>
+    <h6 class="text-uppercase fw-bold text-muted mb-2" style="letter-spacing: .04em;">Etiquetas</h6>
+    <div class="d-flex flex-wrap gap-2 mb-3">
+      <% @data_base_record.tags.each do |tag| %>
+        <span class="badge rounded-pill text-bg-success"><%= tag %></span>
+      <% end %>
+    </div>
+  <% end %>
+
+
   <section>
     <h6 class="text-uppercase fw-bold text-muted mb-0" style="letter-spacing: .04em;">Identificación y trazabilidad documental</h6>
     <hr class="mt-2 mb-3">

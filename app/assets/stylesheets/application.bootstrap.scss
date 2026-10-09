@@ -4,4 +4,7 @@
 // Custom components
 @import "components/empty_state";
 @import "components/read_more";
-@import "pages/landing_page"
+@import "pages/landing_page";
+
+// Tagify CSS
+@import "@yaireo/tagify/src/tagify.scss"

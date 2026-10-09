@@ -113,7 +113,8 @@ class DataBaseRecordsController < ApplicationController
       :approach,
       :methodology,
       :record_type,
-      :source_file
+      :source_file,
+      :tags_list
     )
   end
 
