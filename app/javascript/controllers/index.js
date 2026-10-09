@@ -10,6 +10,9 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import LandingController from "./landing_controller"
+application.register("landing", LandingController)
+
 import OffcanvasController from "./offcanvas_controller"
 application.register("offcanvas", OffcanvasController)
 

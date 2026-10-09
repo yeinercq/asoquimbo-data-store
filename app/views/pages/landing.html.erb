@@ -8,24 +8,24 @@
         </h3>
         
         <div class="btn-group mb-2 gap-2 bg-dark bg-opacity-75 py-2 col-12 col-md-auto px-4" role="group" aria-label="Basic radio toggle button group">
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-          <label class="btn btn-outline-success rounded-4" for="btnradio1">Todo</label>
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio_all" autocomplete="off" data-controller="landing" data-action="click->landing#set_record_type" checked>
+          <label class="btn btn-outline-success rounded-4" for="btnradio_all">Todo</label>
 
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-          <label class="btn btn-outline-success rounded-4" for="btnradio2">Metodologías</label>
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio_metodologias" autocomplete="off" data-controller="landing" data-action="click->landing#set_record_type">
+          <label class="btn btn-outline-success rounded-4" for="btnradio_metodologias">Metodologías</label>
 
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-          <label class="btn btn-outline-success rounded-4" for="btnradio3">Monitoreos sociales</label>
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio_sociales" autocomplete="off" data-controller="landing" data-action="click->landing#set_record_type">
+          <label class="btn btn-outline-success rounded-4" for="btnradio_sociales">Monitoreos sociales</label>
 
-          <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-          <label class="btn btn-outline-success rounded-4" for="btnradio4">Monitoreos ecológicos</label>
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio_ecologicas" autocomplete="off" data-controller="landing" data-action="click->landing#set_record_type">
+          <label class="btn btn-outline-success rounded-4" for="btnradio_ecologicas">Monitoreos ecológicos</label>
         </div>
 
       </div>
       <div class="col-12 col-md-10">
         <div class="row row-cols-1 row-cols-md-3 g-4 mb-2 text-start">
-          <%= form_with( url: pages_data_bases_index_path, method: :get, data: { turbo_frame: '_top'}, class: "input-group" ) do |form| %>
-            <%= form.hidden_field :record_type, value: "" %>
+          <%= form_with( url: pages_data_bases_index_path, method: :get, data: { turbo_frame: '_top', controller: "landing" }, class: "input-group" ) do |form| %>
+            <%= form.hidden_field :record_type, value: "", data: { landing_target: "recordType" } %>
             <%= form.text_field :tags, placeholder: "Buscar en la base de datos. Ej.: pesca artesanal, calidad del agua, caudal, biodiversidad...", id: "search-home-page", class: "form-control form-control-lg border-end-0 bg-white", data: { controller: "tags", tags_whitelist_value: @whitelist_tags } %>
             <%= form.button type: :submit, class: "input-group-text bg-white border-start-0 text-dark", aria: { label: "Buscar" } do %>
               <i class="bi bi-search" aria-hidden="true"></i> 
