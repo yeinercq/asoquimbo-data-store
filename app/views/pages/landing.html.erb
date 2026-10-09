@@ -7,26 +7,30 @@
           Convenio No. 103 de 2026 – Fondo para la Vida y la Biodiversidad / ASOQUIMBO Consulta aquí la Curaduría de información secundaria
         </h3>
         
-        <div class="btn-group mb-2 gap-2 bg-dark bg-opacity-75 py-2  col-12 col-md-auto px-4" role="group" aria-label="Basic radio toggle button group">
+        <div class="btn-group mb-2 gap-2 bg-dark bg-opacity-75 py-2 col-12 col-md-auto px-4" role="group" aria-label="Basic radio toggle button group">
           <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-          <label class="btn btn-outline-success rounded-4" for="btnradio1" style="width: 130px;">Todo</label>
+          <label class="btn btn-outline-success rounded-4" for="btnradio1">Todo</label>
 
           <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-          <label class="btn btn-outline-success rounded-4" for="btnradio2" style="width: 130px;">Metodologías</label>
+          <label class="btn btn-outline-success rounded-4" for="btnradio2">Metodologías</label>
 
           <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-          <label class="btn btn-outline-success rounded-4" for="btnradio3" style="width: 130px;">Antecedentes</label>
+          <label class="btn btn-outline-success rounded-4" for="btnradio3">Monitoreos sociales</label>
+
+          <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+          <label class="btn btn-outline-success rounded-4" for="btnradio4">Monitoreos ecológicos</label>
         </div>
 
       </div>
       <div class="col-12 col-md-10">
         <div class="row row-cols-1 row-cols-md-3 g-4 mb-2 text-start">
-          <div class="input-group">
-            <input type="search" class="form-control form-control-lg border-end-0 bg-white search-placeholder" id="search-home-page" placeholder="Buscar en la base de datos. Ej.: pesca artesanal, calidad del agua, caudal, biodiversidad" aria-label="Buscar" data-controller="tags" >
-            <span class="input-group-text bg-white border-start-0 text-dark">
-              <i class="bi bi-search"></i>
-            </span>
-          </div>
+          <%= form_with( url: pages_data_bases_index_path, method: :get, data: { turbo_frame: '_top'}, class: "input-group" ) do |form| %>
+            <%= form.hidden_field :record_type, value: "" %>
+            <%= form.text_field :tags, placeholder: "Buscar en la base de datos. Ej.: pesca artesanal, calidad del agua, caudal, biodiversidad...", id: "search-home-page", class: "form-control form-control-lg border-end-0 bg-white", data: { controller: "tags" } %>
+            <%= form.button type: :submit, class: "input-group-text bg-white border-start-0 text-dark", aria: { label: "Buscar" } do %>
+              <i class="bi bi-search" aria-hidden="true"></i> 
+            <% end %>
+          <% end %>
         </div>
       </div>
 
