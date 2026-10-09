@@ -8,6 +8,9 @@
     <%= link_to import_form_data_base_records_path, class: "btn btn-secondary", data: { turbo_frame: "import_form" } do %>
       <i class="bi bi-database-fill-up"></i> Importar registros
     <% end %>
+    <%= link_to import_tags_form_data_base_records_path, class: "btn btn-secondary", data: { turbo_frame: "import_form" } do %>
+      <i class="bi bi-database-fill-up"></i> Importar etiquetas
+    <% end %>
     <%= link_to "#", class: "btn btn-secondary", data: { turbo: false } do %>
       <i class="bi bi-database-fill-down"></i> Exportar registros
     <% end %>

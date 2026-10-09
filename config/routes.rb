@@ -51,6 +51,8 @@ Rails.application.routes.draw do
     collection do
       get "import_form"
       post "import_file"
+      get "import_tags_form"
+      post "import_tags_file"
     end
   end
 end

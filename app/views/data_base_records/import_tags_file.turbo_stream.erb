@@ -1,0 +1,7 @@
+<%= turbo_stream.update "import_form", "" %>
+<% unless @data_base_records.blank? %>
+    <%= turbo_stream.update "data_base_records" do %>
+        <% render @data_base_records %>
+    <% end %>
+<% end %>
+<%= render_turbo_stream_flash_messages %>

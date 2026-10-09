@@ -24,7 +24,6 @@ class ImportFileService
       end
       [ true, "Se importaron #{rows_read} opciones." ]
     elsif @model_name == DataBaseRecord
-      # quote_chars = %w[" | ~ ^ & *]
       DataBaseRecord.transaction do
         CSV.foreach(@file.path, headers: true, encoding: "bom|utf-8", col_sep: "=") do |row|
           data = row.to_h
@@ -33,6 +32,20 @@ class ImportFileService
 
           data_base_record = DataBaseRecord.new(data)
           data_base_record.save!
+        end
+      end
+      [ true, "Se importaron #{rows_read} opciones." ]
+    elsif @model_name == "Tags"
+      DataBaseRecord.transaction do
+        CSV.foreach(@file.path, headers: true, encoding: "bom|utf-8", col_sep: ";") do |row|
+          data = row.to_h
+          rows_read += 1
+
+          data_base_record = DataBaseRecord.find_by_code(data["code"])
+          if data_base_record.present?
+            data_base_record.tags_list = data["tags"]
+            data_base_record.save
+          end
         end
       end
       [ true, "Se importaron #{rows_read} opciones." ]
