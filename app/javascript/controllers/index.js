@@ -19,6 +19,9 @@ application.register("offcanvas", OffcanvasController)
 import RemoteModalController from "./remote_modal_controller"
 application.register("remote-modal", RemoteModalController)
 
+import SearchFormController from "./search_form_controller"
+application.register("search-form", SearchFormController)
+
 import ShowToastController from "./show_toast_controller"
 application.register("show-toast", ShowToastController)
 
