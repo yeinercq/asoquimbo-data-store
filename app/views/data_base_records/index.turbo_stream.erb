@@ -3,7 +3,7 @@
 
 <% if @data_base_records.empty? %>
   <!-- append empty_state template to the #data_base_records turbo_frame -->
-  <%= turbo_stream.append("data_base_records") do %>
+  <%= turbo_stream.update("data_base_records") do %>
     <%= render "empty_state" %>
   <% end %>
 <% else %>

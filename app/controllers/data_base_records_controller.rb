@@ -10,7 +10,7 @@ class DataBaseRecordsController < ApplicationController
     filtering_params(params).each do | key, value |
       scope = scope.public_send("filter_by_#{key}", value) if value.present?
     end
-
+    # Check if the request is coming from the search form
     @from_search_form = params[:from_search_form].present? && params[:from_search_form] == "true"
     @pagy, @data_base_records = pagy(:countish, scope, limit: 10)
     respond_to do |format|
