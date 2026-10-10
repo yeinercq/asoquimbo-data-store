@@ -50,9 +50,7 @@
       data-action="turbo:frame-load->remote-modal#open turbo:submit-end->remote-modal#close"
     >
       <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-sm-down">
-        <%= turbo_frame_tag "remote_modal" do %>
-          <%= render "layouts/remote_modal_content", title: "" %>
-        <% end %>
+        <%= turbo_frame_tag "remote_modal" %>
       </div>
     </div>
   </body>

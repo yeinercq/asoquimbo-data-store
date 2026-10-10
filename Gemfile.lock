@@ -243,6 +243,10 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     ostruct (0.6.3)
+    pagy (43.7.0)
+      json
+      uri
+      yaml
     parallel (1.28.0)
     parser (3.3.11.1)
       ast (~> 2.4.1)
@@ -380,6 +384,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.2.0)
+    uri (1.1.2)
     useragent (0.16.11)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -396,6 +401,7 @@ GEM
       activesupport
       ostruct
     wkhtmltopdf-binary (0.12.6.10)
+    yaml (0.4.0)
     zeitwerk (2.7.5)
 
 PLATFORMS
@@ -426,6 +432,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   letter_opener
+  pagy (~> 43.7)
   pg (~> 1.1)
   puma (>= 5.0)
   rails (~> 7.2.3)

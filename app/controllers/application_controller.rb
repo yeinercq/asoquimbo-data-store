@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, unless: :devise_controller?
   before_action :set_locale
 
+  include Pagy::Method
+
   rescue_from CanCan::AccessDenied do |exception|
     respond_to do |format|
       format.html { redirect_to pages_home_path, alert: "No está autorizado para realizar esta acción." }

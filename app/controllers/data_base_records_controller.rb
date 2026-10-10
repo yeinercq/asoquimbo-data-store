@@ -11,7 +11,7 @@ class DataBaseRecordsController < ApplicationController
       scope = scope.public_send("filter_by_#{key}", value) if value.present?
     end
 
-    @data_base_records = scope
+    @pagy, @data_base_records = pagy(:countish, scope, limit: 5)
     respond_to do |format|
       format.html
       format.turbo_stream

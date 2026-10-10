@@ -21,7 +21,7 @@
   <div class="filters mt-2">
     <%# Seach form %>
     <div class="row">
-      <%= form_with( url: data_base_records_path, method: :get, data: { turbo_frame: 'data_base_records'}, class: "d-block d-md-flex flex-row flex-wrap gap-2 justify-content-end align-items-center" ) do |form| %>
+      <%= form_with( url: data_base_records_path, method: :get, data: { turbo_frame: 'data_base_records' }, class: "d-block d-md-flex flex-row flex-wrap gap-2 justify-content-end align-items-center" ) do |form| %>
         <div class="col mb-2">
           <%= form.select :record_type, DataBaseRecord.record_types.map { |key, value| [key, key] }, { prompt: "Tipo de registro" }, { class: 'form-select' } %>
         </div>
@@ -60,7 +60,17 @@
 <% end %>
 
 <%= turbo_frame_tag "import_form" %>
-<%= turbo_frame_tag "data_base_records" do %>
-  <%= render "empty_state" %>
-  <%= render @data_base_records %>
+<%= turbo_frame_tag "data_base_records", src: data_base_records_path(request.query_parameters.merge(format: :turbo_stream)), loading: "lazy" do %>
+  <div id="records_placeholder">
+    <% 3.times do %>
+      <%= render "data_base_record_placeholder" %>
+    <% end %>
+  </div>
 <% end %>
+<%= turbo_frame_tag "pagy" do %>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+<% end%>
