@@ -55,7 +55,7 @@
       <dd class="col-12 col-sm-8"><%= @custom_select_list.custom_option_name(@data_base_record.access_level) %></dd>
 
       <dt class="col-12 col-sm-4 text-muted">Tomado de</dt>
-      <dd class="col-12 col-sm-8"><%= @data_base_record.taken_from %></dd>
+      <dd class="col-12 col-sm-8"><%= link_to @data_base_record.taken_from, @data_base_record.taken_from, target: "_blank", rel: "noopener" %></dd>
 
       <dt class="col-12 col-sm-4 text-muted">Comentario documental</dt>
       <dd class="col-12 col-sm-8"><%= simple_format(@data_base_record.documental_comment) %></dd>

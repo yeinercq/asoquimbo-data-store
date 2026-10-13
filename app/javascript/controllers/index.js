@@ -39,3 +39,6 @@ application.register('animated-number', AnimatedNumber)
 
 import TagsController from "./tags_controller"
 application.register("tags", TagsController)
+
+import CopyController from "./copy_controller"
+application.register("copy", CopyController)

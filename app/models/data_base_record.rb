@@ -74,7 +74,7 @@ class DataBaseRecord < ApplicationRecord
   scope :filter_by_record_type, ->(type) { where(record_type: type) }
   scope :filter_by_year, ->(year) { where(year: year) }
   scope :filter_by_tags, ->(tags) { where("tags @> ?", tags.split(",").map(&:strip).to_json) }
-  scope :with_source_file, -> { where.not(source_file: nil) }
+  scope :with_document, -> { where.not(source_file: [ nil, "" ]).or(where.not(taken_from: [ nil, "" ])) }
 
   mount_uploader :source_file, SourceFileUploader
 
@@ -105,5 +105,10 @@ class DataBaseRecord < ApplicationRecord
 
   def tags_list
     self.tags&.join(", ")
+  end
+
+  # URL del documento: archivo adjunto si existe, si no el enlace a la fuente original
+  def document_link
+    source_file? ? source_file_url : taken_from
   end
 end

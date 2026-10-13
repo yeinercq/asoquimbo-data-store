@@ -30,7 +30,7 @@ class PagesController < ApplicationController
   end
 
   def documents_list
-    scope = DataBaseRecord.with_source_file.ordered
+    scope = DataBaseRecord.with_document.ordered
     @pagy, @data_base_records = pagy(:countish, scope, limit: 10)
     respond_to do |format|
       format.html
