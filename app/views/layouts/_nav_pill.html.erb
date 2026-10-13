@@ -34,7 +34,7 @@
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white fw-bold" href="#">Repositorio de documentos</a>
+          <%= link_to "Repositorio de documentos", pages_documents_list_path, class: "nav-link text-white fw-bold" %>
         </li>
         <li class="nav-item">
           <% if user_signed_in? %>

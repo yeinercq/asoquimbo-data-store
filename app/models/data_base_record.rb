@@ -74,6 +74,7 @@ class DataBaseRecord < ApplicationRecord
   scope :filter_by_record_type, ->(type) { where(record_type: type) }
   scope :filter_by_year, ->(year) { where(year: year) }
   scope :filter_by_tags, ->(tags) { where("tags @> ?", tags.split(",").map(&:strip).to_json) }
+  scope :with_source_file, -> { where.not(source_file: nil) }
 
   mount_uploader :source_file, SourceFileUploader
 

@@ -1,0 +1,30 @@
+<!-- remove placeholders -->
+<%= turbo_stream.remove("documents_placeholder") %>
+
+<% if @data_base_records.empty? %>
+  <%= turbo_stream.update("documents_list") do %>
+    <div class="text-center text-muted py-5">
+      <i class="bi bi-file-earmark-pdf fs-1 d-block mb-2"></i>
+      <p class="mb-0">No hay documentos disponibles.</p>
+    </div>
+  <% end %>
+<% else %>
+  <%= turbo_stream.append("documents_list") do %>
+    <%= render partial: "document", collection: @data_base_records, as: :document %>
+  <% end %>
+<% end %>
+
+<!-- update the pagination turbo_frame with the current pagination offset -->
+<% if @pagy.next.present? %>
+  <%= turbo_stream.replace "documents_pagy" do %>
+    <%= turbo_frame_tag "documents_pagy", src: pages_documents_list_path(request.query_parameters.merge(page: @pagy.next, format: :turbo_stream)), loading: "lazy" do %>
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= turbo_stream.update "documents_pagy", "" %>
+<% end %>

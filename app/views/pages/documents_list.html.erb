@@ -1,0 +1,24 @@
+<div class="container py-4">
+  <div class="header mb-3">
+    <h1 class="fw-bold">Repositorio de documentos</h1>
+    <p class="text-muted">
+      Consulta y descarga los documentos asociados a la base de datos del plan de monitoreo socioecológico.
+    </p>
+  </div>
+</div>
+
+<%= turbo_frame_tag "documents_list", src: pages_documents_list_path(request.query_parameters.merge(format: :turbo_stream)), loading: "lazy" do %>
+  <div id="documents_placeholder">
+    <% 3.times do %>
+      <%= render "data_base_records/data_base_record_placeholder" %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= turbo_frame_tag "documents_pagy" do %>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+<% end %>

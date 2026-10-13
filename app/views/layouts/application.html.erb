@@ -19,7 +19,7 @@
     <!-- Navbar -->
     <% if current_page?(root_path) %>
       <%= render "layouts/nav_pill" %>
-    <% elsif !current_page?('/pages/data_bases_index') %>
+    <% elsif !current_page?('/pages/data_bases_index') && !current_page?('/pages/documents_list') %>
       <%= render "layouts/navbar"%>
     <% end %>
 

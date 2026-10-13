@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :landing, :data_bases_index, :data_base_record_detail ]
+  skip_before_action :authenticate_user!, only: [ :landing, :data_bases_index, :data_base_record_detail, :documents_list ]
   before_action :set_custom_select_list, only: [ :data_bases_index, :data_base_record_detail ]
   before_action :set_whitelist_tags, only: [ :landing, :data_bases_index ]
 
@@ -27,6 +27,15 @@ class PagesController < ApplicationController
 
   def data_base_record_detail
     @data_base_record = DataBaseRecord.find(params[:id])
+  end
+
+  def documents_list
+    scope = DataBaseRecord.with_source_file.ordered
+    @pagy, @data_base_records = pagy(:countish, scope, limit: 10)
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   def filtering_record_params(params)
