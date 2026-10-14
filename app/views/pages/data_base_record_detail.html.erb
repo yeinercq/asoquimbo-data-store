@@ -95,9 +95,9 @@
   <section class="mt-4">
     <h6 class="text-uppercase fw-bold text-muted mb-0" style="letter-spacing: .04em;">Archivo adjunto</h6>
     <hr class="mt-2 mb-3">
-    <% if @data_base_record.source_file? %>
-      <%= link_to @data_base_record.source_file_url, target: "_blank", class: "btn btn-outline-success btn-sm rounded-pill" do %>
-        <i class="bi bi-download me-1"></i>Descargar archivo (<%= @data_base_record.source_file.file.filename %>)
+    <% if @data_base_record.document_link.present? %>
+      <%= link_to @data_base_record.document_link, target: "_blank", class: "btn btn-outline-success btn-sm rounded-pill" do %>
+        <i class="bi bi-download me-1"></i>Descargar archivo (<%= @data_base_record.source_file? ? @data_base_record.source_file.file.filename : @data_base_record.document_link.split('/').last %>)
       <% end %>
     <% else %>
       <p class="text-muted mb-0">No hay archivo adjunto disponible.</p>
